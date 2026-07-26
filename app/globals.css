@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --surface: #f5f7fa;
+  --border: #e4e8ee;
+  --text: #052146;
+  --text-muted: #5a6472;
+  --primary: #162792;
+  --primary-hover: #102490;
+  --accent: #0a90e9;
+  --brand-blue: #162792;
+  --brand-blue-deep: #102490;
+  --service-electrical: #162792;
+  --service-connectivity: #0c9e1f;
+  --service-critical: #eb3b08;
+  --service-design: #1a1a1a;
+}
+
+.dark {
+  --bg: #031126;
+  --surface: #052146;
+  --border: #243d5d;
+  --text: #f5f7fa;
+  --text-muted: #a1acba;
+  --primary: #162792;
+  --primary-hover: #102490;
+  --accent: #3ba6ed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), sans-serif;
+}
+
+body::after {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  content: "";
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-sora), sans-serif;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.technical-grid {
+  background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M64 0H0V64' fill='none' stroke='%23243D5D' stroke-width='1' opacity='.26'/%3E%3Ccircle cx='0' cy='0' r='1.25' fill='%23679DE4' opacity='.2'/%3E%3C/svg%3E");
+}
+
+.technical-grid-light {
+  background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M72 0H0V72' fill='none' stroke='%23E0E3E8' stroke-width='1' opacity='.5'/%3E%3Ccircle cx='0' cy='0' r='1.25' fill='%23162792' opacity='.1'/%3E%3C/svg%3E");
+}
+
+.technical-grid-subtle {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M80 0H0V80' fill='none' stroke='%23243D5D' stroke-width='1' opacity='.13'/%3E%3C/svg%3E");
+}
+
+.rotating-banner-surface {
+  background-color: #052146;
+  background-image: linear-gradient(90deg, #052146 0%, #0a2e5c 58%, #123f73 100%);
+}
+
+.status-pulse {
+  animation: status-pulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-pulse-rail {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 40;
+  height: 2px;
+  overflow: visible;
+  pointer-events: none;
+  background: rgb(59 166 237 / 0.18);
+  clip-path: inset(-20px 0 -20px 0);
+}
+
+.hero-pulse-signal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: clamp(18rem, 42vw, 42rem);
+  height: 2px;
+  opacity: 0;
+  transform: translateX(-100%);
+  will-change: transform;
+  animation: hero-pulse-travel 8s linear infinite;
+  background: linear-gradient(
+    90deg,
+    rgb(10 144 233 / 0) 0%,
+    rgb(10 144 233 / 0.16) 24%,
+    rgb(10 144 233 / 0.55) 68%,
+    rgb(10 144 233 / 1) 100%
+  );
+}
+
+.hero-pulse-spark {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgb(230 239 250 / 0.92);
+  border-radius: 999px;
+  background: #3ba6ed;
+  box-shadow: 0 0 0 2px rgb(59 166 237 / 0.18);
+  transform: translate(50%, -50%);
+}
+
+@keyframes hero-pulse-travel {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  6% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(calc(100vw + 100%));
+  }
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid #025bd2;
+  outline-offset: 3px;
+}
+
+::selection {
+  background: #9abded;
+  color: #052146;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .status-pulse {
+    animation: none !important;
+  }
+
+  .hero-pulse-signal {
+    opacity: 0.72;
+    transform: translateX(50vw);
+    animation: none !important;
+  }
+}
