@@ -176,6 +176,7 @@ test.describe("Home company preview pass", () => {
     );
     await expect(electrical).toHaveCSS("border-radius", "12px");
     await electrical.hover();
+    await page.waitForTimeout(250);
     const hoverShadow = await electrical.evaluate((node) => getComputedStyle(node).boxShadow);
     expect(hoverShadow).toMatch(/rgba?\(22, 39, 146/);
   });
@@ -259,6 +260,10 @@ test.describe("Home company preview pass", () => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");
 
+    await expect(page.getByTestId("rotating-type-banner")).toHaveAttribute(
+      "data-motion-state",
+      "static",
+    );
     const output = page.getByTestId("typewriter-output");
     await output.evaluate((node) => {
       node.textContent = "Industry knowledge & design build expertise";

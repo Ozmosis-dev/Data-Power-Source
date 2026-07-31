@@ -72,6 +72,6 @@ test.describe("FAQ SEO redesign", () => {
 
     expect(renderedQuestions).toHaveLength(23);
     expect(schemaQuestions).toEqual(renderedQuestions);
-    expect(schemaQuestions).toEqual(expect.arrayContaining(addedQuestions));
+    expect(schemaQuestions).toEqual(expect.arrayContaining([...addedQuestions]));
   });
 });

@@ -52,15 +52,18 @@ export function BrandServiceMark({
   discipline,
   className,
   plate = false,
+  testId,
 }: {
   discipline: ServiceDiscipline;
   className?: string;
   plate?: boolean;
+  testId?: string;
 }) {
   const mark = marks[discipline];
 
   return (
     <span
+      data-testid={testId}
       className={cn(
         "inline-flex items-center justify-center",
         plate && "rounded-lg border border-neutral-100 bg-white p-3 shadow-sm",

@@ -1,53 +1,81 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ClickToCall } from "@/components/click-to-call";
-import { Hero } from "@/components/hero";
-import { SectionBand } from "@/components/section-band";
-import { site } from "@/content/site";
-import { breadcrumbSchema } from "@/lib/schema";
+import { ServiceDetailPage } from "@/components/service-detail-page";
+import {
+  serviceDetails,
+  type ServiceDetailSlug,
+} from "@/content/service-details";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
-const serviceBySlug = Object.fromEntries(
-  site.services.map((service) => [service.href.split("/").at(-1), service]),
-);
+type ServicePageProps = {
+  params: Promise<{ slug: string }>;
+};
 
-export function generateStaticParams() {
-  return Object.keys(serviceBySlug).map((slug) => ({ slug }));
+function isServiceSlug(slug: string): slug is ServiceDetailSlug {
+  return slug in serviceDetails;
 }
 
-export default async function ServiceStubPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const service = serviceBySlug[slug];
-  if (!service) notFound();
+export function generateStaticParams() {
+  return Object.keys(serviceDetails).map((slug) => ({ slug }));
+}
 
-  const schema = breadcrumbSchema([
+export async function generateMetadata({
+  params,
+}: ServicePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  if (!isServiceSlug(slug)) return {};
+
+  const service = serviceDetails[slug];
+  return {
+    title: service.metadata.title,
+    description: service.metadata.description,
+    keywords: service.metadata.keywords,
+    alternates: {
+      canonical: `/services/${service.slug}`,
+    },
+    openGraph: {
+      title: service.metadata.title,
+      description: service.metadata.description,
+      url: `/services/${service.slug}`,
+      images: [
+        {
+          url: service.hero.imageSrc,
+          alt: service.hero.imageAlt,
+        },
+      ],
+    },
+  };
+}
+
+export default async function ServicePage({ params }: ServicePageProps) {
+  const { slug } = await params;
+  if (!isServiceSlug(slug)) notFound();
+
+  const service = serviceDetails[slug];
+  const href = `/services/${service.slug}`;
+  const breadcrumbs = breadcrumbSchema([
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
-    { name: service.shortLabel, href: service.href },
+    { name: service.hero.overline, href },
   ]);
+  const schema = serviceSchema({
+    name: service.hero.overline,
+    description: service.metadata.description,
+    href,
+  });
 
   return (
-    <main id="main-content">
-      <Hero
-        overline="Service detail"
-        title="Coming in the next pass."
-        lead={`${service.label} is mapped in the approved specification. This pass builds the overview and shared system first.`}
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: service.shortLabel },
-        ]}
-        compact
+    <>
+      <ServiceDetailPage service={service} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs).replace(/</g, "\\u003c") }}
       />
-      <SectionBand compact>
-        <div className="mx-auto max-w-container px-5 sm:px-6">
-          <p className="max-w-2xl text-lead text-neutral-600">{service.description}</p>
-          <ClickToCall className="mt-6" />
-        </div>
-      </SectionBand>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
       />
-    </main>
+    </>
   );
 }

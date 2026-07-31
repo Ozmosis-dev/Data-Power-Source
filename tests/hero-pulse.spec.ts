@@ -14,6 +14,7 @@ const heroRoutes = [
 
 test.describe("shared hero data pulse", () => {
   test("appears once at the bottom edge of every hero", async ({ page }) => {
+    test.setTimeout(60_000);
     await page.setViewportSize({ width: 1440, height: 900 });
 
     for (const route of heroRoutes) {

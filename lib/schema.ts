@@ -79,3 +79,27 @@ export function contactPageSchema() {
     },
   };
 }
+
+export function serviceSchema(service: {
+  name: string;
+  description: string;
+  href: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.description,
+    url: `https://datapowersource.com${service.href}`,
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Metro Atlanta" },
+      { "@type": "State", name: "Georgia" },
+    ],
+    provider: {
+      "@type": "Electrician",
+      name: site.name,
+      telephone: "+1-770-498-9622",
+      url: "https://datapowersource.com",
+    },
+  };
+}
