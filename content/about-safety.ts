@@ -8,34 +8,34 @@ export const safetyMeta: Metadata = {
 
 export const safetyHero = {
   overline: "Safety",
-  title: "No project is worth anyone's safety.",
+  title: "Safety first, always.",
   lead:
-    "A documented program, trained crews, and a measurable record guide every task, from the office to complex multi-crew projects.",
+    "Trained crews, careful planning, and disciplined execution protect your people, your facility, and our team.",
   imageSrc: "/images/generated/faq-field-planning.webp",
   imageAlt:
     "Commercial electricians reviewing a safe work plan beside electrical equipment.",
 } as const;
 
 export const safetyProgram = {
-  title: "A written program, followed on every job.",
+  title: "Safety is how we operate.",
   body: [
-    "We maintain a comprehensive written safety program that details our guidelines for safe work practices. Every new hire is briefed on that program and issued the required Personal Protective Equipment (PPE) before stepping onto a site.",
-    "We hold regular safety meetings to keep job-site hazards front of mind, and we run spot safety checks to make sure the standard holds when no one is watching.",
+    "Safety is not a slogan for us. Our crews arrive trained, prepared, and committed to doing the job right. Whether we are working in a live data center, an occupied healthcare facility, or an active industrial plant, we plan every task with care and execute with discipline.",
+    "Our comprehensive written safety program defines safe work practices. Every new hire is briefed on that program and issued the required Personal Protective Equipment (PPE) before stepping onto a site. Regular safety meetings and spot checks keep the standard active in the field.",
   ],
   practices: [
     {
       title: "Prepared before the work",
-      body: "Every new hire receives a program briefing and the PPE required for the assignment.",
+      body: "Every new hire receives a program briefing, required PPE, and clear expectations before entering the job site.",
       icon: "clipboard",
     },
     {
       title: "Checked in the field",
-      body: "Regular safety meetings and spot checks keep the written standard active on site.",
+      body: "Careful task planning, regular safety meetings, and spot checks turn the written standard into daily practice.",
       icon: "inspection",
     },
     {
       title: "Ready to respond",
-      body: "All employees complete an 8-hour First Aid and CPR training course.",
+      body: "All employees complete an 8-hour First Aid and CPR training course so crews are prepared when seconds matter.",
       icon: "first-aid",
     },
   ],
@@ -123,19 +123,19 @@ export const safetyRecord = {
 } as const;
 
 export const safetyInPractice = {
-  title: "How safety shows up on site.",
+  title: "Protection without exception.",
   items: [
     {
       title: "Plan around operations",
-      body: "Crews coordinate the work, access, and shutdown requirements before installation begins.",
+      body: "Crews coordinate access, energized conditions, shutdown requirements, and facility continuity before installation begins.",
     },
     {
       title: "Keep the site accountable",
-      body: "Uniformed teams follow the same documented expectations across routine and complex assignments.",
+      body: "Trained teams follow the same documented expectations in live data centers, healthcare facilities, and active industrial plants.",
     },
     {
       title: "Protect people and continuity",
-      body: "Safe execution protects employees, customers, equipment, and the facility schedule.",
+      body: "Disciplined execution protects your people, your facility, our team, and the operation that depends on the work.",
     },
   ],
 } as const;

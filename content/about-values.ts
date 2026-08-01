@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 
 export const valuesMeta: Metadata = {
-  title: "Our Values | Straightforward, Reliable Electrical Work | Data Power Source",
+  title: "Our Values | Safety, Integrity & Workmanship | Data Power Source",
   description:
-    "The values behind Data Power Source: engineered precision, reliability, and straightforward answers from a 25-year, owner-led electrical contractor.",
+    "Safety, integrity, workmanship, and responsiveness guide how Data Power Source plans, communicates, installs, and supports critical electrical infrastructure.",
 };
 
 export const valuesHero = {
   overline: "Values / Integrity",
-  title: "Plain answers. Power that stays on.",
+  title: "Powering what can't afford to fail.",
   lead:
-    "Experience shapes the plan. Integrity shapes the scope, communication, and finished work.",
+    "Safety, integrity, workmanship, and responsiveness guide every project and every relationship.",
   imageSrc: "/images/generated/project-switchboard-modernization.webp",
   imageAlt:
     "Commercial electrical switchboard installation completed with precise cable routing and labeling.",
@@ -19,40 +19,40 @@ export const valuesHero = {
 export const valuesStandards = {
   title: "What we stand for.",
   body:
-    "Four operating standards guide how DPS plans, communicates, and delivers commercial and industrial electrical work.",
+    "Four operating values guide how DPS plans, communicates, installs, and responds when the work matters most.",
   items: [
     {
-      title: "Engineered",
+      title: "Safety",
       body:
-        "Precision and code compliance belong in every installation. The details are not an afterthought. They are the job.",
-      icon: "engineered",
+        "Crews arrive trained and prepared, plan every task with care, and execute with discipline to protect people, facilities, and the team.",
+      icon: "safety",
     },
     {
-      title: "Reliable",
+      title: "Integrity",
       body:
-        "Power should stay on, and promises should hold. We stay accountable to the agreed scope and schedule.",
-      icon: "reliable",
+        "Honesty, realistic schedules, and clear communication shape the project from the first conversation through closeout.",
+      icon: "integrity",
     },
     {
-      title: "Straightforward",
+      title: "Workmanship",
       body:
-        "You receive plain answers, honest scopes, and practical trade-offs before the work begins.",
-      icon: "straightforward",
+        "Clean, code-compliant installation and attention to detail create reliable power from the main service to the last termination.",
+      icon: "workmanship",
     },
     {
-      title: "Established",
+      title: "Responsiveness",
       body:
-        "Twenty-five years of commercial and industrial work informs every decision made on your facility.",
-      icon: "established",
+        "Critical facilities cannot wait. Decisive action and follow-through keep urgent outages, failing components, and tight timelines moving.",
+      icon: "responsiveness",
     },
   ],
 } as const;
 
 export const integrityStory = {
-  title: "Integrity, in practice.",
+  title: "Integrity you can build on.",
   body: [
-    "Integrity shows up in the important places: an accurate scope of work, clear communication when conditions change, and craftsmanship you would be comfortable inspecting.",
-    "We would rather explain what a job actually requires than win it on a number we cannot deliver. That is how DPS has built long-term commercial and industrial relationships for 25 years.",
+    "We believe in a straightforward business approach: honesty, realistic schedules, and clear communication from start to finish.",
+    "When the unexpected comes up in complex electrical work, we bring answers and options, not excuses. That approach is why clients return to Data Power Source project after project.",
   ],
   imageSrc: "/images/generated/project-data-center.webp",
   imageAlt:
@@ -60,28 +60,28 @@ export const integrityStory = {
 } as const;
 
 export const communication = {
-  title: "You'll always know where the project stands.",
+  title: "Straight answers when plans change.",
   body:
-    "On critical work, communication means coordinating around operations, flagging risks early, and documenting what was installed.",
+    "Integrity is most visible when site conditions, schedules, or priorities shift. We explain the impact and keep the path forward clear.",
   practices: [
     {
-      title: "Accurate scope",
-      body: "The plan reflects the facility, the load, the access, and the operational constraints.",
+      title: "Honest scope",
+      body: "The plan reflects what the facility and the work actually require, not a number that cannot be delivered.",
     },
     {
-      title: "Clear change communication",
-      body: "When site conditions change, we explain the impact before proceeding.",
+      title: "Realistic schedules",
+      body: "Milestones account for coordination, access, equipment, and the operating constraints of an active facility.",
     },
     {
-      title: "Documented work",
-      body: "The next person who opens the panel should be able to understand what was done.",
+      title: "Answers and options",
+      body: "When the unexpected appears, we explain the choices, recommend a practical response, and follow through.",
     },
   ],
 } as const;
 
 export const valuesCta = {
-  eyebrow: "Start with a clear scope",
-  title: "Work with a contractor who means it.",
+  eyebrow: "Built on trust",
+  title: "Bring us the work that matters.",
   body:
-    "Tell us what the facility needs. We will assess the site, explain the trade-offs, and provide a practical path forward.",
+    "Expect honest answers, careful workmanship, and a responsive team from the first scope conversation through final turnover.",
 } as const;

@@ -37,7 +37,7 @@ test.describe("About page family", () => {
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: "No project is worth anyone's safety.",
+        name: "Safety first, always.",
       }),
     ).toBeVisible();
     await expect(page.getByLabel("Breadcrumb")).toContainText("About");
@@ -47,11 +47,14 @@ test.describe("About page family", () => {
     await expect(
       program.getByRole("heading", {
         level: 2,
-        name: "A written program, followed on every job.",
+        name: "Safety is how we operate.",
       }),
     ).toBeVisible();
     await expect(program).toContainText("Personal Protective Equipment");
     await expect(program).toContainText("First Aid and CPR");
+    await expect(program).toContainText(
+      "live data center, an occupied healthcare facility, or an active industrial plant",
+    );
 
     const authority = page.getByTestId("safety-authority");
     await expect(
@@ -102,19 +105,19 @@ test.describe("About page family", () => {
     await page.goto("/about/values");
 
     await expect(page).toHaveTitle(
-      "Our Values | Straightforward, Reliable Electrical Work | Data Power Source",
+      "Our Values | Safety, Integrity & Workmanship | Data Power Source",
     );
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: "Plain answers. Power that stays on.",
+        name: "Powering what can't afford to fail.",
       }),
     ).toBeVisible();
     await expect(page.getByLabel("Breadcrumb")).toContainText("About");
     await expect(page.getByLabel("Breadcrumb")).toContainText("Values & integrity");
 
     const standards = page.getByTestId("values-standards");
-    for (const value of ["Engineered", "Reliable", "Straightforward", "Established"]) {
+    for (const value of ["Safety", "Integrity", "Workmanship", "Responsiveness"]) {
       await expect(
         standards.getByRole("heading", { name: value, exact: true }),
       ).toBeVisible();
@@ -123,23 +126,23 @@ test.describe("About page family", () => {
     await expect(
       page.getByRole("heading", {
         level: 2,
-        name: "Integrity, in practice.",
+        name: "Integrity you can build on.",
       }),
     ).toBeVisible();
     await expect(
       page.getByRole("heading", {
         level: 2,
-        name: "You'll always know where the project stands.",
+        name: "Straight answers when plans change.",
       }),
     ).toBeVisible();
     await expect(page.getByTestId("integrity-practices")).toContainText(
-      "Accurate scope",
+      "Honest scope",
     );
     await expect(page.getByTestId("integrity-practices")).toContainText(
-      "Clear change communication",
+      "Realistic schedules",
     );
     await expect(page.getByTestId("integrity-practices")).toContainText(
-      "Documented work",
+      "Answers and options",
     );
 
     await expect(
@@ -151,7 +154,7 @@ test.describe("About page family", () => {
     await expect(
       page.getByRole("heading", {
         level: 2,
-        name: "Work with a contractor who means it.",
+        name: "Bring us the work that matters.",
       }),
     ).toBeVisible();
 

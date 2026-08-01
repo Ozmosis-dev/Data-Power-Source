@@ -5,38 +5,60 @@ const services = [
     slug: "commercial-industrial-electrical",
     title:
       "Commercial & Industrial Electrical Contractor | Metro Atlanta | Data Power Source",
-    heading: "Commercial and industrial electrical, done right the first time.",
+    heading: "Electrical installation services, built for business.",
     accent: "#162792",
     mark: "service-electrical.svg",
     image: "project-switchboard-modernization",
-    proof: "Workmanship is never an accident",
+    proof: "From service entrance to final connection.",
+    sourceCopy: [
+      "Panelboards, switchboards, and power distribution",
+      "DC fast charging (DCFC) installation",
+      "EV make-ready infrastructure",
+    ],
   },
   {
     slug: "mission-critical-power",
     title: "UPS & Standby Generator Installation | Mission Critical Power | Atlanta",
-    heading: "When the grid drops, your operation shouldn't.",
+    heading: "When downtime isn't an option, power can't be an afterthought.",
     accent: "#B9330E",
     mark: "service-mission-critical.svg",
     image: "project-standby-power",
-    proof: "The bridge between utility loss and sustained backup.",
+    proof: "We build for that instant.",
+    sourceCopy: [
+      "lost production, spoiled product, dropped transactions",
+      "Schneider Electric, Eaton, Vertiv, Cummins, Kohler, and Caterpillar",
+      "commission under real load",
+    ],
   },
   {
     slug: "low-voltage-connectivity",
     title: "Structured Cabling & Fiber Optic Installation | Low Voltage | Atlanta",
-    heading: "Structured cabling, installed clean and documented.",
+    heading: "Structured cabling, fiber, and testing for critical facilities.",
     accent: "#08751A",
     mark: "service-connectivity.svg",
     image: "service-connectivity-cabling",
-    proof: "50+ telemetry sites for the City of Atlanta.",
+    proof: "Certified, documented, ready for turnover.",
+    sourceCopy: [
+      "Cat5e, Cat6, Cat6A, and Cat8",
+      "Fluke DSX-class testers",
+      "OTDR trace and analysis",
+      "Distributed antenna systems (DAS)",
+    ],
   },
   {
     slug: "engineering-design-build",
     title: "Electrical Design-Build & Engineering | Concept to Install | Atlanta",
-    heading: "From a thought to an engineered solution.",
+    heading: "One team. One contract. One point of accountability.",
     accent: "#1A1A1A",
     mark: "service-design-build.svg",
     image: "faq-field-planning",
-    proof: "No engineer-stamped drawings? No problem.",
+    proof: "Built around your business.",
+    sourceCopy: [
+      "Single-source responsibility",
+      "Long-lead equipment gets ordered early",
+      "Discovery",
+      "Commission",
+    ],
   },
 ] as const;
 
@@ -110,6 +132,9 @@ test.describe("service detail pages", () => {
         page.getByTestId("service-hero-image").locator("img"),
       ).toHaveAttribute("src", new RegExp(service.image));
       await expect(page.getByText(service.proof, { exact: false }).first()).toBeVisible();
+      for (const sourceCopy of service.sourceCopy) {
+        await expect(page.getByText(sourceCopy, { exact: false }).first()).toBeVisible();
+      }
       await expect(page.getByTestId("service-capabilities")).toBeVisible();
       await expect(
         page.getByRole("link", { name: "Request a quote", exact: true }).first(),
@@ -169,5 +194,126 @@ test.describe("service detail pages", () => {
       if (!channels) continue;
       expect(new Set(channels).size, color).toBe(1);
     }
+  });
+
+  test("places mission-critical risk before delivery and preserves the intended color rhythm", async ({
+    page,
+  }) => {
+    await page.goto("/services/mission-critical-power");
+
+    const stake = page.getByTestId("service-proof");
+    const delivery = page.getByTestId("service-capabilities");
+    const focus = page.getByTestId("service-focus");
+
+    await expect(stake.getByText("What's at stake", { exact: true })).toBeVisible();
+    await expect(delivery.getByRole("heading", { level: 2, name: "What we deliver." })).toBeVisible();
+    const [stakeBox, deliveryBox] = await Promise.all([stake.boundingBox(), delivery.boundingBox()]);
+    expect(stakeBox?.y).toBeLessThan(deliveryBox?.y ?? 0);
+    await expect(stake).toHaveCSS("background-color", "rgb(185, 51, 14)");
+    await expect(delivery).toHaveCSS("background-color", "rgb(255, 255, 255)");
+    await expect(focus).toHaveCSS("background-color", "rgb(255, 243, 238)");
+  });
+
+  test("uses a conversational closing action on mission-critical without changing the hero action", async ({
+    page,
+  }) => {
+    await page.goto("/services/mission-critical-power");
+
+    await expect(
+      page.getByTestId("page-hero").getByRole("link", { name: "Request a quote", exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.getByTestId("service-cta").getByRole("link", { name: "Let's Talk", exact: true }),
+    ).toBeVisible();
+  });
+
+  test("uses a compact services-led heading and ledger on low voltage", async ({ page }) => {
+    await page.goto("/services/low-voltage-connectivity");
+
+    const capabilities = page.getByTestId("service-capabilities");
+    await expect(
+      capabilities.getByRole("heading", {
+        level: 2,
+        name: "Structured Cabling, Fiber Optic & Low-Voltage Services",
+      }),
+    ).toBeVisible();
+    await expect(capabilities).toHaveAttribute("data-presentation", "ledger");
+    await expect(capabilities.locator("article")).toHaveCount(4);
+    await expect(capabilities.locator("li")).toHaveCount(25);
+  });
+
+  test("uses an installation and EV service composition on electrical", async ({ page }) => {
+    await page.goto("/services/commercial-industrial-electrical");
+
+    const capabilities = page.getByTestId("service-capabilities");
+    await expect(
+      capabilities.getByRole("heading", {
+        level: 2,
+        name: "Commercial Electrical Installation & EV Charging Services",
+      }),
+    ).toBeVisible();
+    await expect(capabilities).toHaveAttribute("data-presentation", "split");
+    await expect(capabilities.getByRole("heading", { level: 4 })).toHaveCount(6);
+    await expect(capabilities.locator("li")).toHaveCount(13);
+  });
+
+  test("restores every design-build benefit from the approved client content", async ({ page }) => {
+    await page.goto("/services/engineering-design-build");
+
+    const capabilities = page.getByTestId("service-capabilities");
+    await expect(capabilities).toHaveAttribute("data-presentation", "benefit-rail");
+    for (const approvedDetail of [
+      "schedules slip, costs creep, and reliability suffers",
+      "not routed through a chain of subcontractors",
+      "permitting moves in parallel with detailing",
+      "realistic numbers early and fewer change orders late",
+      "before they become problems on site",
+    ]) {
+      await expect(capabilities.getByText(approvedDetail, { exact: false })).toBeVisible();
+    }
+  });
+
+  test("shows all approved design-build system descriptors in grayscale", async ({ page }) => {
+    await page.goto("/services/engineering-design-build");
+
+    const systems = page.getByTestId("service-systems-directory");
+    for (const descriptor of [
+      "sized, configured, and integrated for the loads that can't go dark",
+      "generators and automatic transfer switches",
+      "from the service entrance to the branch circuit, coordinated and code-compliant",
+      "clean, redundant power and cooling infrastructure",
+      "capacity for growth, planned around your operations and your uptime",
+    ]) {
+      await expect(systems.getByText(descriptor, { exact: false })).toBeVisible();
+    }
+
+    const colorValues = await systems.evaluate((section) => {
+      const textNodes = [...section.querySelectorAll("h2, h3, p")];
+      const cards = [...section.querySelectorAll(".system-directory-card")];
+      return [
+        ...textNodes.map((node) => getComputedStyle(node).color),
+        ...[section, ...cards].map((node) => getComputedStyle(node).backgroundColor),
+        ...cards.map((node) => getComputedStyle(node).borderTopColor),
+      ];
+    });
+    for (const color of colorValues) {
+      const channels = color.match(/\d+/g)?.slice(0, 3).map(Number);
+      if (!channels) continue;
+      expect(new Set(channels).size, color).toBe(1);
+    }
+  });
+
+  test("keeps the design-build business context in a stacked reading flow", async ({ page }) => {
+    await page.goto("/services/engineering-design-build");
+
+    const context = page.getByTestId("design-business-context");
+    await expect(context).toHaveAttribute("data-layout", "stacked");
+
+    const positions = await context.evaluate((node) => {
+      const heading = node.querySelector("h2")?.getBoundingClientRect();
+      const body = node.querySelector("p")?.getBoundingClientRect();
+      return { headingBottom: heading?.bottom ?? 0, bodyTop: body?.top ?? 0 };
+    });
+    expect(positions.bodyTop).toBeGreaterThan(positions.headingBottom);
   });
 });

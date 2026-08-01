@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowUpRight,
-  Blueprint,
   ChatCircleText,
   CheckCircle,
   Medal,
@@ -27,7 +26,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = valuesMeta;
 
-const standardIcons = [Blueprint, ShieldCheck, ChatCircleText, Medal] as const;
+const standardIcons = [ShieldCheck, CheckCircle, Medal, ChatCircleText] as const;
 
 export default function ValuesPage() {
   const breadcrumbs = breadcrumbSchema([
@@ -153,7 +152,7 @@ export default function ValuesPage() {
               ))}
             </div>
             <blockquote className="mt-8 border-l-2 border-brand-600 bg-brand-50 px-6 py-5 font-display text-xl font-semibold leading-relaxed text-navy-800">
-              Say what the work requires. Deliver what the scope promises.
+              Answers and options, not excuses.
             </blockquote>
           </Reveal>
         </div>

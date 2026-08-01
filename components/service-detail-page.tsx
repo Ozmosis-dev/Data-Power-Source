@@ -125,7 +125,13 @@ function ServiceHeading({
   );
 }
 
-function PrimaryAction({ inverse = false }: { inverse?: boolean }) {
+function PrimaryAction({
+  inverse = false,
+  label = "Request a quote",
+}: {
+  inverse?: boolean;
+  label?: string;
+}) {
   return (
     <QuoteTrigger
       className={cn(
@@ -135,7 +141,7 @@ function PrimaryAction({ inverse = false }: { inverse?: boolean }) {
           : "bg-[var(--service-surface)] text-white hover:brightness-90",
       )}
     >
-      Request a quote
+      {label}
       <ArrowRight aria-hidden="true" size={16} weight="bold" />
     </QuoteTrigger>
   );
@@ -148,73 +154,407 @@ function CapabilityGrid({
   content: ServiceDetail["capabilities"];
   monochrome?: boolean;
 }) {
+  const presentation = content.variant ?? "cards";
   const layout = capabilityLayouts[content.items.length] ?? [];
+  const isMonochrome = monochrome || content.tone === "monochrome";
 
   return (
     <section
       data-testid="service-capabilities"
+      data-presentation={presentation}
       className={cn(
         "border-y py-20 md:py-28",
-        monochrome
+        isMonochrome
           ? "border-[#D9D9D9] bg-[#F3F3F3] text-[#1A1A1A]"
-          : "border-neutral-100 bg-[var(--service-soft)]",
+          : content.tone === "white"
+            ? "border-neutral-100 bg-white"
+            : "border-neutral-100 bg-[var(--service-soft)]",
       )}
     >
       <div className="mx-auto max-w-container px-5 sm:px-6">
         <ServiceHeading
           title={content.title}
           body={content.intro}
-          monochrome={monochrome}
+          monochrome={isMonochrome}
         />
-        <div className="mt-12 grid gap-4 lg:grid-cols-12">
-          {content.items.map((item, index) => {
-            const Icon = capabilityIcons[item.icon];
-            return (
-              <Reveal
-                key={item.title}
-                className={cn(
-                  "group min-w-0 rounded-xl border p-6 transition-[border-color,transform] duration-[180ms] hover:-translate-y-1 hover:border-[color:var(--service-accent)] motion-reduce:transform-none motion-reduce:transition-none",
-                  monochrome
-                    ? "border-[#D7D7D7] bg-[#FAFAFA]"
-                    : "border-[color:var(--service-tint)] bg-white",
-                  layout[index] ?? "lg:col-span-6",
-                )}
-                delay={(index % 3) * 40}
-              >
-                <div className="flex items-start gap-5">
-                  <span
-                    className={cn(
-                      "grid size-11 shrink-0 place-items-center rounded-lg",
-                      monochrome
-                        ? "bg-[#EAEAEA] text-[#1A1A1A]"
-                        : "bg-[var(--service-soft)] text-[var(--service-accent)]",
-                    )}
-                  >
-                    <Icon aria-hidden={true} size={21} weight="regular" />
-                  </span>
-                  <div>
-                    <h3
-                      className={cn(
-                        "font-display text-h3 font-semibold tracking-[-0.02em]",
-                        monochrome ? "text-[#1A1A1A]" : "text-navy-800",
-                      )}
-                    >
+        {presentation === "ledger" ? (
+          <div className="mt-12 overflow-hidden border-y border-[color:var(--service-tint)]">
+            {content.items.map((item, index) => {
+              const Icon = capabilityIcons[item.icon];
+              return (
+                <Reveal
+                  key={item.title}
+                  className={cn(
+                    "grid gap-7 border-b border-[color:var(--service-tint)] px-5 py-8 last:border-b-0 sm:px-7 lg:grid-cols-12 lg:gap-10 lg:px-8 lg:py-9",
+                    index % 2 === 0 ? "bg-white" : "bg-[var(--service-soft)]",
+                  )}
+                  delay={(index % 3) * 35}
+                >
+                  <article className="contents">
+                  <div className="lg:col-span-4">
+                    <span className="grid size-11 place-items-center rounded-lg bg-[var(--service-tint)] text-[var(--service-accent)]">
+                      <Icon aria-hidden={true} size={21} weight="regular" />
+                    </span>
+                    <h3 className="mt-5 font-display text-h3 font-semibold tracking-[-0.02em] text-navy-800">
                       {item.title}
                     </h3>
-                    <p
-                      className={cn(
-                        "mt-3 max-w-xl text-small leading-relaxed",
-                        monochrome ? "text-[#595959]" : "text-neutral-600",
-                      )}
-                    >
+                    <p className="mt-3 max-w-sm text-small leading-relaxed text-neutral-600">
                       {item.body}
                     </p>
                   </div>
-                </div>
-              </Reveal>
-            );
-          })}
+                  <ul className="grid content-start gap-x-8 text-[0.88rem] leading-[1.55] text-neutral-700 sm:grid-cols-2 lg:col-span-8">
+                    {item.details?.map((detail) => (
+                      <li
+                        key={detail}
+                        className="relative border-t border-[color:var(--service-tint)] py-3 pl-5"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="absolute left-0 top-[1.15rem] h-1.5 w-1.5 bg-[var(--service-accent)]"
+                        />
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                  </article>
+                </Reveal>
+              );
+            })}
+          </div>
+        ) : presentation === "split" ? (
+          <div className="mt-12 grid gap-5 lg:grid-cols-12">
+            {content.items.map((item, index) => {
+              const Icon = capabilityIcons[item.icon];
+              return (
+                <Reveal
+                  key={item.title}
+                  className={cn(
+                    "relative overflow-hidden rounded-xl border p-7 md:p-9",
+                    index === 0
+                      ? "border-[color:var(--service-tint)] bg-white lg:col-span-7"
+                      : "border-[color:var(--service-tint)] bg-[var(--service-tint)] lg:col-span-5",
+                  )}
+                  delay={index * 50}
+                >
+                  <article className="contents">
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-y-0 left-0 w-1 bg-[var(--service-accent)]"
+                  />
+                  <div className="flex items-start gap-4">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-lg bg-[var(--service-soft)] text-[var(--service-accent)]">
+                      <Icon aria-hidden={true} size={21} weight="regular" />
+                    </span>
+                    <div>
+                      <h3 className="font-display text-h3 font-semibold tracking-[-0.02em] text-navy-800">
+                        {item.title}
+                      </h3>
+                      <p className="mt-3 max-w-xl text-small leading-relaxed text-neutral-600">
+                        {item.body}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-8 grid gap-7 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                    {item.groups?.map((group) => (
+                      <div key={group.title}>
+                        <h4 className="border-b border-[color:var(--service-accent)] pb-2 font-display text-[0.95rem] font-semibold text-navy-800">
+                          {group.title}
+                        </h4>
+                        <ul className="mt-2 divide-y divide-[color:var(--service-tint)] text-[0.86rem] leading-relaxed text-neutral-700">
+                          {group.details.map((detail) => (
+                            <li key={detail} className="py-2.5">
+                              {detail}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                  </article>
+                </Reveal>
+              );
+            })}
+          </div>
+        ) : presentation === "benefit-rail" ? (
+          <div className="mt-12 grid border-y border-[#CFCFCF] lg:grid-cols-12">
+            {content.items.map((item, index) => {
+              const Icon = capabilityIcons[item.icon];
+              const spans = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7"];
+              return (
+                <Reveal
+                  key={item.title}
+                  className={cn(
+                    "group min-w-0 border-b border-[#CFCFCF] p-7 last:border-b-0 lg:border-r lg:p-9",
+                    index % 2 === 0 ? "bg-[#FAFAFA]" : "bg-[#E9E9E9]",
+                    spans[index],
+                  )}
+                  delay={index * 40}
+                >
+                  <article className="contents">
+                  <span className="grid size-11 place-items-center rounded-lg bg-[#DEDEDE] text-[#1A1A1A]">
+                    <Icon aria-hidden={true} size={21} weight="regular" />
+                  </span>
+                  <h3 className="mt-6 font-display text-h3 font-semibold tracking-[-0.02em] text-[#1A1A1A]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 max-w-xl text-small leading-relaxed text-[#505050]">
+                    {item.body}
+                  </p>
+                  </article>
+                </Reveal>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="mt-12 grid gap-4 lg:grid-cols-12">
+            {content.items.map((item, index) => {
+              const Icon = capabilityIcons[item.icon];
+              return (
+                <Reveal
+                  key={item.title}
+                  className={cn(
+                    "group min-w-0 rounded-xl border p-6 transition-[border-color,transform] duration-[180ms] hover:-translate-y-1 hover:border-[color:var(--service-accent)] motion-reduce:transform-none motion-reduce:transition-none",
+                    isMonochrome
+                      ? "border-[#D7D7D7] bg-[#FAFAFA]"
+                      : "border-[color:var(--service-tint)] bg-white",
+                    layout[index] ?? "lg:col-span-6",
+                  )}
+                  delay={(index % 3) * 40}
+                >
+                  <div className="flex items-start gap-5">
+                    <span
+                      className={cn(
+                        "grid size-11 shrink-0 place-items-center rounded-lg",
+                        isMonochrome
+                          ? "bg-[#EAEAEA] text-[#1A1A1A]"
+                          : "bg-[var(--service-soft)] text-[var(--service-accent)]",
+                      )}
+                    >
+                      <Icon aria-hidden={true} size={21} weight="regular" />
+                    </span>
+                    <div>
+                      <h3
+                        className={cn(
+                          "font-display text-h3 font-semibold tracking-[-0.02em]",
+                          isMonochrome ? "text-[#1A1A1A]" : "text-navy-800",
+                        )}
+                      >
+                        {item.title}
+                      </h3>
+                      <p
+                        className={cn(
+                          "mt-3 max-w-xl text-small leading-relaxed",
+                          isMonochrome ? "text-[#595959]" : "text-neutral-600",
+                        )}
+                      >
+                        {item.body}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function FocusSection({ service }: { service: ServiceDetail }) {
+  const systems = service.focus.find((item) => item.variant === "systems-directory");
+
+  if (systems?.details?.length) {
+    const supporting = service.focus.filter((item) => item !== systems);
+    const spans = [
+      "lg:col-span-7",
+      "lg:col-span-5",
+      "lg:col-span-4",
+      "lg:col-span-4",
+      "lg:col-span-4",
+    ];
+
+    return (
+      <section
+        data-testid="service-focus"
+        className="border-y border-[#D7D7D7] bg-[#F3F3F3] py-20 text-[#1A1A1A] md:py-28"
+      >
+        <div className="mx-auto max-w-container px-5 sm:px-6">
+          <div data-testid="service-systems-directory">
+            <ServiceHeading title={systems.title} body={systems.body} monochrome />
+            <div className="mt-12 grid gap-4 lg:grid-cols-12">
+              {systems.details.map((item, index) => {
+                const Icon = capabilityIcons[item.icon ?? "circuit"];
+                return (
+                  <Reveal
+                    key={item.title}
+                    className={cn(
+                      "system-directory-card min-w-0 rounded-xl border border-[#D1D1D1] p-7",
+                      index === 0 ? "bg-[#1A1A1A]" : index % 2 === 0 ? "bg-[#E7E7E7]" : "bg-[#FAFAFA]",
+                      spans[index],
+                    )}
+                    delay={index * 35}
+                  >
+                    <article>
+                      <span
+                        className={cn(
+                          "grid size-11 place-items-center rounded-lg",
+                          index === 0
+                            ? "bg-[#3A3A3A] text-white"
+                            : "bg-[#D8D8D8] text-[#1A1A1A]",
+                        )}
+                      >
+                        <Icon aria-hidden={true} size={21} weight="regular" />
+                      </span>
+                      <h3
+                        className={cn(
+                          "mt-6 font-display text-h3 font-semibold tracking-[-0.02em]",
+                          index === 0 ? "text-white" : "text-[#1A1A1A]",
+                        )}
+                      >
+                        {item.title}
+                      </h3>
+                      <p
+                        className={cn(
+                          "mt-3 max-w-lg text-small leading-relaxed",
+                          index === 0 ? "text-[#D8D8D8]" : "text-[#505050]",
+                        )}
+                      >
+                        {item.body}
+                      </p>
+                    </article>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
+
+          {supporting.map((item) => (
+            <Reveal
+              key={item.title}
+              className="mt-12 border-t border-[#C8C8C8] pt-10 md:mt-16 md:pt-12"
+            >
+              <div
+                data-testid="design-business-context"
+                data-layout="stacked"
+                className="max-w-3xl"
+              >
+                <h2 className="max-w-xl font-display text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] text-[#1A1A1A] md:text-[2.6rem]">
+                  {item.title}
+                </h2>
+                <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#505050]">
+                  {item.body}
+                </p>
+              </div>
+            </Reveal>
+          ))}
         </div>
+      </section>
+    );
+  }
+
+  return (
+    <section
+      data-testid="service-focus"
+      className={cn(
+        "py-20 md:py-28",
+        service.presentation?.focusTone === "soft" && "bg-[var(--service-soft)]",
+      )}
+    >
+      <div className="mx-auto max-w-container px-5 sm:px-6">
+        <div className="grid gap-5 lg:grid-cols-12">
+          {service.focus.map((item, index) => (
+            <Reveal
+              key={item.title}
+              className={cn(
+                "min-w-0 rounded-xl border border-neutral-100 p-7 md:p-9",
+                index === 0
+                  ? "bg-navy-900 text-white lg:col-span-7"
+                  : service.focus.length === 3 && index === 2
+                    ? "bg-white lg:col-span-12"
+                    : "bg-white lg:col-span-5",
+              )}
+              delay={index * 40}
+            >
+              <div className="h-1 w-16 rounded-full bg-[var(--service-accent)]" />
+              <h2
+                className={cn(
+                  "mt-7 font-display text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] md:text-[2.6rem]",
+                  index === 0 ? "text-white" : "text-navy-800",
+                )}
+              >
+                {item.title}
+              </h2>
+              <p
+                className={cn(
+                  "mt-5 max-w-2xl text-base leading-relaxed",
+                  index === 0 ? "text-navy-100" : "text-neutral-600",
+                )}
+              >
+                {item.body}
+              </p>
+              {item.items?.length ? (
+                <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                  {item.items.map((label) => (
+                    <div
+                      key={label}
+                      className={cn(
+                        "rounded-lg border px-4 py-3 text-small font-semibold",
+                        index === 0
+                          ? "border-white/20 bg-white/5 text-white"
+                          : "border-[color:var(--service-tint)] bg-[var(--service-soft)] text-navy-800",
+                      )}
+                    >
+                      {label}
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProofSection({ service }: { service: ServiceDetail }) {
+  return (
+    <section
+      data-testid="service-proof"
+      className="bg-[var(--service-surface)] py-20 text-white md:py-24"
+    >
+      <div className="mx-auto grid max-w-container gap-10 px-5 sm:px-6 lg:grid-cols-12 lg:items-end">
+        <Reveal className="lg:col-span-8">
+          <p className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-white/70">
+            {service.proof.label}
+          </p>
+          <h2 className="mt-5 max-w-4xl font-display text-[2.4rem] font-semibold leading-[1.06] tracking-[-0.04em] text-white md:text-[3.5rem]">
+            {service.proof.title}
+          </h2>
+          <p className="mt-6 max-w-2xl text-lead leading-relaxed text-white/80">
+            {service.proof.body}
+          </p>
+          {service.proof.quote ? (
+            <p className="mt-6 border-l-2 border-white/60 pl-5 text-h3 font-medium text-white">
+              {service.proof.quote}
+            </p>
+          ) : null}
+        </Reveal>
+        {service.proof.metrics?.length ? (
+          <Reveal className="grid gap-4 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1" delay={60}>
+            {service.proof.metrics.map((metric) => (
+              <div key={metric.label} className="rounded-xl border border-white/25 p-6">
+                <p className="font-display text-[2.6rem] font-semibold tracking-[-0.04em] text-white">
+                  {metric.value}
+                </p>
+                <p className="mt-2 max-w-xs text-small leading-relaxed text-white/75">
+                  {metric.label}
+                </p>
+              </div>
+            ))}
+          </Reveal>
+        ) : null}
       </div>
     </section>
   );
@@ -227,6 +567,14 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
     "--service-soft": service.theme.soft,
     "--service-tint": service.theme.tint,
   } as CSSProperties;
+  const sectionOrder = service.presentation?.sectionOrder ?? [
+    "overview",
+    "capabilities",
+    "focus",
+    "proof",
+  ];
+  const proofBeforeCapabilities =
+    sectionOrder.indexOf("proof") < sectionOrder.indexOf("capabilities");
 
   return (
     <main
@@ -314,7 +662,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
         <HeroPulseRail />
       </section>
 
-      <section className="py-20 md:py-28">
+      <section data-testid="service-overview" className="py-20 md:py-28">
         <div className="mx-auto grid max-w-container gap-12 px-5 sm:px-6 lg:grid-cols-12 lg:items-center">
           <Reveal className="lg:col-span-7">
             <ServiceHeading title={service.overview.title} />
@@ -342,101 +690,16 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
         </div>
       </section>
 
+      {proofBeforeCapabilities ? <ProofSection service={service} /> : null}
+
       <CapabilityGrid
         content={service.capabilities}
         monochrome={service.discipline === "design-build"}
       />
 
-      <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-container px-5 sm:px-6">
-          <div className="grid gap-5 lg:grid-cols-12">
-            {service.focus.map((item, index) => (
-              <Reveal
-                key={item.title}
-                className={cn(
-                  "min-w-0 rounded-xl border border-neutral-100 p-7 md:p-9",
-                  index === 0
-                    ? "bg-navy-900 text-white lg:col-span-7"
-                    : service.focus.length === 3 && index === 2
-                      ? "bg-[var(--service-soft)] lg:col-span-12"
-                      : "bg-white lg:col-span-5",
-                )}
-                delay={index * 40}
-              >
-                <div className="h-1 w-16 rounded-full bg-[var(--service-accent)]" />
-                <h2
-                  className={cn(
-                    "mt-7 font-display text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] md:text-[2.6rem]",
-                    index === 0 ? "text-white" : "text-navy-800",
-                  )}
-                >
-                  {item.title}
-                </h2>
-                <p
-                  className={cn(
-                    "mt-5 max-w-2xl text-base leading-relaxed",
-                    index === 0 ? "text-navy-100" : "text-neutral-600",
-                  )}
-                >
-                  {item.body}
-                </p>
-                {item.items?.length ? (
-                  <div className="mt-7 grid gap-3 sm:grid-cols-3">
-                    {item.items.map((label) => (
-                      <div
-                        key={label}
-                        className={cn(
-                          "rounded-lg border px-4 py-3 text-small font-semibold",
-                          index === 0
-                            ? "border-white/20 bg-white/5 text-white"
-                            : "border-[color:var(--service-tint)] bg-[var(--service-soft)] text-navy-800",
-                        )}
-                      >
-                        {label}
-                      </div>
-                    ))}
-                  </div>
-                ) : null}
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FocusSection service={service} />
 
-      <section className="bg-[var(--service-surface)] py-20 text-white md:py-24">
-        <div className="mx-auto grid max-w-container gap-10 px-5 sm:px-6 lg:grid-cols-12 lg:items-end">
-          <Reveal className="lg:col-span-8">
-            <p className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-white/70">
-              {service.proof.label}
-            </p>
-            <h2 className="mt-5 max-w-4xl font-display text-[2.4rem] font-semibold leading-[1.06] tracking-[-0.04em] text-white md:text-[3.5rem]">
-              {service.proof.title}
-            </h2>
-            <p className="mt-6 max-w-2xl text-lead leading-relaxed text-white/80">
-              {service.proof.body}
-            </p>
-            {service.proof.quote ? (
-              <p className="mt-6 border-l-2 border-white/60 pl-5 text-h3 font-medium text-white">
-                {service.proof.quote}
-              </p>
-            ) : null}
-          </Reveal>
-          {service.proof.metrics?.length ? (
-            <Reveal className="grid gap-4 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1" delay={60}>
-              {service.proof.metrics.map((metric) => (
-                <div key={metric.label} className="rounded-xl border border-white/25 p-6">
-                  <p className="font-display text-[2.6rem] font-semibold tracking-[-0.04em] text-white">
-                    {metric.value}
-                  </p>
-                  <p className="mt-2 max-w-xs text-small leading-relaxed text-white/75">
-                    {metric.label}
-                  </p>
-                </div>
-              ))}
-            </Reveal>
-          ) : null}
-        </div>
-      </section>
+      {!proofBeforeCapabilities ? <ProofSection service={service} /> : null}
 
       {service.process ? (
         <section className="py-20 md:py-28">
@@ -539,7 +802,10 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
         </div>
       </section>
 
-      <section className="service-detail-grid bg-navy-900 py-16 text-white md:py-20">
+      <section
+        data-testid="service-cta"
+        className="service-detail-grid bg-navy-900 py-16 text-white md:py-20"
+      >
         <div className="mx-auto grid max-w-container items-center gap-9 px-5 sm:px-6 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <h2 className="max-w-4xl font-display text-[2.35rem] font-semibold leading-[1.08] tracking-[-0.04em] text-white md:text-[3.5rem]">
@@ -548,7 +814,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
             <p className="mt-5 max-w-2xl text-lead text-navy-100">{service.cta.body}</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row lg:col-span-4 lg:flex-col lg:items-end">
-            <PrimaryAction inverse />
+            <PrimaryAction inverse label={service.cta.actionLabel} />
             <a
               href={site.phoneHref}
               className="inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md border border-white/35 px-6 text-small font-semibold text-white transition-[background-color,border-color,transform] duration-[180ms] hover:border-white hover:bg-white/10 active:scale-[0.98] motion-reduce:transition-none"

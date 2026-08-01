@@ -19,6 +19,24 @@ export type CapabilityIcon =
   | "switchgear"
   | "telemetry";
 
+export type ServiceSectionKey =
+  | "overview"
+  | "proof"
+  | "capabilities"
+  | "focus"
+  | "process"
+  | "questions"
+  | "related";
+
+export type CapabilityPresentation = "cards" | "ledger" | "split" | "benefit-rail";
+export type SectionTone = "white" | "soft" | "accent" | "monochrome";
+
+export type DescriptiveItem = {
+  title: string;
+  body: string;
+  icon?: CapabilityIcon;
+};
+
 export type ServiceDetail = {
   slug: string;
   metadata: {
@@ -32,6 +50,10 @@ export type ServiceDetail = {
     surface: string;
     soft: string;
     tint: string;
+  };
+  presentation?: {
+    sectionOrder?: ServiceSectionKey[];
+    focusTone?: SectionTone;
   };
   hero: {
     overline: string;
@@ -48,16 +70,22 @@ export type ServiceDetail = {
   capabilities: {
     title: string;
     intro: string;
+    variant?: CapabilityPresentation;
+    tone?: SectionTone;
     items: {
       title: string;
       body: string;
       icon: CapabilityIcon;
+      details?: string[];
+      groups?: { title: string; details: string[] }[];
     }[];
   };
   focus: {
     title: string;
     body: string;
     items?: string[];
+    details?: DescriptiveItem[];
+    variant?: "feature-cards" | "systems-directory";
   }[];
   proof: {
     label: string;
@@ -82,6 +110,7 @@ export type ServiceDetail = {
   cta: {
     title: string;
     body: string;
+    actionLabel?: string;
   };
 };
 
@@ -91,12 +120,12 @@ const electrical: ServiceDetail = {
     title:
       "Commercial & Industrial Electrical Contractor | Metro Atlanta | Data Power Source",
     description:
-      "Full-service commercial and industrial electrical in Metro Atlanta: turn-key installations, service upgrades, lighting, switchgear, EV charging, and 24/7 emergency repair.",
+      "Commercial and industrial electrical installation in Metro Atlanta, including distribution, service upgrades, equipment connections, grounding, and EV charging infrastructure.",
     keywords: [
       "commercial industrial electrical contractor Atlanta",
       "electrical service upgrade",
-      "commercial lighting installation",
-      "switchgear installation",
+      "commercial power distribution",
+      "switchboard installation",
       "EV charging station installation Georgia",
     ],
   },
@@ -108,118 +137,137 @@ const electrical: ServiceDetail = {
     tint: "#E3E7F7",
   },
   hero: {
-    overline: "Commercial & Industrial",
-    title: "Commercial and industrial electrical, done right the first time.",
+    overline: "Commercial & Industrial Electrical",
+    title: "Electrical installation services, built for business.",
     lead:
-      "Full-service electrical work for Metro Atlanta facilities, from service upgrades to ground-up builds, completed cleanly and built to last.",
+      "Complete commercial and industrial installations, power distribution, equipment connections, and EV charging infrastructure.",
     imageSrc: "/images/generated/project-switchboard-modernization.webp",
     imageAlt:
       "Modern commercial switchgear installation inside an industrial electrical room.",
   },
   overview: {
-    title: "One contractor, from design to done.",
+    title: "Complete installations from source to equipment.",
     body: [
-      "We handle design, installation, troubleshooting, and ongoing maintenance under one roof. Fewer handoffs mean clearer accountability and a team that already knows your building.",
-      "Facility managers, general contractors, and industrial operators get responsive, professional work backed by a documented safety program.",
+      "Data Power Source delivers the electrical infrastructure commercial and industrial facilities need to operate, expand, and connect new equipment.",
+      "Our scope runs from design-build delivery and service-entrance upgrades through feeders, branch circuits, raceways, grounding, and final equipment connections.",
     ],
-    callout: "The same accountable team can assess it, build it, repair it, and maintain it.",
+    callout:
+      "One installation team coordinates distribution, pathways, equipment, and the capacity your operation needs next.",
   },
   capabilities: {
-    title: "What we install and service.",
+    title: "Commercial Electrical Installation & EV Charging Services",
     intro:
-      "Complete electrical support for new construction, active facilities, and planned modernization.",
+      "Two coordinated service areas cover the building power system and the charging infrastructure connected to it.",
+    variant: "split",
     items: [
       {
-        title: "Turn-key electrical installations",
-        body: "Complete commercial and industrial builds, coordinated from mobilization through commissioning.",
-        icon: "bolt",
-      },
-      {
-        title: "Electrical service upgrades",
-        body: "Add capacity for expansions, new equipment, and higher operating demand.",
-        icon: "circuit",
-      },
-      {
-        title: "Lighting and controls",
-        body: "Installations, retrofits, and replacements for efficiency, performance, and code.",
-        icon: "lighting",
-      },
-      {
-        title: "Switchgear",
-        body: "Main service switchboards, distribution equipment, replacements, and cutovers.",
+        title: "Commercial & industrial installations",
+        body:
+          "Core electrical distribution and connection work for new construction, active facilities, modernization, and expansion.",
         icon: "switchgear",
+        details: [
+          "Design-build project delivery",
+          "Panelboards, switchboards, and power distribution",
+          "Branch circuit and feeder installation",
+          "Service entrance and service equipment upgrades",
+          "Surge protective devices (SPD) and power quality",
+          "Conduit, raceway, cable tray, and busway / bus duct",
+          "Machinery and process equipment connections",
+          "Grounding and bonding systems",
+        ],
+        groups: [
+          {
+            title: "Distribution & protection",
+            details: [
+              "Panelboards, switchboards, and power distribution",
+              "Surge protective devices (SPD) and power quality",
+              "Grounding and bonding systems",
+            ],
+          },
+          {
+            title: "Pathways & feeders",
+            details: [
+              "Branch circuit and feeder installation",
+              "Conduit, raceway, cable tray, and busway / bus duct",
+            ],
+          },
+          {
+            title: "Equipment & delivery",
+            details: [
+              "Design-build project delivery",
+              "Service entrance and service equipment upgrades",
+              "Machinery and process equipment connections",
+            ],
+          },
+        ],
       },
       {
         title: "EV charging stations",
-        body: "Commercial charging infrastructure planned and installed to code.",
+        body:
+          "Charging systems and make-ready capacity planned around the site, vehicle use, and available electrical service.",
         icon: "car",
-      },
-      {
-        title: "Troubleshooting and repair",
-        body: "Find the fault, correct the issue, and document the completed work.",
-        icon: "repair",
-      },
-      {
-        title: "Maintenance contracts",
-        body: "Planned upkeep that keeps small electrical problems from becoming outages.",
-        icon: "maintenance",
-      },
-      {
-        title: "Infrared thermography",
-        body: "Identify hot spots and failing connections before they interrupt operations.",
-        icon: "camera",
-      },
-      {
-        title: "24/7 emergency service",
-        body: "A 2-hour response across Metro Atlanta when the problem cannot wait.",
-        icon: "bolt",
+        details: [
+          "Level 2 (AC) charger installation",
+          "DC fast charging (DCFC) installation",
+          "Workplace, fleet, and commercial charging",
+          "Multi-family, retail, and parking deck charging",
+          "EV make-ready infrastructure, including conduit, panels, and transformers",
+        ],
+        groups: [
+          {
+            title: "Charger types",
+            details: [
+              "Level 2 (AC) charger installation",
+              "DC fast charging (DCFC) installation",
+            ],
+          },
+          {
+            title: "Site applications",
+            details: [
+              "Workplace, fleet, and commercial charging",
+              "Multi-family, retail, and parking deck charging",
+            ],
+          },
+          {
+            title: "Make-ready infrastructure",
+            details: [
+              "EV make-ready infrastructure, including conduit, panels, and transformers",
+            ],
+          },
+        ],
       },
     ],
   },
   focus: [
     {
-      title: "Assess before the first shutdown.",
+      title: "Distribution designed for the real load.",
       body:
-        "Every job starts with a site assessment. We verify existing conditions, identify goals and risks, then provide the plan, price, and schedule before work begins.",
-      items: [
-        "Existing conditions and code requirements",
-        "Operational constraints and shutdown windows",
-        "A clear scope built around the facility",
-      ],
+        "Panelboards, switchboards, feeders, branch circuits, surge protection, grounding, and bonding are coordinated as one power path instead of isolated pieces.",
+      items: ["Service entrance", "Distribution", "Equipment connections"],
     },
     {
-      title: "Coordinate around your operation.",
+      title: "Capacity for what comes next.",
       body:
-        "Installation is sequenced around occupied facilities, active production, and critical business hours. Clean work and clear communication are part of the electrical scope.",
+        "Service upgrades and EV make-ready infrastructure create a practical foundation for facility growth, new process equipment, workplace charging, and fleet electrification.",
     },
   ],
   proof: {
-    label: "Craftsmanship",
-    title: "Workmanship is never an accident.",
-    body: "Quality and craftsmanship at every turn, on every project.",
-    quote: "It is always the result of intelligent effort.",
-  },
-  process: {
-    title: "A clear path from assessment to closeout.",
+    label: "Workmanship",
+    title: "From service entrance to final connection.",
     body:
-      "A defined scope keeps the work accountable and gives your team a schedule it can plan around.",
-    steps: [
-      { title: "Assess", body: "Document conditions, capacity, risks, and operating constraints." },
-      { title: "Scope", body: "Set the plan, price, schedule, and shutdown sequence." },
-      { title: "Install", body: "Complete the work cleanly and coordinate every handoff." },
-      { title: "Maintain", body: "Protect the investment with planned service and support." },
-    ],
+      "Clean, code-compliant installation and close attention to detail help every system perform as designed today and for years to come.",
   },
   related: {
-    industries: ["Data centers", "Healthcare", "Government and military", "Education"],
+    industries: ["Commercial facilities", "Industrial operations", "Fleet and workplace", "Multi-family and retail"],
     services: [
       { label: "Mission critical power", href: "/services/mission-critical-power" },
       { label: "Engineering and design-build", href: "/services/engineering-design-build" },
     ],
   },
   cta: {
-    title: "Need it powered? Let's scope it.",
-    body: "Start with a site assessment and a clear plan for the work.",
+    title: "Plan the complete electrical scope.",
+    body:
+      "Tell us about the facility, the equipment, and the capacity you need to bring online.",
   },
 };
 
@@ -228,13 +276,13 @@ const missionCritical: ServiceDetail = {
   metadata: {
     title: "UPS & Standby Generator Installation | Mission Critical Power | Atlanta",
     description:
-      "Mission-critical power from Data Power Source: commercial UPS systems, standby generator installation, and combined backup for facilities that cannot go dark.",
+      "Mission-critical power systems for facilities that cannot go dark, including UPS, generators, transfer switches, distribution, commissioning, and lifecycle support.",
     keywords: [
       "mission critical electrical Atlanta",
       "commercial UPS installation Atlanta",
       "standby generator installation Georgia",
-      "data center electrical services",
-      "UPS battery replacement",
+      "automatic transfer switch installation",
+      "critical power commissioning",
     ],
   },
   discipline: "mission-critical",
@@ -244,130 +292,95 @@ const missionCritical: ServiceDetail = {
     soft: "#FFF3EE",
     tint: "#FBDDD2",
   },
+  presentation: {
+    sectionOrder: ["overview", "proof", "capabilities", "focus", "related"],
+    focusTone: "soft",
+  },
   hero: {
-    overline: "Mission Critical Power",
-    title: "When the grid drops, your operation shouldn't.",
+    overline: "Mission-Critical Power",
+    title: "When downtime isn't an option, power can't be an afterthought.",
     lead:
-      "Integrated UPS and generator systems keep critical loads online through utility loss, transfer, and sustained outages.",
+      "Power that has to be there through every outage, transfer, and load swing.",
     imageSrc: "/images/generated/project-standby-power.webp",
     imageAlt:
       "Commercial standby generator equipment serving a mission-critical facility.",
   },
   overview: {
-    title: "UPS, generators, or both, engineered to your load.",
+    title: "Some facilities simply cannot go dark.",
     body: [
-      "Our crews design, build, and maintain systems inside critical environments without taking existing operations offline.",
-      "For most facilities, continuity means a UPS for the instantaneous bridge and a standby generator for sustained power. We assess the load and tell you what the facility actually needs.",
+      "Data centers, hospitals, control rooms, distribution hubs, and continuous-process manufacturing lines depend on power every second, including the moments when the utility cannot provide it.",
+      "Data Power Source designs, installs, and maintains the critical power infrastructure that carries demanding commercial and industrial operations across the Southeast through outages, transfers, and load swings.",
     ],
-    callout: "Milliseconds matter. The complete system must work as one continuous power path.",
+    callout:
+      "A critical power system is not a collection of parts. It is one engineered, integrated continuity system.",
   },
   capabilities: {
-    title: "Critical power, from source to load.",
+    title: "What we deliver.",
     intro:
-      "Design, installation, integration, and maintenance for the equipment between utility loss and restored service.",
+      "A complete critical power system, engineered and integrated around the loads that cannot tolerate interruption.",
+    tone: "white",
     items: [
       {
-        title: "UPS installation",
-        body: "Single-cabinet and large three-phase systems integrated with existing power.",
+        title: "Uninterruptible power supply systems",
+        body:
+          "UPS battery systems ride through disturbances and bridge the gap to standby power for loads that cannot tolerate even a momentary interruption.",
         icon: "battery",
       },
       {
-        title: "Standby generators",
-        body: "Diesel and natural-gas systems with transfer switches and infrastructure.",
+        title: "Standby & emergency generators",
+        body:
+          "Diesel and natural-gas gensets are engineered to the outage profile, from single units to paralleled plants that scale with the load.",
         icon: "generator",
       },
       {
-        title: "Data-center electrical",
-        body: "Power distribution, riser upgrades, PDUs, and coordinated cutovers.",
-        icon: "circuit",
+        title: "Automatic transfer switches",
+        body:
+          "Automatic and manual transfer schemes move the facility to backup power and return it to utility when the grid stabilizes.",
+        icon: "bolt",
       },
       {
-        title: "Cable sets",
-        body: "Electrical cable sets built, installed, tested, and documented.",
-        icon: "cable",
-      },
-      {
-        title: "Battery replacement",
-        body: "UPS battery testing, replacement, and preventive maintenance.",
-        icon: "battery",
-      },
-      {
-        title: "Precision cooling",
-        body: "In-row and CRAC unit installation with containment coordination.",
-        icon: "cooling",
+        title: "Power distribution & switchgear",
+        body:
+          "Service-entrance to branch-circuit distribution is coordinated, selectively protected, and built to NEC standard.",
+        icon: "switchgear",
       },
     ],
   },
   focus: [
     {
-      title: "The instantaneous bridge.",
+      title: "Built on proven equipment.",
       body:
-        "A UPS carries the critical load the millisecond utility power drops. It protects equipment from outages, sags, and surges until generator power is stable.",
-      items: ["UPS installation", "Battery replacement", "Power distribution"],
+        "We design and install around Schneider Electric, Eaton, Vertiv, Cummins, Kohler, and Caterpillar, matching equipment to load, runtime, and redundancy requirements instead of forcing one standard solution.",
+      items: ["Specified on merit", "Manufacturer-supported", "Built to last"],
     },
     {
-      title: "Sustained standby power.",
+      title: "Engineered to code, proven under load.",
       body:
-        "A properly sized generator takes over for the duration of the outage. Transfer switches, fuel, service, and permitting are coordinated as one installation.",
-      items: ["Generator installation", "Automatic transfer switches", "Temporary staging"],
+        "Deep NEC fluency guides feeder sizing, parallel conductors, equipment grounding, and overcurrent coordination. We commission under real load and document the results before the system is needed in an emergency.",
     },
     {
-      title: "One integrated continuity plan.",
+      title: "Support that doesn't stop at startup.",
       body:
-        "UPS, generator, distribution, and cooling are designed around the same critical load, with cutovers planned to keep the room online.",
+        "Critical power is a lifecycle, not a one-time install. Responsive service keeps the infrastructure ready for the day the utility is not.",
     },
   ],
   proof: {
-    label: "Continuity",
-    title: "The bridge between utility loss and sustained backup.",
+    label: "What's at stake",
+    title: "We build for that instant.",
     body:
-      "A coordinated UPS and generator system protects the load immediately, then carries it for as long as the outage lasts.",
-    metrics: [
-      { value: "0 ms", label: "The continuity goal at the critical load" },
-      { value: "24/7", label: "The standard your operation expects" },
-    ],
-  },
-  process: {
-    title: "Ready before the day you need it.",
-    body:
-      "A backup system is only as reliable as its last service. We support equipment we install and systems already in place.",
-    steps: [
-      { title: "Assess", body: "Verify the load, runtime, topology, and existing equipment." },
-      { title: "Engineer", body: "Design the system and the live-facility cutover plan." },
-      { title: "Install", body: "Coordinate equipment, controls, testing, and commissioning." },
-      { title: "Maintain", body: "Test batteries, loads, generators, and transfer equipment." },
-    ],
-  },
-  questions: {
-    title: "Choosing the right continuity system.",
-    items: [
-      {
-        question: "Do we need a UPS, a generator, or both?",
-        answer:
-          "A UPS protects the load instantly. A generator provides sustained power. Critical facilities commonly need both.",
-      },
-      {
-        question: "Can you work without taking the facility offline?",
-        answer:
-          "Yes. We plan phased work, temporary power, and cutovers around the active operation.",
-      },
-      {
-        question: "Do you maintain systems you did not install?",
-        answer:
-          "Yes. We service existing UPS and generator equipment after assessing its condition and scope.",
-      },
-    ],
+      "When the grid drops, the cost is measured in lost production, spoiled product, dropped transactions, and safety systems that cannot be allowed to fail. The system has to perform flawlessly the instant it is called on.",
   },
   related: {
-    industries: ["Data centers", "Healthcare", "Government and military", "Broadcast and telecom"],
+    industries: ["Data centers", "Hospitals", "Control rooms", "Distribution hubs", "Continuous-process manufacturing"],
     services: [
       { label: "Commercial and industrial electrical", href: "/services/commercial-industrial-electrical" },
       { label: "Engineering and design-build", href: "/services/engineering-design-build" },
     ],
   },
   cta: {
-    title: "Protect your critical load.",
-    body: "Plan the full power path before the next utility event finds the weak point.",
+    title: "Keep the power on.",
+    body: "Start with an assessment of your critical load, runtime, and redundancy needs.",
+    actionLabel: "Let's Talk",
   },
 };
 
@@ -376,13 +389,13 @@ const connectivity: ServiceDetail = {
   metadata: {
     title: "Structured Cabling & Fiber Optic Installation | Low Voltage | Atlanta",
     description:
-      "Low-voltage and connectivity work from Data Power Source: structured cabling, voice and data, single-mode and multi-mode fiber, and telemetry systems.",
+      "Structured cabling, fiber optic infrastructure, certified copper and fiber testing, and adjacent low-voltage systems for commercial and critical facilities.",
     keywords: [
       "structured cabling fiber installation Atlanta",
       "low voltage cabling Georgia",
-      "voice data cabling",
+      "copper cable certification",
       "fiber optic installation",
-      "telemetry systems installation",
+      "OTDR testing Atlanta",
     ],
   },
   discipline: "connectivity",
@@ -393,97 +406,118 @@ const connectivity: ServiceDetail = {
     tint: "#D6F0DB",
   },
   hero: {
-    overline: "Connectivity and Low Voltage",
-    title: "Structured cabling, installed clean and documented.",
+    overline: "Low Voltage Services",
+    title: "Structured cabling, fiber, and testing for critical facilities.",
     lead:
-      "More than 20 years of neat, documented copper and fiber installations for reliable commercial networks.",
+      "Installed, certified, labeled, and documented for commercial, industrial, and mission-critical environments.",
     imageSrc: "/images/generated/service-connectivity-cabling.webp",
     imageAlt:
       "Low-voltage technician organizing structured copper and fiber cabling in a commercial telecom room.",
   },
   overview: {
-    title: "Cabling you won't have to think about.",
+    title: "The physical network, complete and accountable.",
     body: [
-      "Network reliability often comes down to the cabling underneath it. We apply care to every run, termination, and label because clean cabling is easier to maintain and troubleshoot.",
-      "As facilities have moved to fiber, our training and field experience have kept pace. Copper and fiber are delivered as one orderly connectivity system.",
+      "Data Power Source installs structured copper cabling, fiber optic infrastructure, rooms, racks, pathways, and adjacent low-voltage connections as one coordinated system.",
+      "Certification, labeling, as-built drawings, and turnover packages make the installation easier to verify on day one and easier to operate for years.",
     ],
-    callout: "Neat routing and clear documentation make the network easier to operate for years.",
+    callout:
+      "Every pathway, termination, test result, and label contributes to a network your team can trust and maintain.",
   },
   capabilities: {
-    title: "Low-voltage and connectivity services.",
+    title: "Structured Cabling, Fiber Optic & Low-Voltage Services",
     intro:
-      "The physical network, installed with the same discipline as the electrical systems supporting it.",
+      "Four connected disciplines carry the project from pathway and cable installation through certification and turnover.",
+    variant: "ledger",
     items: [
       {
-        title: "CAT 5, 5E, and 6 data",
-        body: "Structured copper runs, terminations, patching, testing, and labeling.",
+        title: "Structured cabling & data communications",
+        body:
+          "Copper, voice, rooms, racks, pathways, and administration for complete building and data-center networks.",
         icon: "network",
+        details: [
+          "Category copper cabling installation: Cat5e, Cat6, Cat6A, and Cat8 for short-reach data center runs",
+          "Horizontal cabling and backbone / riser cabling",
+          "Voice cabling and integrated voice / data drops",
+          "Termination of jacks, patch panels, and 110/66 blocks",
+          "Telecom / equipment room (TR/ER) and IDF / MDF build-outs",
+          "Racks, cabinets, ladder rack, and cable management",
+          "Pathways and support: cable tray, J-hooks, conduit, sleeves, and firestopping",
+          "Move / add / change (MAC) work and cabling remediation",
+          "ANSI/TIA-606 labeling and administration",
+        ],
       },
       {
-        title: "CAT 3 voice",
-        body: "Voice wiring for facilities that still depend on legacy connections.",
-        icon: "cable",
-      },
-      {
-        title: "Single-mode fiber",
-        body: "Long-distance, high-bandwidth fiber installation and termination.",
+        title: "Fiber optic cabling",
+        body:
+          "Inside and outside plant fiber installation, splicing, termination, enclosure, and backbone work.",
         icon: "fiber",
+        details: [
+          "Single-mode (OS2) and multimode (OM3 / OM4 / OM5) installation",
+          "Indoor, indoor/outdoor, and outside plant (OSP) fiber: aerial, direct burial, and innerduct",
+          "Fusion splicing and mechanical splicing",
+          "Field termination and connectorization, including splice-on connectors and pigtails",
+          "Fiber patch panels, enclosures / LIUs, and cassettes",
+          "Backbone, riser, and campus / inter-building links",
+        ],
       },
       {
-        title: "Multi-mode fiber",
-        body: "Reliable fiber links for building and campus network environments.",
-        icon: "fiber",
+        title: "Certification & testing",
+        body:
+          "Standards-based proof, fault location, and complete documentation for copper and fiber infrastructure.",
+        icon: "monitoring",
+        details: [
+          "Copper certification to TIA/ISO standards with Fluke DSX-class testers",
+          "Fiber Tier 1 certification: insertion loss / optical loss (OLTS)",
+          "Fiber Tier 2 certification: OTDR trace and analysis",
+          "Fiber end-face inspection to IEC standards",
+          "Test result documentation, as-built drawings, and turnover packages",
+          "Troubleshooting and fault location on existing copper / fiber plant",
+        ],
       },
       {
-        title: "Demarcation boards",
-        body: "Clean transition points that simplify carrier and facility handoffs.",
-        icon: "circuit",
-      },
-      {
-        title: "Moves, adds, and changes",
-        body: "Practical network updates coordinated around active operations.",
-        icon: "repair",
-      },
-      {
-        title: "Telemetry systems",
-        body: "Connectivity, monitoring, control, antenna work, and system upgrades.",
+        title: "Adjacent low-voltage systems",
+        body:
+          "Coordinated cabling and infrastructure for connected building, wireless, cellular, surveillance, and data-center systems.",
         icon: "telemetry",
+        details: [
+          "IP video surveillance / CCTV cabling",
+          "Wireless access point (WAP) cabling and coordination",
+          "Distributed antenna systems (DAS) and in-building cellular",
+          "Data center structured cabling and containment",
+        ],
       },
     ],
   },
   focus: [
     {
-      title: "Copper and fiber, one standard of workmanship.",
+      title: "Install cleanly. Prove performance.",
       body:
-        "Cable routing, bend radius, termination, testing, and labels are handled as part of the finished system, not as cleanup after installation.",
-      items: ["Orderly pathways", "Tested terminations", "Maintainable documentation"],
+        "Cable routing, support, bend radius, termination, splicing, and inspection are completed as part of one quality standard, then verified with the right test method for the medium.",
+      items: ["TIA/ISO copper", "OLTS and OTDR fiber", "IEC end-face inspection"],
     },
     {
-      title: "Connectivity beyond the telecom room.",
+      title: "Turn over a system your team understands.",
       body:
-        "We connect equipment, monitoring, and field telemetry across commercial and municipal environments, including outdoor and elevated infrastructure.",
+        "ANSI/TIA-606 administration, test results, as-built drawings, labels, and turnover packages document what was installed and how it performs.",
     },
   ],
   proof: {
-    label: "Featured project",
-    title: "50+ telemetry sites for the City of Atlanta.",
+    label: "Certification",
+    title: "Certified, documented, ready for turnover.",
     body:
-      "DPS upgraded water-pressure monitoring sites from hardwired controls to radio-based telemetry, including field work, panels, antenna poles, networking, and engineered drawings.",
-    metrics: [
-      { value: "50+", label: "Water-pressure monitoring sites connected" },
-      { value: "1", label: "Coordinated network for monitoring and control" },
-    ],
+      "Copper and fiber infrastructure is tested to the applicable standards, with results and as-built records prepared for the team that will operate it.",
   },
   related: {
-    industries: ["Municipal and utilities", "Broadcast and telecom", "Data centers"],
+    industries: ["Commercial facilities", "Industrial facilities", "Data centers", "Campus environments"],
     services: [
       { label: "Mission critical power", href: "/services/mission-critical-power" },
       { label: "Engineering and design-build", href: "/services/engineering-design-build" },
     ],
   },
   cta: {
-    title: "Planning a cabling or fiber project?",
-    body: "Start with the pathways, terminations, documentation, and operating requirements.",
+    title: "Plan a network built for turnover.",
+    body:
+      "Bring us the pathways, media, test requirements, and operating environment.",
   },
 };
 
@@ -492,12 +526,12 @@ const designBuild: ServiceDetail = {
   metadata: {
     title: "Electrical Design-Build & Engineering | Concept to Install | Atlanta",
     description:
-      "In-house electrical design-build from Data Power Source. We take a need from concept to engineered drawing to finished system in Metro Atlanta.",
+      "Single-source electrical and critical-power design-build, from discovery and engineered drawings through construction, commissioning, and documentation.",
     keywords: [
       "electrical design-build contractor Georgia",
       "electrical engineering services Atlanta",
-      "data center design",
-      "electrical mechanical design build",
+      "critical power design build",
+      "data center power design",
     ],
   },
   discipline: "design-build",
@@ -508,89 +542,142 @@ const designBuild: ServiceDetail = {
     tint: "#DFE2E7",
   },
   hero: {
-    overline: "Engineering and Design-Build",
-    title: "From a thought to an engineered solution.",
+    overline: "Design-Build",
+    title: "One team. One contract. One point of accountability.",
     lead:
-      "Bring us the need. We design, engineer, document, build, and commission the working solution.",
+      "Electrical and critical-power systems carried from the first sketch to the final commissioning report.",
     imageSrc: "/images/generated/faq-field-planning.webp",
     imageAlt:
       "Electrical professionals reviewing engineered drawings beside switchgear.",
   },
   overview: {
-    title: "No engineer-stamped drawings? No problem.",
+    title: "Concept to energized equipment, under one roof.",
     body: [
-      "Projects often stall because the customer has a real facility need but no design to build from. We close that gap.",
-      "Decades of design-build experience take the project from conceptual design to engineered drawings and a finished system without adding a separate handoff first.",
+      "Data Power Source engineers and installs electrical and critical-power systems as one integrated team, so design decisions are grounded in what actually gets built.",
+      "The crew building the system understands the intent behind every line on the drawing, reducing coordination time and keeping responsibility in one place through commissioning.",
     ],
-    callout: "The people estimating and installing the work help shape the design from the start.",
+    callout:
+      "We own the outcome from the first sketch to the final commissioning report.",
   },
   capabilities: {
-    title: "What we design and build.",
+    title: "Why design-build works for critical power.",
     intro:
-      "A single-source path for electrical and mechanical needs that start without a complete drawing set.",
+      "Mission-critical power isn't a place for handoffs and finger-pointing. A gap between the designer and installer is where schedules slip, costs creep, and reliability suffers. Bringing both under one agreement closes that gap.",
+    variant: "benefit-rail",
+    tone: "monochrome",
     items: [
       {
-        title: "Project design-build",
-        body: "Complete delivery under one accountable team and coordinated scope.",
+        title: "Single-source responsibility",
+        body:
+          "One team is accountable for design, procurement, installation, and startup. When questions come up in the field, they're answered by the same people who drew the plan, not routed through a chain of subcontractors.",
         icon: "blueprint",
       },
       {
-        title: "Electrical engineering",
-        body: "Engineered drawings, load studies, system design, and field coordination.",
+        title: "Faster to energized",
+        body:
+          "Design and construction overlap instead of running end to end. Long-lead equipment gets ordered early, permitting moves in parallel with detailing, and the facility comes online sooner.",
+        icon: "bolt",
+      },
+      {
+        title: "Cost certainty, earlier",
+        body:
+          "Because we price what we design, budget surprises get caught on paper before switchgear is on order. You get realistic numbers early and fewer change orders late.",
         icon: "circuit",
       },
       {
-        title: "Data-center design",
-        body: "Power, cooling, distribution, containment, and continuity planning.",
-        icon: "network",
-      },
-      {
-        title: "Electrical and mechanical design",
-        body: "Integrated systems designed to work together in the real facility.",
+        title: "Buildability baked in",
+        body:
+          "Field expertise informs the design from day one. Feeder routing, equipment access, grounding, and maintenance clearances are considered before they become problems on site.",
         icon: "cooling",
       },
     ],
   },
   focus: [
     {
-      title: "Design informed by installation.",
+      title: "What we design and build.",
       body:
-        "The drawing reflects what can be built, maintained, and commissioned in the actual space. Field constraints surface on paper, not halfway through construction.",
-      items: ["Existing conditions verified", "Constructability built in", "Commissioning considered early"],
+        "Complete electrical and critical-power systems are built around the requirements of the operation, not around a catalog.",
+      variant: "systems-directory",
+      details: [
+        {
+          title: "Uninterruptible power supply systems",
+          body: "Sized, configured, and integrated for the loads that can't go dark.",
+          icon: "battery",
+        },
+        {
+          title: "Standby and emergency power",
+          body: "Generators and automatic transfer switches.",
+          icon: "generator",
+        },
+        {
+          title: "Power distribution and switchgear",
+          body:
+            "From the service entrance to the branch circuit, coordinated and code-compliant.",
+          icon: "switchgear",
+        },
+        {
+          title: "IT and server room power upgrades",
+          body:
+            "Clean, redundant power and cooling infrastructure for the spaces your business runs on.",
+          icon: "cooling",
+        },
+        {
+          title: "Electrical service upgrades",
+          body: "Capacity for growth, planned around your operations and your uptime.",
+          icon: "bolt",
+        },
+      ],
     },
     {
-      title: "Installation accountable to the design.",
+      title: "Built around your business.",
       body:
-        "The team that develops the scope stays responsible through procurement, field work, testing, and closeout.",
+        "A data center, distribution hub, and manufacturing floor define reliable power differently. We match redundancy, runtime, and resilience to the risk your operation actually carries.",
     },
   ],
   proof: {
-    label: "The differentiator",
-    title: "No engineer-stamped drawings? No problem.",
+    label: "One accountable outcome",
+    title: "Designed to the load, the site, and the reliability standard.",
     body:
-      "Start with the operating need. We can develop the concept, engineer the system, create the drawings, and build the finished solution.",
+      "Buildability and budget stay in view throughout design, and the same team tests, verifies, documents, and commissions the installed system under load.",
   },
   process: {
-    title: "One continuous line from need to operation.",
+    title: "Our process.",
     body:
-      "Single-source design-build reduces handoffs and keeps cost, schedule, constructability, and commissioning connected.",
+      "A continuous four-step path keeps design intent, field execution, and final proof connected.",
     steps: [
-      { title: "Define", body: "Clarify the need, constraints, load, budget, and outcome." },
-      { title: "Design", body: "Develop the concept and coordinate the complete system." },
-      { title: "Engineer", body: "Produce the drawings, calculations, and buildable scope." },
-      { title: "Build", body: "Install, test, commission, and close out the project." },
+      {
+        title: "Discovery",
+        body:
+          "Define the loads, constraints, acceptable risk, required runtime, and growth plan.",
+      },
+      {
+        title: "Design",
+        body:
+          "Develop one-lines, equipment selections, load calculations, and code coordination with buildability and budget in view.",
+      },
+      {
+        title: "Build",
+        body:
+          "The same team installs what it designed, with field crews who understand the intent behind every detail.",
+      },
+      {
+        title: "Commission",
+        body:
+          "Test, verify, and prove the system under load, then document exactly what the facility has.",
+      },
     ],
   },
   related: {
-    industries: ["Data centers", "Commercial facilities", "Government and military", "Education"],
+    industries: ["Data centers", "Distribution hubs", "Manufacturing", "Commercial facilities"],
     services: [
       { label: "Mission critical power", href: "/services/mission-critical-power" },
       { label: "Commercial and industrial electrical", href: "/services/commercial-industrial-electrical" },
     ],
   },
   cta: {
-    title: "Have a need but no drawings? Start here.",
-    body: "Bring us the operating problem and the facility constraints.",
+    title: "Let's talk about your project.",
+    body:
+      "Start with the loads, constraints, reliability requirements, and growth plan.",
   },
 };
 
