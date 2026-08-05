@@ -139,9 +139,7 @@ test.describe("FAQ", () => {
   });
 });
 
-test("linked unbuilt routes render deliberate coming-soon stubs", async ({ page }) => {
-  for (const route of ["/industries", "/projects"]) {
-    await page.goto(route);
-    await expect(page.getByRole("heading", { name: "Coming in the next pass." })).toBeVisible();
-  }
+test("the remaining linked unbuilt route renders a deliberate coming-soon stub", async ({ page }) => {
+  await page.goto("/industries");
+  await expect(page.getByRole("heading", { name: "Coming in the next pass." })).toBeVisible();
 });

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
 import { AboutMegaMenu } from "@/components/about-mega-menu";
 import { BrandMark } from "@/components/brand-mark";
@@ -15,30 +14,12 @@ import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
-  const [condensed, setCondensed] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const onScroll = () => setCondensed(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 border-b bg-white/95 backdrop-blur-md transition-[height,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none",
-        condensed ? "h-[70px] border-neutral-200" : "h-[92px] border-neutral-100",
-      )}
-    >
+    <header className="sticky top-0 z-50 h-20 border-b border-neutral-200 bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex h-full max-w-container items-center justify-between gap-5 px-4 sm:px-6">
-        <BrandMark
-          className={cn(
-            "transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
-            condensed && "origin-left scale-[0.9]",
-          )}
-        />
+        <BrandMark />
         <div className="hidden items-center gap-1 xl:flex">
           <ServicesMegaMenu active={pathname.startsWith("/services")} />
           {site.nav.map((item) => {

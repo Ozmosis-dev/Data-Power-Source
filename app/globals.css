@@ -249,4 +249,13 @@ button {
     transform: translateX(50vw);
     animation: none !important;
   }
+
+  .project-gallery-card:hover,
+  .project-gallery-card:focus-visible,
+  .project-gallery-card:hover img,
+  .project-gallery-card:focus-visible img,
+  .project-gallery-card:hover [data-testid="project-card-content"],
+  .project-gallery-card:focus-visible [data-testid="project-card-content"] {
+    transform: none !important;
+  }
 }

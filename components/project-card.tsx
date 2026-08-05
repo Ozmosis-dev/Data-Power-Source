@@ -9,6 +9,7 @@ export function ProjectCard({
   index,
   imageSrc,
   imageAlt,
+  href,
 }: {
   title: string;
   description: string;
@@ -16,10 +17,11 @@ export function ProjectCard({
   index: string;
   imageSrc: string;
   imageAlt: string;
+  href: string;
 }) {
   return (
     <Link
-      href="/projects"
+      href={href}
       className="group block rounded-xl border border-neutral-200 bg-white p-3 shadow-sm transition-[transform,box-shadow,border-color] duration-[180ms] hover:-translate-y-1 hover:border-brand-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 motion-reduce:transform-none"
     >
       <div className="relative min-h-[230px] overflow-hidden rounded-lg border border-neutral-200 bg-navy-800">
@@ -32,7 +34,7 @@ export function ProjectCard({
         />
         <div className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t border-white/15 bg-navy-950/90 px-4 py-3 backdrop-blur-sm">
           <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-navy-200">
-            Representative imagery
+            Project photography
           </span>
           <span className="font-mono text-[0.62rem] font-semibold tracking-[0.1em] text-blue-200">
             {index}

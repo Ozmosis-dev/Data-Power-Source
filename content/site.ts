@@ -80,9 +80,4 @@ export const stubRoutes = {
     title: "Coming in the next pass.",
     body: "Industry-specific proof for critical facilities is already mapped and will be built in the next pass.",
   },
-  projects: {
-    overline: "Projects / Case Studies",
-    title: "Coming in the next pass.",
-    body: "The full project library and seven case studies are already mapped and will be built in the next pass.",
-  },
 } as const;

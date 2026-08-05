@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/content/faq";
+import type { Project } from "@/content/projects";
 import { site } from "@/content/site";
 
 export function localBusinessSchema() {
@@ -99,6 +100,38 @@ export function serviceSchema(service: {
       "@type": "Electrician",
       name: site.name,
       telephone: "+1-770-498-9622",
+      url: "https://datapowersource.com",
+    },
+  };
+}
+
+export function articleSchema(project: Project) {
+  const url = `https://datapowersource.com/projects/${project.slug}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: project.title,
+    description: project.seoDescription,
+    url,
+    mainEntityOfPage: url,
+    image: project.images.map((image) => `https://datapowersource.com${image.src}`),
+    about: project.services.map((service) => ({
+      "@type": "Thing",
+      name: service,
+    })),
+    contentLocation: {
+      "@type": "Place",
+      name: project.location,
+    },
+    author: {
+      "@type": "Organization",
+      name: site.name,
+      url: "https://datapowersource.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: site.name,
       url: "https://datapowersource.com",
     },
   };

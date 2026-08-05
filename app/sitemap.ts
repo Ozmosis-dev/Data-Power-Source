@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+import { projects } from "@/content/projects";
+
 const routes = [
   "",
   "/about",
@@ -18,14 +20,16 @@ const routes = [
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((route) => ({
+  const projectRoutes = projects.map((project) => `/projects/${project.slug}`);
+
+  return [...routes, ...projectRoutes].map((route) => ({
     url: `https://datapowersource.com${route}`,
     lastModified: new Date(),
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority:
       route === ""
         ? 1
-        : route === "/about" || route === "/services" || route === "/contact"
+        : route === "/about" || route === "/services" || route === "/projects" || route === "/contact"
           ? 0.9
           : 0.7,
   }));
