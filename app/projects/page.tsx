@@ -21,10 +21,6 @@ export const metadata: Metadata = pageMetadata({
   description:
     "Explore nine Data Power Source electrical and mission-critical infrastructure projects across education, government, healthcare, broadcast, telecom, and data centers.",
   path: "/projects",
-  image: {
-    url: projects[0].images[0].src,
-    alt: projects[0].images[0].alt,
-  },
 });
 
 const breadcrumbs = breadcrumbSchema([

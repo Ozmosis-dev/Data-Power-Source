@@ -77,7 +77,6 @@ export function BrandServiceMark({
         width={mark.width}
         height={mark.height}
         unoptimized
-        loading="eager"
         className="h-auto w-auto max-h-full max-w-full object-contain"
       />
     </span>

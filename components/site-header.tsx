@@ -19,7 +19,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 h-20 border-b border-neutral-200 bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex h-full max-w-container items-center justify-between gap-5 px-4 sm:px-6">
-        <BrandMark />
+        <BrandMark preload testId="header-logo" />
         <div className="hidden items-center gap-1 xl:flex">
           <ServicesMegaMenu active={pathname.startsWith("/services")} />
           {site.nav.map((item) => {

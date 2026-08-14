@@ -24,10 +24,6 @@ export const industriesMeta = pageMetadata({
   description:
     "Explore Data Power Source electrical, standby power, UPS, generator, and low-voltage capabilities for commercial, industrial, healthcare, data center, government, education, military, telecom, and broadcast facilities.",
   path: "/industries",
-  image: {
-    url: "/images/industries/data-centers-mission-critical.webp",
-    alt: "Data center electrical infrastructure served by Data Power Source.",
-  },
 });
 
 export const industriesHero = {

@@ -29,6 +29,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/brand/DPS-icon.svg",
+    apple: {
+      url: "/apple-icon",
+      sizes: "180x180",
+      type: "image/png",
+    },
   },
 };
 

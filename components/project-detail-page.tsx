@@ -35,12 +35,12 @@ function ProjectPhoto({
   image,
   className,
   sizes,
-  priority = false,
+  preload = false,
 }: {
   image: Project["images"][number];
   className: string;
   sizes: string;
-  priority?: boolean;
+  preload?: boolean;
 }) {
   return (
     <figure
@@ -51,7 +51,7 @@ function ProjectPhoto({
         src={image.src}
         alt={image.alt}
         fill
-        priority={priority}
+        preload={preload}
         sizes={sizes}
         className="object-cover"
       />
@@ -144,7 +144,7 @@ export function ProjectDetailPage({
 
           <ProjectPhoto
             image={project.images[0]}
-            priority
+            preload
             sizes="(min-width: 1320px) 1320px, 100vw"
             className="h-[300px] rounded-b-none border-b-0 sm:h-[420px] lg:h-[560px]"
           />

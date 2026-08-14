@@ -29,7 +29,7 @@ test.describe("industries page", () => {
     );
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       "content",
-      /data-centers-mission-critical\.webp/,
+      "https://datapowersource.com/industries/opengraph-image",
     );
     await expect(
       page.getByRole("heading", { level: 1, name: "Electrical Systems for Demanding Industries Across Georgia" }),

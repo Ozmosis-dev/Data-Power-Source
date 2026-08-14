@@ -651,7 +651,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
                 src={service.hero.imageSrc}
                 alt={service.hero.imageAlt}
                 fill
-                priority
+                preload
                 sizes="(max-width: 1023px) 100vw, 42vw"
                 className="object-cover"
               />

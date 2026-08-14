@@ -10,6 +10,7 @@ type BrandMarkProps = {
   size?: "default" | "large";
   testId?: string;
   className?: string;
+  preload?: boolean;
 };
 
 const assets = {
@@ -40,6 +41,7 @@ export function BrandMark({
   size = "default",
   testId,
   className,
+  preload = false,
 }: BrandMarkProps) {
   const asset = assets[kind];
 
@@ -61,7 +63,7 @@ export function BrandMark({
         width={asset.width}
         height={asset.height}
         unoptimized
-        priority={kind === "text" || kind === "full"}
+        preload={preload}
         className={cn(
           "w-auto object-contain object-left",
           kind === "text" && size === "default" && "h-9 sm:h-10",
