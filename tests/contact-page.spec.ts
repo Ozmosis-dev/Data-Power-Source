@@ -63,9 +63,9 @@ test.describe("contact page", () => {
     await page.goto("/contact");
 
     await expect(page).toHaveTitle(
-      "Contact Data Power Source | Metro Atlanta Electrical Contractor",
+      "Request an Electrical Project Quote | Data Power Source",
     );
-    await expect(page.getByRole("heading", { level: 1, name: "Request a quote." })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: "Request a Commercial Electrical Project Quote" })).toBeVisible();
     await expect(page.getByTestId("hero-field-visual")).toBeVisible();
     await expect(page.getByRole("heading", { name: "Send us your project details." })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Get in touch." })).toBeVisible();

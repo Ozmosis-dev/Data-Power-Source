@@ -61,7 +61,7 @@ test.describe("home", () => {
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: "Power you can build on — installed right, kept running.",
+        name: "Metro Atlanta Commercial & Industrial Electrical Contractor",
       }),
     ).toBeVisible();
 
@@ -81,7 +81,7 @@ test.describe("home", () => {
   test("shows the four approved proof metrics", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("heading", { name: "A track record you can verify." }).scrollIntoViewIfNeeded();
-    for (const value of ["25", ".82–.86", "50+", "2-hour"]) {
+    for (const value of ["2001", ".82–.86", "50+", "2-hour"]) {
       await expect(page.getByTestId("stat-value").filter({ hasText: value })).toBeVisible();
     }
   });
@@ -91,10 +91,10 @@ test.describe("services overview", () => {
   test("renders canonical copy, process, and BreadcrumbList schema", async ({ page }) => {
     await page.goto("/services");
     await expect(page).toHaveTitle(
-      "Commercial & Industrial Electrical Services in Metro Atlanta | Data Power Source",
+      "Commercial Electrical Services in Metro Atlanta | Data Power Source",
     );
     await expect(
-      page.getByRole("heading", { level: 1, name: "Electrical solutions for business continuity." }),
+      page.getByRole("heading", { level: 1, name: "Commercial Electrical Services for Business Continuity" }),
     ).toBeVisible();
 
     for (const step of ["Assess.", "Design & engineer.", "Install.", "Maintain."]) {
@@ -111,9 +111,9 @@ test.describe("services overview", () => {
 test.describe("FAQ", () => {
   test("groups every source answer into the five requested sections", async ({ page }) => {
     await page.goto("/faq");
-    await expect(page).toHaveTitle("UPS, Generator & Electrical Contractor FAQs | Data Power Source");
+    await expect(page).toHaveTitle("Commercial Electrical Services FAQs | Data Power Source");
     await expect(
-      page.getByRole("heading", { level: 1, name: "Questions about power, answered plainly." }),
+      page.getByRole("heading", { level: 1, name: "Commercial Electrical Services FAQ" }),
     ).toBeVisible();
 
     for (const group of [

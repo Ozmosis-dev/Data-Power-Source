@@ -9,7 +9,7 @@ export const valuesMeta = pageMetadata({
 
 export const valuesHero = {
   overline: "Values / Integrity",
-  title: "Powering what can't afford to fail.",
+  title: "Values That Guide Every Electrical Project",
   lead:
     "Safety, integrity, workmanship, and responsiveness guide every project and every relationship.",
   imageSrc: "/images/generated/project-switchboard-modernization.webp",

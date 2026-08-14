@@ -117,7 +117,7 @@ const electrical: ServiceDetail = {
   slug: "commercial-industrial-electrical",
   metadata: {
     title:
-      "Commercial & Industrial Electrical Contractor | Metro Atlanta | Data Power Source",
+      "Commercial Electrical Installation & Upgrades | Metro Atlanta | Data Power Source",
     description:
       "Commercial and industrial electrical installation in Metro Atlanta, including distribution, service upgrades, equipment connections, grounding, and EV charging infrastructure.",
   },
@@ -130,7 +130,7 @@ const electrical: ServiceDetail = {
   },
   hero: {
     overline: "Commercial & Industrial Electrical",
-    title: "Electrical installation services, built for business.",
+    title: "Commercial & Industrial Electrical Installation and Upgrades",
     lead:
       "Complete commercial and industrial installations, power distribution, equipment connections, and EV charging infrastructure.",
     imageSrc: "/images/generated/project-switchboard-modernization.webp",
@@ -266,7 +266,7 @@ const electrical: ServiceDetail = {
 const missionCritical: ServiceDetail = {
   slug: "mission-critical-power",
   metadata: {
-    title: "UPS & Standby Generator Installation | Mission Critical Power | Atlanta",
+    title: "UPS & Standby Generator Systems | Metro Atlanta | Data Power Source",
     description:
       "Mission-critical power systems for facilities that cannot go dark, including UPS, generators, transfer switches, distribution, commissioning, and lifecycle support.",
   },
@@ -283,7 +283,7 @@ const missionCritical: ServiceDetail = {
   },
   hero: {
     overline: "Mission-Critical Power",
-    title: "When downtime isn't an option, power can't be an afterthought.",
+    title: "UPS & Standby Generator Systems for Critical Facilities",
     lead:
       "Power that has to be there through every outage, transfer, and load swing.",
     imageSrc: "/images/generated/project-standby-power.webp",
@@ -372,7 +372,7 @@ const missionCritical: ServiceDetail = {
 const connectivity: ServiceDetail = {
   slug: "low-voltage-connectivity",
   metadata: {
-    title: "Structured Cabling & Fiber Optic Installation | Low Voltage | Atlanta",
+    title: "Structured Cabling & Fiber Installation | Metro Atlanta | Data Power Source",
     description:
       "Structured cabling, fiber optic infrastructure, certified copper and fiber testing, and adjacent low-voltage systems for commercial and critical facilities.",
   },
@@ -385,7 +385,7 @@ const connectivity: ServiceDetail = {
   },
   hero: {
     overline: "Low Voltage Services",
-    title: "Structured cabling, fiber, and testing for critical facilities.",
+    title: "Structured Cabling, Fiber, and Testing for Critical Facilities",
     lead:
       "Installed, certified, labeled, and documented for commercial, industrial, and mission-critical environments.",
     imageSrc: "/images/generated/service-connectivity-cabling.webp",
@@ -502,7 +502,7 @@ const connectivity: ServiceDetail = {
 const designBuild: ServiceDetail = {
   slug: "engineering-design-build",
   metadata: {
-    title: "Electrical Design-Build & Engineering | Concept to Install | Atlanta",
+    title: "Electrical Design-Build Services | Metro Atlanta | Data Power Source",
     description:
       "Single-source electrical and critical-power design-build, from discovery and engineered drawings through construction, commissioning, and documentation.",
   },
@@ -515,7 +515,7 @@ const designBuild: ServiceDetail = {
   },
   hero: {
     overline: "Design-Build",
-    title: "One team. One contract. One point of accountability.",
+    title: "Electrical Design-Build from Concept to Commissioning",
     lead:
       "Electrical and critical-power systems carried from the first sketch to the final commissioning report.",
     imageSrc: "/images/generated/faq-field-planning.webp",

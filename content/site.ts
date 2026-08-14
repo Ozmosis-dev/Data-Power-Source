@@ -1,4 +1,5 @@
 export const siteFacts = {
+  foundedYear: 2001,
   serviceArea: "Based in Covington and serving the Greater Metro Atlanta area.",
   projectFootprint:
     "Documented project experience in Georgia, North Carolina, and Alabama.",
@@ -10,6 +11,7 @@ export const site = {
   shortName: "DPS",
   promise: "Power you can build on — installed right, kept running.",
   tagline: "Electrical Solutions for Business Continuity",
+  copyrightYear: new Date().getUTCFullYear(),
   phoneDisplay: "(770) 498-9622",
   phoneHref: "tel:+17704989622",
   faxDisplay: "(770) 498-9654",
@@ -77,5 +79,5 @@ export const site = {
       description: "Concept, engineering, drawings, installation, and commissioning under one roof.",
     },
   ],
-  proofLine: `25 years in commercial & industrial electrical · Owner-led · NFPA 70E arc-flash trained · EMR .82–.86 (3-yr) · Drug- & alcohol-free · ${siteFacts.emergencyResponse}.`,
+  proofLine: `Serving commercial & industrial facilities since ${siteFacts.foundedYear} · Owner-led · NFPA 70E arc-flash trained · EMR .82–.86 (3-yr) · Drug- & alcohol-free · ${siteFacts.emergencyResponse}.`,
 } as const;

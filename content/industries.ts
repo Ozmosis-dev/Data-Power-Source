@@ -20,7 +20,7 @@ export type IndustryMarket = {
 };
 
 export const industriesMeta = pageMetadata({
-  title: "Industries We Serve | Data Power Source Electrical Contractor",
+  title: "Commercial Electrical Systems by Industry | Data Power Source",
   description:
     "Explore Data Power Source electrical, standby power, UPS, generator, and low-voltage capabilities for commercial, industrial, healthcare, data center, government, education, military, telecom, and broadcast facilities.",
   path: "/industries",
@@ -32,7 +32,7 @@ export const industriesMeta = pageMetadata({
 
 export const industriesHero = {
   overline: "Industries we serve",
-  title: "Power systems built around your operating reality.",
+  title: "Electrical Systems for Demanding Industries Across Georgia",
   lead:
     "From offices and hospitals to data centers, campuses, public infrastructure, and broadcast facilities, Data Power Source installs power distribution, standby and backup systems, and low-voltage infrastructure around the way each facility has to operate.",
 } as const;

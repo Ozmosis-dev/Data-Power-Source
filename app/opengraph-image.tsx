@@ -65,7 +65,7 @@ export default function OpenGraphImage() {
             paddingTop: "22px",
           }}
         >
-          <span>25 years · NFPA 70E · 24/7 emergency</span>
+          <span>Since 2001 · NFPA 70E · 24/7 emergency</span>
           <span>(770) 498-9622</span>
         </div>
       </div>

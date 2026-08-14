@@ -3,19 +3,19 @@ import { pageMetadata } from "@/lib/seo";
 export const homeMeta = pageMetadata({
   title: "Commercial & Industrial Electrical Contractor in Metro Atlanta | Data Power Source",
   description:
-    "Data Power Source is a Metro Atlanta commercial and industrial electrical contractor with 25 years installing power that stays on — full electrical, UPS, and standby generator systems. Request a quote.",
+    "Data Power Source has served Metro Atlanta commercial and industrial facilities since 2001 with electrical installation, UPS, standby generator, and low-voltage systems.",
   path: "/",
 });
 
 export const homeHero = {
   overline: "Metro Atlanta · Commercial & Industrial Electrical",
-  title: "Power you can build on — installed right, kept running.",
+  title: "Metro Atlanta Commercial & Industrial Electrical Contractor",
   lead:
-    "For 25 years, Data Power Source has installed and maintained the electrical systems that keep commercial and industrial facilities running across Metro Atlanta.",
+    "Since 2001, Data Power Source has installed and maintained the electrical systems that keep commercial and industrial facilities running across Metro Atlanta. Power you can build on, installed right and kept running.",
   imageAlt: "DPS electricians inspecting commercial switchgear in an industrial plant room.",
   imageSrc: "/images/generated/home-hero-switchgear.webp",
   trust: [
-    "25 years in the field",
+    "Serving Metro Atlanta since 2001",
     "NFPA 70E arc-flash trained",
     "24/7 emergency",
     "2-hour response",
@@ -27,7 +27,7 @@ export const homeCompany = {
   title: "Local leadership. Technical depth. Built around your uptime.",
   body: [
     "Data Power Source is an owner-led electrical contractor serving commercial and industrial facilities across Metro Atlanta.",
-    "For 25 years, our crews have combined design-build capability, disciplined field execution, and responsive service for facilities where downtime carries real cost.",
+    "Since 2001, our crews have combined design-build capability, disciplined field execution, and responsive service for facilities where downtime carries real cost.",
   ],
   credentialLabel: "Recognized contractor",
   credentialBody:
@@ -104,7 +104,7 @@ export const homeStats = {
   body:
     "We don't lead with slogans. We lead with proof — the years we've been doing this, the projects we've delivered, and a safety record we're glad to put in writing.",
   items: [
-    { value: "25", suffix: " years", label: "Serving Metro Atlanta's commercial & industrial market" },
+    { value: "2001", suffix: "", label: "Serving Metro Atlanta's commercial & industrial market since" },
     { value: ".82–.86", suffix: " EMR", label: "A documented safety record, three years running" },
     { value: "50+", suffix: " years", label: "Hands-on expertise behind the company" },
     { value: "2-hour", suffix: "", label: "Emergency response" },
@@ -180,7 +180,7 @@ export const homeReasons = {
     },
     {
       title: "We work without disrupting yours.",
-      body: "25 years of critical installs completed while facilities stayed online.",
+      body: "Critical installations completed since 2001 while facilities stayed online.",
     },
   ],
 };

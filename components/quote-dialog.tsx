@@ -127,7 +127,7 @@ export function QuoteDialogProvider({ children }: { children: ReactNode }) {
                     <div className="mt-8 grid gap-3 border-t border-white/20 pt-6">
                       <div className="flex items-center gap-3 text-small text-navy-100">
                         <ShieldCheck aria-hidden="true" size={18} weight="regular" />
-                        <span>25 years in commercial and industrial electrical</span>
+                        <span>Serving commercial and industrial facilities since 2001</span>
                       </div>
                       <div className="flex items-center gap-3 text-small text-navy-100">
                         <Clock aria-hidden="true" size={18} weight="regular" />

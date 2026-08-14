@@ -1,17 +1,17 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const servicesMeta = pageMetadata({
-  title: "Commercial & Industrial Electrical Services in Metro Atlanta | Data Power Source",
+  title: "Commercial Electrical Services in Metro Atlanta | Data Power Source",
   description:
-    "Full-service commercial and industrial electrical from Data Power Source — electrical installations, UPS and generator backup, low-voltage cabling, and in-house engineering. Serving Metro Atlanta for 25 years.",
+    "Commercial electrical services for Metro Atlanta facilities, including installations, UPS and generator backup, low-voltage cabling, and in-house design-build since 2001.",
   path: "/services",
 });
 
 export const servicesHero = {
   overline: "Services",
-  title: "Electrical solutions for business continuity.",
+  title: "Commercial Electrical Services for Business Continuity",
   lead:
-    "Data Power Source has served the Greater Metro Atlanta area for almost 25 years. We have the knowledge and expertise to design, install, and maintain the systems that support your operations — whether that's a single branch circuit or a full standby-and-UPS system protecting a critical facility. Either way, we get it done without disrupting your day.",
+    "Since 2001, Data Power Source has helped Greater Metro Atlanta facilities design, install, and maintain the systems that support their operations, from a single branch circuit to a complete standby-and-UPS system protecting a critical facility.",
 };
 
 export const servicesPillars = {

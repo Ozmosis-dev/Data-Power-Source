@@ -59,7 +59,7 @@ export default function ProjectsPage() {
                 Project portfolio
               </p>
               <h1 className="mt-5 max-w-[900px] font-display text-[2.75rem] font-semibold leading-[1.02] tracking-[-0.05em] text-white sm:text-[3.7rem] lg:text-[4.5rem]">
-                Power installed. Operations protected.
+                Commercial Electrical Projects &amp; Case Studies
               </h1>
               <p className="mt-7 max-w-[720px] text-base leading-relaxed text-navy-100 sm:text-lg">
                 Nine field-proven case studies spanning utility service, switchgear, UPS, standby generation, cooling, and live-facility cutovers.

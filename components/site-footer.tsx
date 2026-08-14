@@ -145,7 +145,12 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="mx-auto flex max-w-container flex-col gap-4 px-5 py-6 text-small text-navy-400 sm:px-6 md:flex-row md:items-center md:justify-between">
-          <p>© 2026 Data Power Source. All rights reserved.</p>
+          <p
+            data-testid="footer-copyright"
+            data-copyright-year={site.copyrightYear}
+          >
+            © {site.copyrightYear} Data Power Source. All rights reserved.
+          </p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Link href="/site-map" className="hover:text-white">
               Site Map

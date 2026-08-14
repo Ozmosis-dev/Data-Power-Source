@@ -1,17 +1,17 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const aboutMeta = pageMetadata({
-  title: "About Data Power Source | Metro Atlanta Electrical Contractor, 25 Years",
+  title: "About Data Power Source | Electrical Contractor Since 2001",
   description:
-    "Meet Data Power Source, an owner-led commercial and industrial electrical contractor serving Metro Atlanta for 25 years and founded by a 50+ year industry veteran.",
+    "Meet Data Power Source, an owner-led commercial and industrial electrical contractor serving Metro Atlanta since 2001 and founded by a 50+ year industry veteran.",
   path: "/about",
 });
 
 export const aboutHero = {
   overline: "About Data Power Source",
-  title: "25 years of getting the power right.",
+  title: "Metro Atlanta Electrical Contractor Since 2001",
   lead:
-    "Owner-led commercial and industrial electrical work for Metro Atlanta, built on craftsmanship, responsiveness, and 25 years of field experience.",
+    "Owner-led commercial and industrial electrical work for Metro Atlanta, built on craftsmanship, responsiveness, and field experience since 2001.",
   imageSrc: "/images/generated/dps-leadership-team.webp",
   imageAlt:
     "DPS electricians reviewing electrical drawings beside commercial switchgear.",
@@ -87,8 +87,8 @@ export const aboutPathways = {
 
 export const aboutStats = [
   {
-    value: "25",
-    suffix: " years",
+    value: "Since 2001",
+    suffix: "",
     label: "Serving Metro Atlanta's commercial and industrial market",
   },
   {

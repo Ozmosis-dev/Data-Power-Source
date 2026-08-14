@@ -22,7 +22,7 @@ test.describe("industries page", () => {
   test("replaces the placeholder with nine image-led market chapters", async ({ page }) => {
     await page.goto("/industries");
 
-    await expect(page).toHaveTitle(/Industries We Serve.*Data Power Source/);
+    await expect(page).toHaveTitle("Commercial Electrical Systems by Industry | Data Power Source");
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       "href",
       "https://datapowersource.com/industries",
@@ -32,7 +32,7 @@ test.describe("industries page", () => {
       /data-centers-mission-critical\.webp/,
     );
     await expect(
-      page.getByRole("heading", { level: 1, name: "Power systems built around your operating reality." }),
+      page.getByRole("heading", { level: 1, name: "Electrical Systems for Demanding Industries Across Georgia" }),
     ).toBeVisible();
     await expect(page.getByText("Coming in the next pass.", { exact: true })).toHaveCount(0);
     await expect(page.getByTestId("industry-chapter")).toHaveCount(markets.length);

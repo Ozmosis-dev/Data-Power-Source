@@ -15,7 +15,7 @@ export type FaqGroup = {
 };
 
 export const faqMeta = pageMetadata({
-  title: "UPS, Generator & Electrical Contractor FAQs | Data Power Source",
+  title: "Commercial Electrical Services FAQs | Data Power Source",
   description:
     "Answers about Metro Atlanta commercial electrical work, UPS and generator systems, switchgear upgrades, EV charging, safety, scheduling, and service.",
   path: "/faq",
@@ -23,9 +23,9 @@ export const faqMeta = pageMetadata({
 
 export const faqHero = {
   overline: "FAQ",
-  title: "Questions about power, answered plainly.",
+  title: "Commercial Electrical Services FAQ",
   lead:
-    "Straight answers to the questions we hear most — no jargon for its own sake. If yours isn't here, ask us directly.",
+    "Straight answers about UPS, generator, and commercial electrical project planning, without jargon for its own sake. If yours is not here, ask us directly.",
   imageAlt: "An electrician and facility engineer reviewing an electrical one-line diagram.",
   imageSrc: "/images/generated/faq-field-planning.webp",
 };

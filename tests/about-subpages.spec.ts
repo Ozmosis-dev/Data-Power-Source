@@ -37,7 +37,7 @@ test.describe("About page family", () => {
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: "Safety first, always.",
+        name: "Commercial Electrical Safety Built into Every Project",
       }),
     ).toBeVisible();
     await expect(page.getByLabel("Breadcrumb")).toHaveCount(0);
@@ -109,7 +109,7 @@ test.describe("About page family", () => {
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: "Powering what can't afford to fail.",
+        name: "Values That Guide Every Electrical Project",
       }),
     ).toBeVisible();
     await expect(page.getByLabel("Breadcrumb")).toHaveCount(0);

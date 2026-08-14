@@ -607,7 +607,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
                 {service.hero.overline}
               </p>
             </div>
-            <h1 className="mt-7 max-w-[900px] font-display text-[2.75rem] font-bold leading-[1.02] tracking-[-0.05em] text-white sm:text-[3.7rem] lg:text-[4.5rem]">
+            <h1 className="mt-7 max-w-[900px] font-display text-[2.75rem] font-bold leading-[1.02] tracking-[-0.05em] text-white sm:text-[3.7rem] lg:text-[4.375rem]">
               {service.hero.title}
             </h1>
             <p

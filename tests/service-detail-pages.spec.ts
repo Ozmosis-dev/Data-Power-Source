@@ -4,8 +4,8 @@ const services = [
   {
     slug: "commercial-industrial-electrical",
     title:
-      "Commercial & Industrial Electrical Contractor | Metro Atlanta | Data Power Source",
-    heading: "Electrical installation services, built for business.",
+      "Commercial Electrical Installation & Upgrades | Metro Atlanta | Data Power Source",
+    heading: "Commercial & Industrial Electrical Installation and Upgrades",
     accent: "#162792",
     mark: "service-electrical.svg",
     image: "project-switchboard-modernization",
@@ -18,8 +18,8 @@ const services = [
   },
   {
     slug: "mission-critical-power",
-    title: "UPS & Standby Generator Installation | Mission Critical Power | Atlanta",
-    heading: "When downtime isn't an option, power can't be an afterthought.",
+    title: "UPS & Standby Generator Systems | Metro Atlanta | Data Power Source",
+    heading: "UPS & Standby Generator Systems for Critical Facilities",
     accent: "#B9330E",
     mark: "service-mission-critical.svg",
     image: "project-standby-power",
@@ -32,8 +32,8 @@ const services = [
   },
   {
     slug: "low-voltage-connectivity",
-    title: "Structured Cabling & Fiber Optic Installation | Low Voltage | Atlanta",
-    heading: "Structured cabling, fiber, and testing for critical facilities.",
+    title: "Structured Cabling & Fiber Installation | Metro Atlanta | Data Power Source",
+    heading: "Structured Cabling, Fiber, and Testing for Critical Facilities",
     accent: "#08751A",
     mark: "service-connectivity.svg",
     image: "service-connectivity-cabling",
@@ -47,8 +47,8 @@ const services = [
   },
   {
     slug: "engineering-design-build",
-    title: "Electrical Design-Build & Engineering | Concept to Install | Atlanta",
-    heading: "One team. One contract. One point of accountability.",
+    title: "Electrical Design-Build Services | Metro Atlanta | Data Power Source",
+    heading: "Electrical Design-Build from Concept to Commissioning",
     accent: "#1A1A1A",
     mark: "service-design-build.svg",
     image: "faq-field-planning",

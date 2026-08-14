@@ -69,7 +69,7 @@ test.describe("project gallery", () => {
 
     await expect(page).toHaveTitle(/Commercial Electrical Projects.*Data Power Source/);
     await expect(
-      page.getByRole("heading", { level: 1, name: "Power installed. Operations protected." }),
+      page.getByRole("heading", { level: 1, name: "Commercial Electrical Projects & Case Studies" }),
     ).toBeVisible();
     await expect(page.getByText("Coming in the next pass.", { exact: true })).toHaveCount(0);
     await expect(page.getByTestId("project-gallery-card")).toHaveCount(9);

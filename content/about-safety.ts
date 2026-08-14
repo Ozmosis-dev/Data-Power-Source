@@ -9,7 +9,7 @@ export const safetyMeta = pageMetadata({
 
 export const safetyHero = {
   overline: "Safety",
-  title: "Safety first, always.",
+  title: "Commercial Electrical Safety Built into Every Project",
   lead:
     "Trained crews, careful planning, and disciplined execution protect your people, your facility, and our team.",
   imageSrc: "/images/generated/faq-field-planning.webp",
