@@ -1,17 +1,15 @@
 import type { MetadataRoute } from "next";
 
 import { projects } from "@/content/projects";
+import { serviceDetails } from "@/content/service-details";
+import { absoluteUrl } from "@/lib/seo";
 
-const routes = [
-  "",
+const coreRoutes = [
+  "/",
   "/about",
   "/about/safety",
   "/about/values",
   "/services",
-  "/services/commercial-industrial-electrical",
-  "/services/mission-critical-power",
-  "/services/low-voltage-connectivity",
-  "/services/engineering-design-build",
   "/industries",
   "/projects",
   "/faq",
@@ -20,21 +18,10 @@ const routes = [
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const serviceRoutes = Object.keys(serviceDetails).map((slug) => `/services/${slug}`);
   const projectRoutes = projects.map((project) => `/projects/${project.slug}`);
 
-  return [...routes, ...projectRoutes].map((route) => ({
-    url: `https://datapowersource.com${route}`,
-    lastModified: new Date(),
-    changeFrequency: route === "" ? "weekly" : "monthly",
-    priority:
-      route === ""
-        ? 1
-        : route === "/about" ||
-            route === "/services" ||
-            route === "/industries" ||
-            route === "/projects" ||
-            route === "/contact"
-          ? 0.9
-          : 0.7,
+  return [...coreRoutes, ...serviceRoutes, ...projectRoutes].map((route) => ({
+    url: absoluteUrl(route),
   }));
 }

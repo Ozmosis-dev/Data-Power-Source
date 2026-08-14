@@ -34,6 +34,7 @@ test.describe("technical SEO foundation", () => {
     expect(robots).toMatch(/User-agent:\s*\*/i);
     expect(robots).toMatch(/Allow:\s*\//i);
     expect(robots).toContain(`Sitemap: ${productionOrigin}/sitemap.xml`);
+    expect(robots).toContain(`Host: ${productionOrigin}`);
   });
 
   test("gives every indexable page complete and unique metadata", async ({ page, request }) => {
