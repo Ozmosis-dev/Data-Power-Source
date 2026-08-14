@@ -63,9 +63,14 @@ test.describe("industries page", () => {
 
     const schemas = await readSchemas(page);
     const breadcrumb = schemas.find((schema) => schema["@type"] === "BreadcrumbList");
-    const itemList = schemas.find((schema) => schema["@type"] === "ItemList");
+    const collection = schemas.find((schema) => schema["@type"] === "CollectionPage");
+    const itemList = collection?.mainEntity;
 
     expect(breadcrumb?.itemListElement).toHaveLength(2);
+    expect(collection?.isPartOf).toEqual({
+      "@id": "https://datapowersource.com/#website",
+    });
+    expect(itemList?.["@type"]).toBe("ItemList");
     expect(itemList?.numberOfItems).toBe(markets.length);
     expect(itemList?.itemListElement.map((item: { name: string }) => item.name)).toEqual(
       markets.map(([, heading]) => heading),

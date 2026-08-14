@@ -18,7 +18,14 @@ test.describe("global shell", () => {
     const schemas = await page
       .locator('script[type="application/ld+json"]')
       .evaluateAll((nodes) => nodes.map((node) => JSON.parse(node.textContent ?? "{}")));
-    expect(schemas.some((schema) => schema["@type"] === "Electrician")).toBeTruthy();
+    const schemaNodes = schemas.flatMap((schema) => schema["@graph"] ?? [schema]);
+    expect(
+      schemaNodes.some(
+        (schema) =>
+          schema["@type"] === "Electrician" &&
+          schema["@id"] === "https://datapowersource.com/#organization",
+      ),
+    ).toBeTruthy();
   });
 
   test("opens the Services mega-menu and follows its overview link", async ({ page }) => {

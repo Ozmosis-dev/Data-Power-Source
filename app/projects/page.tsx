@@ -13,7 +13,7 @@ import {
 import { Reveal } from "@/components/reveal";
 import { SectionBand, SectionHeader } from "@/components/section-band";
 import { projects } from "@/content/projects";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, collectionPageSchema } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -27,10 +27,19 @@ export const metadata: Metadata = pageMetadata({
   },
 });
 
-const schema = breadcrumbSchema([
+const breadcrumbs = breadcrumbSchema([
   { name: "Home", href: "/" },
   { name: "Projects", href: "/projects" },
 ]);
+const collection = collectionPageSchema({
+  name: "Commercial electrical projects and case studies",
+  description: metadata.description as string,
+  href: "/projects",
+  items: projects.map((project) => ({
+    name: project.shortTitle,
+    href: `/projects/${project.slug}`,
+  })),
+});
 
 export default function ProjectsPage() {
   const [featured, ...portfolio] = projects;
@@ -146,10 +155,13 @@ export default function ProjectsPage() {
         body="Tell us what has to change and what has to stay online. We will help build the path between them."
       />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
-      />
+      {[breadcrumbs, collection].map((schema) => (
+        <script
+          key={schema["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
+        />
+      ))}
     </main>
   );
 }

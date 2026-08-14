@@ -22,7 +22,7 @@ import {
   valuesMeta,
   valuesStandards,
 } from "@/content/about-values";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/schema";
 
 export const metadata: Metadata = valuesMeta;
 
@@ -37,14 +37,12 @@ export default function ValuesPage() {
   const webPage = {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": "https://datapowersource.com/about/values#webpage",
     name: valuesMeta.title,
     description: valuesMeta.description,
     url: "https://datapowersource.com/about/values",
-    isPartOf: {
-      "@type": "AboutPage",
-      name: "About Data Power Source",
-      url: "https://datapowersource.com/about",
-    },
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORGANIZATION_ID },
   };
 
   return (

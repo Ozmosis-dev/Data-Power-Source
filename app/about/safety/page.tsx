@@ -24,7 +24,7 @@ import {
   safetyProgram,
   safetyRecord,
 } from "@/content/about-safety";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/schema";
 
 export const metadata: Metadata = safetyMeta;
 
@@ -39,14 +39,12 @@ export default function SafetyPage() {
   const webPage = {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": "https://datapowersource.com/about/safety#webpage",
     name: safetyMeta.title,
     description: safetyMeta.description,
     url: "https://datapowersource.com/about/safety",
-    isPartOf: {
-      "@type": "AboutPage",
-      name: "About Data Power Source",
-      url: "https://datapowersource.com/about",
-    },
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORGANIZATION_ID },
   };
 
   return (

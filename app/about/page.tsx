@@ -25,8 +25,7 @@ import {
   aboutQualification,
   aboutStats,
 } from "@/content/about";
-import { site } from "@/content/site";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/schema";
 
 export const metadata: Metadata = aboutMeta;
 
@@ -38,27 +37,16 @@ export default function AboutPage() {
   const aboutPage = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
+    "@id": "https://datapowersource.com/about#webpage",
     name: "About Data Power Source",
     description: aboutMeta.description,
     url: "https://datapowersource.com/about",
-    mainEntity: {
-      "@type": "Electrician",
-      name: site.name,
-      foundingDate: "2001",
-      founder: {
-        "@type": "Person",
-        name: aboutFounder.name,
-        jobTitle: aboutFounder.role,
-      },
-      telephone: "+1-770-498-9622",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: site.street,
-        addressLocality: "Covington",
-        addressRegion: "GA",
-        postalCode: "30014",
-        addressCountry: "US",
-      },
+    isPartOf: { "@id": WEBSITE_ID },
+    mainEntity: { "@id": ORGANIZATION_ID },
+    mentions: {
+      "@type": "Person",
+      name: aboutFounder.name,
+      jobTitle: aboutFounder.role,
     },
   };
 

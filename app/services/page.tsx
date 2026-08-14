@@ -11,15 +11,21 @@ import { SectionBand, SectionHeader } from "@/components/section-band";
 import { ServiceCard } from "@/components/service-card";
 import { Button } from "@/components/ui/button";
 import { allServices, process, servicesHero, servicesMeta, servicesPillars } from "@/content/services";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, collectionPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = servicesMeta;
 
 export default function ServicesPage() {
-  const schema = breadcrumbSchema([
+  const breadcrumbs = breadcrumbSchema([
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
   ]);
+  const collection = collectionPageSchema({
+    name: "Commercial and industrial electrical services",
+    description: servicesMeta.description as string,
+    href: "/services",
+    items: allServices.items.map((service) => ({ name: service.title, href: service.href })),
+  });
 
   return (
     <main id="main-content">
@@ -115,10 +121,13 @@ export default function ServicesPage() {
         title="Not sure which service you need?"
         body="Tell us the problem. We'll assess it and point you to the right solution — even if it's a simple one."
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
-      />
+      {[breadcrumbs, collection].map((schema) => (
+        <script
+          key={schema["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
+        />
+      ))}
     </main>
   );
 }

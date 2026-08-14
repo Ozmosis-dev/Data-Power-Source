@@ -8,7 +8,7 @@ import { IndustryChapter } from "@/components/industry-chapter";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
 import { industries, industriesHero, industriesMeta } from "@/content/industries";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, collectionPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = industriesMeta;
 
@@ -17,18 +17,15 @@ const breadcrumb = breadcrumbSchema([
   { name: "Industries", href: "/industries" },
 ]);
 
-const itemList = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
+const collection = collectionPageSchema({
   name: "Industries served by Data Power Source",
-  numberOfItems: industries.length,
-  itemListElement: industries.map((industry, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
+  description: industriesMeta.description as string,
+  href: "/industries",
+  items: industries.map((industry) => ({
     name: industry.title,
-    url: `https://datapowersource.com/industries#${industry.id}`,
+    href: `/industries#${industry.id}`,
   })),
-};
+});
 
 export default function IndustriesPage() {
   return (
@@ -178,7 +175,7 @@ export default function IndustriesPage() {
         body="Tell us what must stay online, when the work can happen, and what the facility needs next. We will help define the safest path from existing conditions to finished operation."
       />
 
-      {[breadcrumb, itemList].map((schema) => (
+      {[breadcrumb, collection].map((schema) => (
         <script
           key={schema["@type"]}
           type="application/ld+json"
