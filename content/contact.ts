@@ -1,8 +1,11 @@
-export const contactMeta = {
+import { pageMetadata } from "@/lib/seo";
+
+export const contactMeta = pageMetadata({
   title: "Contact Data Power Source | Metro Atlanta Electrical Contractor",
   description:
     "Request a quote from Data Power Source for commercial electrical, UPS, and generator services in Metro Atlanta. Call (770) 498-9622 or share your project.",
-};
+  path: "/contact",
+});
 
 export const contactHero = {
   overline: "Contact",

@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const safetyMeta: Metadata = {
+export const safetyMeta = pageMetadata({
   title: "Electrical Safety Program | NFPA 70E & Arc Flash | Data Power Source",
   description:
     "Safety is built into every Data Power Source job with NFPA 70E arc-flash procedures, First Aid and CPR-trained crews, a drug-free workplace, and a three-year EMR of .82-.86.",
-};
+  path: "/about/safety",
+});
 
 export const safetyHero = {
   overline: "Safety",

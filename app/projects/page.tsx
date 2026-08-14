@@ -14,20 +14,18 @@ import { Reveal } from "@/components/reveal";
 import { SectionBand, SectionHeader } from "@/components/section-band";
 import { projects } from "@/content/projects";
 import { breadcrumbSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Commercial Electrical Projects & Case Studies | Data Power Source",
   description:
     "Explore nine Data Power Source electrical and mission-critical infrastructure projects across education, government, healthcare, broadcast, telecom, and data centers.",
-  alternates: { canonical: "/projects" },
-  openGraph: {
-    title: "Commercial Electrical Projects & Case Studies | Data Power Source",
-    description:
-      "Field-proven electrical, standby power, UPS, cooling, and design-build projects across Georgia and the Southeast.",
-    url: "/projects",
-    images: [projects[0].images[0].src],
+  path: "/projects",
+  image: {
+    url: projects[0].images[0].src,
+    alt: projects[0].images[0].alt,
   },
-};
+});
 
 const schema = breadcrumbSchema([
   { name: "Home", href: "/" },

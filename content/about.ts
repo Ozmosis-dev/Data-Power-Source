@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const aboutMeta: Metadata = {
+export const aboutMeta = pageMetadata({
   title: "About Data Power Source | Metro Atlanta Electrical Contractor, 25 Years",
   description:
     "Meet Data Power Source, an owner-led commercial and industrial electrical contractor serving Metro Atlanta for 25 years and founded by a 50+ year industry veteran.",
-};
+  path: "/about",
+});
 
 export const aboutHero = {
   overline: "About Data Power Source",

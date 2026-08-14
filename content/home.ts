@@ -1,8 +1,11 @@
-export const homeMeta = {
+import { pageMetadata } from "@/lib/seo";
+
+export const homeMeta = pageMetadata({
   title: "Commercial & Industrial Electrical Contractor in Metro Atlanta | Data Power Source",
   description:
     "Data Power Source is a Metro Atlanta commercial and industrial electrical contractor with 25 years installing power that stays on — full electrical, UPS, and standby generator systems. Request a quote.",
-};
+  path: "/",
+});
 
 export const homeHero = {
   overline: "Metro Atlanta · Commercial & Industrial Electrical",

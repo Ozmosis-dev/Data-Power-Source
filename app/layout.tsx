@@ -7,9 +7,10 @@ import { QuoteDialogProvider } from "@/components/quote-dialog";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { localBusinessSchema } from "@/lib/schema";
+import { DEFAULT_SOCIAL_IMAGE, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://datapowersource.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Data Power Source",
     template: "%s",
@@ -20,6 +21,11 @@ export const metadata: Metadata = {
     siteName: "Data Power Source",
     type: "website",
     locale: "en_US",
+    images: [DEFAULT_SOCIAL_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
   icons: {
     icon: "/brand/DPS-icon.svg",

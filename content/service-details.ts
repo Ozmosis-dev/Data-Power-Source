@@ -42,7 +42,6 @@ export type ServiceDetail = {
   metadata: {
     title: string;
     description: string;
-    keywords: string[];
   };
   discipline: ServiceDiscipline;
   theme: {
@@ -121,13 +120,6 @@ const electrical: ServiceDetail = {
       "Commercial & Industrial Electrical Contractor | Metro Atlanta | Data Power Source",
     description:
       "Commercial and industrial electrical installation in Metro Atlanta, including distribution, service upgrades, equipment connections, grounding, and EV charging infrastructure.",
-    keywords: [
-      "commercial industrial electrical contractor Atlanta",
-      "electrical service upgrade",
-      "commercial power distribution",
-      "switchboard installation",
-      "EV charging station installation Georgia",
-    ],
   },
   discipline: "electrical",
   theme: {
@@ -277,13 +269,6 @@ const missionCritical: ServiceDetail = {
     title: "UPS & Standby Generator Installation | Mission Critical Power | Atlanta",
     description:
       "Mission-critical power systems for facilities that cannot go dark, including UPS, generators, transfer switches, distribution, commissioning, and lifecycle support.",
-    keywords: [
-      "mission critical electrical Atlanta",
-      "commercial UPS installation Atlanta",
-      "standby generator installation Georgia",
-      "automatic transfer switch installation",
-      "critical power commissioning",
-    ],
   },
   discipline: "mission-critical",
   theme: {
@@ -390,13 +375,6 @@ const connectivity: ServiceDetail = {
     title: "Structured Cabling & Fiber Optic Installation | Low Voltage | Atlanta",
     description:
       "Structured cabling, fiber optic infrastructure, certified copper and fiber testing, and adjacent low-voltage systems for commercial and critical facilities.",
-    keywords: [
-      "structured cabling fiber installation Atlanta",
-      "low voltage cabling Georgia",
-      "copper cable certification",
-      "fiber optic installation",
-      "OTDR testing Atlanta",
-    ],
   },
   discipline: "connectivity",
   theme: {
@@ -527,12 +505,6 @@ const designBuild: ServiceDetail = {
     title: "Electrical Design-Build & Engineering | Concept to Install | Atlanta",
     description:
       "Single-source electrical and critical-power design-build, from discovery and engineered drawings through construction, commissioning, and documentation.",
-    keywords: [
-      "electrical design-build contractor Georgia",
-      "electrical engineering services Atlanta",
-      "critical power design build",
-      "data center power design",
-    ],
   },
   discipline: "design-build",
   theme: {

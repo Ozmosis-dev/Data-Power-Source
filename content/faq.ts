@@ -1,4 +1,5 @@
 import { siteFacts } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
 export type FaqItem = {
   question: string;
@@ -13,11 +14,12 @@ export type FaqGroup = {
   items: FaqItem[];
 };
 
-export const faqMeta = {
+export const faqMeta = pageMetadata({
   title: "UPS, Generator & Electrical Contractor FAQs | Data Power Source",
   description:
     "Answers about Metro Atlanta commercial electrical work, UPS and generator systems, switchgear upgrades, EV charging, safety, scheduling, and service.",
-};
+  path: "/faq",
+});
 
 export const faqHero = {
   overline: "FAQ",

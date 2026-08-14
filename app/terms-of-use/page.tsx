@@ -3,18 +3,14 @@ import Link from "next/link";
 
 import { Hero } from "@/components/hero";
 import { SectionBand } from "@/components/section-band";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Terms of Use Review | Data Power Source",
   description: "Terms of use review page for the new Data Power Source website.",
-  alternates: { canonical: "/terms-of-use" },
-  robots: { index: false, follow: true },
-  openGraph: {
-    title: "Terms of Use Review | Data Power Source",
-    description: "Terms of use review page for the new Data Power Source website.",
-    url: "/terms-of-use",
-  },
-};
+  path: "/terms-of-use",
+  index: false,
+});
 
 export default function TermsOfUsePage() {
   return (

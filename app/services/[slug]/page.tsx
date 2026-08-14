@@ -7,6 +7,7 @@ import {
   type ServiceDetailSlug,
 } from "@/content/service-details";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/seo";
 
 type ServicePageProps = {
   params: Promise<{ slug: string }>;
@@ -27,25 +28,15 @@ export async function generateMetadata({
   if (!isServiceSlug(slug)) return {};
 
   const service = serviceDetails[slug];
-  return {
+  return pageMetadata({
     title: service.metadata.title,
     description: service.metadata.description,
-    keywords: service.metadata.keywords,
-    alternates: {
-      canonical: `/services/${service.slug}`,
+    path: `/services/${service.slug}`,
+    image: {
+      url: service.hero.imageSrc,
+      alt: service.hero.imageAlt,
     },
-    openGraph: {
-      title: service.metadata.title,
-      description: service.metadata.description,
-      url: `/services/${service.slug}`,
-      images: [
-        {
-          url: service.hero.imageSrc,
-          alt: service.hero.imageAlt,
-        },
-      ],
-    },
-  };
+  });
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {

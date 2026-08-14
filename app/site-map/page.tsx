@@ -5,19 +5,14 @@ import { Hero } from "@/components/hero";
 import { SectionBand, SectionHeader } from "@/components/section-band";
 import { projects } from "@/content/projects";
 import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Site Map | Data Power Source",
   description:
     "Browse Data Power Source services, industries, project case studies, company information, and contact resources.",
-  alternates: { canonical: "/site-map" },
-  openGraph: {
-    title: "Site Map | Data Power Source",
-    description:
-      "Browse Data Power Source services, industries, project case studies, company information, and contact resources.",
-    url: "/site-map",
-  },
-};
+  path: "/site-map",
+});
 
 const primaryPages = [
   { label: "Home", href: "/" },

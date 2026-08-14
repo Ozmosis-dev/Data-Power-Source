@@ -62,8 +62,40 @@ test.describe("technical SEO foundation", () => {
 
       expect(title, `${route} needs a title`).not.toBe("");
       expect(description, `${route} needs a meta description`).not.toBe("");
+      await expect(canonicalTag, `${route} needs one canonical`).toHaveCount(1);
+      await expect(page.locator('meta[name="description"]'), `${route} needs one description`).toHaveCount(
+        1,
+      );
       expect(canonical, `${route} needs a canonical`).toBe(location);
       expect(openGraphUrl, `${route} needs an og:url`).toBe(location);
+      await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute(
+        "content",
+        "Data Power Source",
+      );
+      await expect(page.locator('meta[property="og:type"]')).toHaveAttribute("content", /website|article/);
+      await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", title);
+      await expect(page.locator('meta[property="og:description"]')).toHaveAttribute(
+        "content",
+        description,
+      );
+      await expect(page.locator('meta[property="og:image"]').first()).toHaveAttribute(
+        "content",
+        /^https:\/\/datapowersource\.com\//,
+      );
+      await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
+        "content",
+        "summary_large_image",
+      );
+      await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute("content", title);
+      await expect(page.locator('meta[name="twitter:description"]')).toHaveAttribute(
+        "content",
+        description,
+      );
+      await expect(page.locator('meta[name="twitter:image"]').first()).toHaveAttribute(
+        "content",
+        /^https:\/\/datapowersource\.com\//,
+      );
+      await expect(page.locator('meta[name="keywords"]')).toHaveCount(0);
       await expect(page.locator("h1"), `${route} needs exactly one H1`).toHaveCount(1);
       await expect(page.locator("main#main-content"), `${route} needs a semantic main landmark`).toHaveCount(
         1,

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ProjectDetailPage } from "@/components/project-detail-page";
 import { getAdjacentProjects, projectBySlug, projects } from "@/content/projects";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -18,19 +19,17 @@ export async function generateMetadata({
   const project = projectBySlug.get(slug);
   if (!project) return {};
 
-  const url = `/projects/${project.slug}`;
-  return {
+  const url: `/${string}` = `/projects/${project.slug}`;
+  return pageMetadata({
     title: `${project.title} | Data Power Source`,
     description: project.seoDescription,
-    alternates: { canonical: url },
-    openGraph: {
-      type: "article",
-      title: project.title,
-      description: project.seoDescription,
-      url,
-      images: [{ url: project.images[0].src, alt: project.images[0].alt }],
+    path: url,
+    type: "article",
+    image: {
+      url: project.images[0].src,
+      alt: project.images[0].alt,
     },
-  };
+  });
 }
 
 export default async function ProjectPage({

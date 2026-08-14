@@ -1,8 +1,11 @@
-export const servicesMeta = {
+import { pageMetadata } from "@/lib/seo";
+
+export const servicesMeta = pageMetadata({
   title: "Commercial & Industrial Electrical Services in Metro Atlanta | Data Power Source",
   description:
     "Full-service commercial and industrial electrical from Data Power Source — electrical installations, UPS and generator backup, low-voltage cabling, and in-house engineering. Serving Metro Atlanta for 25 years.",
-};
+  path: "/services",
+});
 
 export const servicesHero = {
   overline: "Services",

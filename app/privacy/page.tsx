@@ -3,18 +3,14 @@ import Link from "next/link";
 
 import { Hero } from "@/components/hero";
 import { SectionBand } from "@/components/section-band";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy Review | Data Power Source",
   description: "Privacy policy review page for the new Data Power Source website.",
-  alternates: { canonical: "/privacy" },
-  robots: { index: false, follow: true },
-  openGraph: {
-    title: "Privacy Policy Review | Data Power Source",
-    description: "Privacy policy review page for the new Data Power Source website.",
-    url: "/privacy",
-  },
-};
+  path: "/privacy",
+  index: false,
+});
 
 export default function PrivacyPage() {
   return (

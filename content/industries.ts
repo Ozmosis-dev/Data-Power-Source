@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
 export type IndustryMarket = {
   readonly id: string;
@@ -19,19 +19,16 @@ export type IndustryMarket = {
   readonly featured?: boolean;
 };
 
-export const industriesMeta: Metadata = {
+export const industriesMeta = pageMetadata({
   title: "Industries We Serve | Data Power Source Electrical Contractor",
   description:
     "Explore Data Power Source electrical, standby power, UPS, generator, and low-voltage capabilities for commercial, industrial, healthcare, data center, government, education, military, telecom, and broadcast facilities.",
-  alternates: { canonical: "/industries" },
-  openGraph: {
-    title: "Industries We Serve | Data Power Source",
-    description:
-      "Electrical and mission-critical infrastructure built around the operating realities of nine demanding markets across Georgia and the Southeast.",
-    url: "/industries",
-    images: ["/images/industries/data-centers-mission-critical.webp"],
+  path: "/industries",
+  image: {
+    url: "/images/industries/data-centers-mission-critical.webp",
+    alt: "Data center electrical infrastructure served by Data Power Source.",
   },
-};
+});
 
 export const industriesHero = {
   overline: "Industries we serve",

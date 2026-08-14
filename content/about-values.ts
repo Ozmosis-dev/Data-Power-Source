@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const valuesMeta: Metadata = {
+export const valuesMeta = pageMetadata({
   title: "Our Values | Safety, Integrity & Workmanship | Data Power Source",
   description:
     "Safety, integrity, workmanship, and responsiveness guide how Data Power Source plans, communicates, installs, and supports critical electrical infrastructure.",
-};
+  path: "/about/values",
+});
 
 export const valuesHero = {
   overline: "Values / Integrity",
