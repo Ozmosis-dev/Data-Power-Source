@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "test": "playwright test",
+    "test:seo": "playwright test tests/seo-foundation.spec.ts tests/seo-migration.spec.ts",
     "test:headed": "playwright test --headed"
   },
   "dependencies": {
