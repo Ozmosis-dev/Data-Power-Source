@@ -23,7 +23,6 @@ import Link from "next/link";
 import type { ComponentType, CSSProperties } from "react";
 
 import { BrandServiceMark } from "@/components/brand-service-mark";
-import { Breadcrumb } from "@/components/breadcrumb";
 import { HeroPulseRail } from "@/components/hero-pulse-rail";
 import { QuoteTrigger } from "@/components/quote-dialog";
 import { Reveal } from "@/components/reveal";
@@ -596,17 +595,9 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
           aria-hidden="true"
           className="absolute inset-y-0 left-0 w-1 bg-white/60"
         />
-        <div className="relative mx-auto grid min-h-[calc(100dvh-72px)] max-w-container items-center gap-10 px-5 py-14 sm:px-6 md:py-16 lg:grid-cols-12 lg:py-20">
+        <div className="relative mx-auto grid max-w-container items-center gap-10 px-5 py-16 sm:px-6 md:py-20 lg:grid-cols-12 lg:py-16 xl:py-20">
           <Reveal className="lg:col-span-8 lg:pr-6">
-            <Breadcrumb
-              inverse
-              items={[
-                { label: "Home", href: "/" },
-                { label: "Services", href: "/services" },
-                { label: service.hero.overline },
-              ]}
-            />
-            <div className="mt-8 flex items-center gap-4">
+            <div className="flex items-center gap-4">
               <BrandServiceMark
                 discipline={service.discipline}
                 testId="service-hero-mark"
@@ -616,7 +607,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
                 {service.hero.overline}
               </p>
             </div>
-            <h1 className="mt-7 max-w-[860px] font-display text-[2.7rem] font-bold leading-[1.02] tracking-[-0.045em] text-white sm:text-[3.25rem] lg:text-[3rem]">
+            <h1 className="mt-7 max-w-[900px] font-display text-[2.75rem] font-bold leading-[1.02] tracking-[-0.05em] text-white sm:text-[3.7rem] lg:text-[4.5rem]">
               {service.hero.title}
             </h1>
             <p
@@ -641,7 +632,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
           <Reveal className="lg:col-span-4" delay={60}>
             <div
               data-testid="service-hero-image"
-              className="relative min-h-[360px] overflow-hidden rounded-xl border border-white/30 shadow-[0_28px_60px_rgba(0,0,0,0.22)] sm:min-h-[460px] lg:min-h-[560px]"
+              className="relative min-h-[360px] overflow-hidden rounded-xl border border-white/30 shadow-[0_28px_60px_rgba(0,0,0,0.22)] sm:min-h-[440px] xl:min-h-[460px]"
             >
               <Image
                 src={service.hero.imageSrc}

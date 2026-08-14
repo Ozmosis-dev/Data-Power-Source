@@ -37,7 +37,6 @@ export default function ContactPage() {
         lead={contactHero.lead}
         imageAlt={contactHero.imageAlt}
         imageSrc={contactHero.imageSrc}
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
         compact
       />
 

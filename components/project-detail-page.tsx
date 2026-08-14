@@ -10,7 +10,6 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-import { Breadcrumb } from "@/components/breadcrumb";
 import { CTABand } from "@/components/cta-band";
 import { Reveal } from "@/components/reveal";
 import { SectionBand, SectionHeader } from "@/components/section-band";
@@ -91,15 +90,7 @@ export function ProjectDetailPage({
       <section className="technical-grid relative overflow-hidden bg-navy-900 text-white">
         <div aria-hidden="true" className="absolute inset-y-0 right-[10%] w-px bg-white/[0.07]" />
         <div className="relative mx-auto max-w-container px-5 pb-0 pt-8 sm:px-6 md:pt-10">
-          <div className="flex flex-col gap-5 border-b border-white/15 pb-7 sm:flex-row sm:items-center sm:justify-between">
-            <Breadcrumb
-              inverse
-              items={[
-                { label: "Home", href: "/" },
-                { label: "Projects", href: "/projects" },
-                { label: project.shortTitle },
-              ]}
-            />
+          <div className="flex justify-end border-b border-white/15 pb-7">
             <Link
               href="/projects"
               className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-blue-200"

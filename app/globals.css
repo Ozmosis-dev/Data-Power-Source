@@ -92,19 +92,6 @@ p {
   background-size: 72px 72px;
 }
 
-.service-page-hero [aria-label="Breadcrumb"] a {
-  color: rgb(255 255 255 / 0.9);
-}
-
-.service-page-hero [aria-label="Breadcrumb"] a:hover,
-.service-page-hero [aria-label="Breadcrumb"] [aria-current="page"] {
-  color: rgb(255 255 255);
-}
-
-.service-page-hero [aria-label="Breadcrumb"] svg {
-  color: rgb(255 255 255 / 0.72);
-}
-
 .service-page-hero .hero-pulse-rail {
   background: rgb(255 255 255 / 0.18);
 }

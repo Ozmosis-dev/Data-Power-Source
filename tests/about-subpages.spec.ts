@@ -40,8 +40,7 @@ test.describe("About page family", () => {
         name: "Safety first, always.",
       }),
     ).toBeVisible();
-    await expect(page.getByLabel("Breadcrumb")).toContainText("About");
-    await expect(page.getByLabel("Breadcrumb")).toContainText("Safety");
+    await expect(page.getByLabel("Breadcrumb")).toHaveCount(0);
 
     const program = page.getByTestId("safety-program");
     await expect(
@@ -113,8 +112,7 @@ test.describe("About page family", () => {
         name: "Powering what can't afford to fail.",
       }),
     ).toBeVisible();
-    await expect(page.getByLabel("Breadcrumb")).toContainText("About");
-    await expect(page.getByLabel("Breadcrumb")).toContainText("Values & integrity");
+    await expect(page.getByLabel("Breadcrumb")).toHaveCount(0);
 
     const standards = page.getByTestId("values-standards");
     for (const value of ["Safety", "Integrity", "Workmanship", "Responsiveness"]) {

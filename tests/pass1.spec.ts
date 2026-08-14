@@ -138,8 +138,3 @@ test.describe("FAQ", () => {
     expect(faqSchema.mainEntity).toHaveLength(23);
   });
 });
-
-test("the remaining linked unbuilt route renders a deliberate coming-soon stub", async ({ page }) => {
-  await page.goto("/industries");
-  await expect(page.getByRole("heading", { name: "Coming in the next pass." })).toBeVisible();
-});

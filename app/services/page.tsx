@@ -27,7 +27,6 @@ export default function ServicesPage() {
         overline={servicesHero.overline}
         title={servicesHero.title}
         lead={servicesHero.lead}
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
         compact
       />
 

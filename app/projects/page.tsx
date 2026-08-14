@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { ArrowDown, ArrowRight, CheckCircle, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 
-import { Breadcrumb } from "@/components/breadcrumb";
 import { CTABand } from "@/components/cta-band";
 import { HeroPulseRail } from "@/components/hero-pulse-rail";
 import { ProjectGalleryCard } from "@/components/project-gallery-card";
@@ -46,10 +45,8 @@ export default function ProjectsPage() {
       >
         <div aria-hidden="true" className="absolute inset-y-0 left-[8%] w-px bg-white/[0.06]" />
         <div aria-hidden="true" className="absolute bottom-0 right-0 h-px w-[38%] bg-blue-400/60" />
-        <div className="relative mx-auto max-w-container px-5 pb-12 pt-8 sm:px-6 md:pb-14 md:pt-10 lg:pb-16">
-          <Breadcrumb inverse items={[{ label: "Home", href: "/" }, { label: "Projects" }]} />
-
-          <div className="mt-12 grid gap-12 lg:grid-cols-12 lg:items-end">
+        <div className="relative mx-auto max-w-container px-5 py-16 sm:px-6 md:py-20 lg:py-24">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               <p className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-blue-200">
                 Project portfolio

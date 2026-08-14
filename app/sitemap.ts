@@ -29,7 +29,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:
       route === ""
         ? 1
-        : route === "/about" || route === "/services" || route === "/projects" || route === "/contact"
+        : route === "/about" ||
+            route === "/services" ||
+            route === "/industries" ||
+            route === "/projects" ||
+            route === "/contact"
           ? 0.9
           : 0.7,
   }));

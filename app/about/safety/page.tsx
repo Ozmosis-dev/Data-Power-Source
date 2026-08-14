@@ -55,11 +55,6 @@ export default function SafetyPage() {
         overline={safetyHero.overline}
         title={safetyHero.title}
         lead={safetyHero.lead}
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "About", href: "/about" },
-          { label: "Safety" },
-        ]}
         imageSrc={safetyHero.imageSrc}
         imageAlt={safetyHero.imageAlt}
         actions

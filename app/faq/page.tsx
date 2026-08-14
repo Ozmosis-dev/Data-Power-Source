@@ -26,7 +26,6 @@ export default function FaqPage() {
         lead={faqHero.lead}
         imageAlt={faqHero.imageAlt}
         imageSrc={faqHero.imageSrc}
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "FAQ" }]}
         compact
       />
 

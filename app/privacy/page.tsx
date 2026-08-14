@@ -8,7 +8,6 @@ export default function PrivacyPage() {
         overline="Privacy"
         title="Privacy policy pending."
         lead="Final policy language will be added when the site’s forms, analytics, and deployment configuration are confirmed."
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Privacy" }]}
         compact
       />
       <SectionBand compact>

@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Lightning } from "@phosphor-icons/react/dist/ssr";
 
-import { Breadcrumb, type BreadcrumbItem } from "@/components/breadcrumb";
 import { HeroPulseRail } from "@/components/hero-pulse-rail";
 import { QuoteTrigger } from "@/components/quote-dialog";
 import { Reveal } from "@/components/reveal";
@@ -14,7 +13,6 @@ type HeroProps = {
   overline: string;
   title: string;
   lead: string;
-  breadcrumbs?: BreadcrumbItem[];
   imageAlt?: string;
   imageSrc?: string;
   trust?: readonly string[];
@@ -26,7 +24,6 @@ export function Hero({
   overline,
   title,
   lead,
-  breadcrumbs,
   imageAlt,
   imageSrc,
   trust,
@@ -78,8 +75,7 @@ export function Hero({
                 : "lg:col-span-8",
           )}
         >
-          {breadcrumbs ? <Breadcrumb items={breadcrumbs} inverse /> : null}
-          <div className={cn("flex items-center gap-3", breadcrumbs && "mt-8")}>
+          <div className="flex items-center gap-3">
             <span className="grid size-8 place-items-center border border-blue-400/50 bg-blue-400/10 text-blue-200">
               <Lightning aria-hidden="true" size={15} weight="regular" />
             </span>

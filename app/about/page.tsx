@@ -68,7 +68,6 @@ export default function AboutPage() {
         overline={aboutHero.overline}
         title={aboutHero.title}
         lead={aboutHero.lead}
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
         imageSrc={aboutHero.imageSrc}
         imageAlt={aboutHero.imageAlt}
         actions

@@ -73,11 +73,3 @@ export const site = {
   proofLine:
     "25 years in commercial & industrial electrical · Owner-led · NFPA 70E arc-flash trained · EMR .82–.86 (3-yr) · Drug- & alcohol-free workplace · 24/7 emergency, 2-hour response.",
 } as const;
-
-export const stubRoutes = {
-  industries: {
-    overline: "Industries / Markets",
-    title: "Coming in the next pass.",
-    body: "Industry-specific proof for critical facilities is already mapped and will be built in the next pass.",
-  },
-} as const;

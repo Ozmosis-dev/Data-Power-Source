@@ -53,11 +53,6 @@ export default function ValuesPage() {
         overline={valuesHero.overline}
         title={valuesHero.title}
         lead={valuesHero.lead}
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "About", href: "/about" },
-          { label: "Values & integrity" },
-        ]}
         imageSrc={valuesHero.imageSrc}
         imageAlt={valuesHero.imageAlt}
         actions
