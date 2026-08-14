@@ -57,6 +57,11 @@ export default function SafetyPage() {
         imageAlt={safetyHero.imageAlt}
         actions
         compact
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "About", href: "/about" },
+          { label: "Safety" },
+        ]}
       />
       <AboutFamilyNav current="safety" />
 

@@ -11,9 +11,25 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { CTABand } from "@/components/cta-band";
+import { Breadcrumb } from "@/components/breadcrumb";
 import { Reveal } from "@/components/reveal";
 import { SectionBand, SectionHeader } from "@/components/section-band";
 import type { Project } from "@/content/projects";
+
+function projectServiceHref(service: string) {
+  const normalized = service.toLowerCase();
+
+  if (/ups|standby|generation|cooling|automatic transfer/.test(normalized)) {
+    return "/services/mission-critical-power";
+  }
+  if (/design-build|permitting/.test(normalized)) {
+    return "/services/engineering-design-build";
+  }
+  if (/fiber|cabling|connectivity|telecom/.test(normalized)) {
+    return "/services/low-voltage-connectivity";
+  }
+  return "/services/commercial-industrial-electrical";
+}
 
 function ProjectPhoto({
   image,
@@ -90,7 +106,15 @@ export function ProjectDetailPage({
       <section className="technical-grid relative overflow-hidden bg-navy-900 text-white">
         <div aria-hidden="true" className="absolute inset-y-0 right-[10%] w-px bg-white/[0.07]" />
         <div className="relative mx-auto max-w-container px-5 pb-0 pt-8 sm:px-6 md:pt-10">
-          <div className="flex justify-end border-b border-white/15 pb-7">
+          <div className="flex flex-col gap-4 border-b border-white/15 pb-7 sm:flex-row sm:items-center sm:justify-between">
+            <Breadcrumb
+              inverse
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Projects", href: "/projects" },
+                { label: project.shortTitle },
+              ]}
+            />
             <Link
               href="/projects"
               className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-blue-200"
@@ -152,14 +176,18 @@ export function ProjectDetailPage({
                 <p className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-neutral-500">
                   Services delivered
                 </p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div
+                  data-testid="project-services-delivered"
+                  className="mt-3 flex flex-wrap gap-2"
+                >
                   {project.services.map((service) => (
-                    <span
+                    <Link
                       key={service}
-                      className="border border-brand-100 bg-white px-3 py-1.5 text-xs font-semibold text-brand-700"
+                      href={projectServiceHref(service)}
+                      className="border border-brand-100 bg-white px-3 py-1.5 text-xs font-semibold text-brand-700 transition-colors hover:border-brand-300 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                     >
                       {service}
-                    </span>
+                    </Link>
                   ))}
                 </div>
               </div>

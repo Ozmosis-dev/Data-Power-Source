@@ -40,7 +40,7 @@ test.describe("About page family", () => {
         name: "Commercial Electrical Safety Built into Every Project",
       }),
     ).toBeVisible();
-    await expect(page.getByLabel("Breadcrumb")).toHaveCount(0);
+    await expect(page.getByLabel("Breadcrumb")).toBeVisible();
 
     const program = page.getByTestId("safety-program");
     await expect(
@@ -112,7 +112,7 @@ test.describe("About page family", () => {
         name: "Values That Guide Every Electrical Project",
       }),
     ).toBeVisible();
-    await expect(page.getByLabel("Breadcrumb")).toHaveCount(0);
+    await expect(page.getByLabel("Breadcrumb")).toBeVisible();
 
     const standards = page.getByTestId("values-standards");
     for (const value of ["Safety", "Integrity", "Workmanship", "Responsiveness"]) {

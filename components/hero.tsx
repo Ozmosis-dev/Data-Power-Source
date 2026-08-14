@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Lightning } from "@phosphor-icons/react/dist/ssr";
 
+import { Breadcrumb, type BreadcrumbItem } from "@/components/breadcrumb";
 import { HeroPulseRail } from "@/components/hero-pulse-rail";
 import { QuoteTrigger } from "@/components/quote-dialog";
 import { Reveal } from "@/components/reveal";
@@ -18,6 +19,7 @@ type HeroProps = {
   trust?: readonly string[];
   actions?: boolean;
   compact?: boolean;
+  breadcrumbs?: readonly BreadcrumbItem[];
 };
 
 export function Hero({
@@ -29,6 +31,7 @@ export function Hero({
   trust,
   actions = false,
   compact = false,
+  breadcrumbs,
 }: HeroProps) {
   const hasBackgroundImage = Boolean(imageAlt && imageSrc);
 
@@ -59,6 +62,13 @@ export function Hero({
           <div aria-hidden="true" className="absolute bottom-0 left-[8vw] top-0 hidden w-px bg-navy-700 xl:block" />
           <div aria-hidden="true" className="absolute bottom-0 right-[8vw] top-0 hidden w-px bg-navy-700 xl:block" />
         </>
+      ) : null}
+      {breadcrumbs?.length ? (
+        <div className="absolute inset-x-0 top-0 z-10">
+          <div className="mx-auto max-w-container px-5 pt-5 sm:px-6">
+            <Breadcrumb items={breadcrumbs} inverse />
+          </div>
+        </div>
       ) : null}
       <div
         className={cn(

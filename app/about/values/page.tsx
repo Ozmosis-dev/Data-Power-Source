@@ -55,6 +55,11 @@ export default function ValuesPage() {
         imageAlt={valuesHero.imageAlt}
         actions
         compact
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "About", href: "/about" },
+          { label: "Values & integrity" },
+        ]}
       />
       <AboutFamilyNav current="values" />
 

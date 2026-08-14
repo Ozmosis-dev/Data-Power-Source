@@ -80,16 +80,25 @@ test.describe("interior-page hero consistency", () => {
     }
   });
 
-  test("does not render visible breadcrumb navigation on any interior route", async ({ page }) => {
+  test("limits visible breadcrumb navigation to genuinely nested routes", async ({ page }) => {
     test.setTimeout(90_000);
+
+    const nestedRoutes = new Set([
+      "/about/safety",
+      "/about/values",
+      ...serviceRoutes,
+      ...projects.map((project) => `/projects/${project.slug}`),
+    ]);
 
     for (const route of interiorRoutes) {
       await page.goto(route);
-      await expect(page.getByRole("navigation", { name: "Breadcrumb" }), route).toHaveCount(0);
+      await expect(page.getByRole("navigation", { name: "Breadcrumb" }), route).toHaveCount(
+        nestedRoutes.has(route) ? 1 : 0,
+      );
     }
   });
 
-  test("retains BreadcrumbList SEO data after removing the visible trail", async ({ page }) => {
+  test("retains BreadcrumbList SEO data across interior routes", async ({ page }) => {
     for (const route of [
       "/about",
       "/about/safety",

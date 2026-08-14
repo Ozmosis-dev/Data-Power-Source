@@ -23,6 +23,7 @@ import Link from "next/link";
 import type { ComponentType, CSSProperties } from "react";
 
 import { BrandServiceMark } from "@/components/brand-service-mark";
+import { Breadcrumb } from "@/components/breadcrumb";
 import { HeroPulseRail } from "@/components/hero-pulse-rail";
 import { QuoteTrigger } from "@/components/quote-dialog";
 import { Reveal } from "@/components/reveal";
@@ -595,6 +596,18 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
           aria-hidden="true"
           className="absolute inset-y-0 left-0 w-1 bg-white/60"
         />
+        <div className="absolute inset-x-0 top-0 z-10">
+          <div className="mx-auto max-w-container px-5 pt-5 sm:px-6">
+            <Breadcrumb
+              inverse
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/services" },
+                { label: service.hero.overline },
+              ]}
+            />
+          </div>
+        </div>
         <div className="relative mx-auto grid max-w-container items-center gap-10 px-5 py-16 sm:px-6 md:py-20 lg:grid-cols-12 lg:py-16 xl:py-20">
           <Reveal className="lg:col-span-8 lg:pr-6">
             <div className="flex items-center gap-4">

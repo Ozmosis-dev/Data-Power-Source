@@ -3,7 +3,13 @@ import Link from "next/link";
 
 export type BreadcrumbItem = { label: string; href?: string };
 
-export function Breadcrumb({ items, inverse = false }: { items: BreadcrumbItem[]; inverse?: boolean }) {
+export function Breadcrumb({
+  items,
+  inverse = false,
+}: {
+  items: readonly BreadcrumbItem[];
+  inverse?: boolean;
+}) {
   return (
     <nav aria-label="Breadcrumb">
       <ol className="flex flex-wrap items-center gap-2 text-small">
@@ -14,8 +20,8 @@ export function Breadcrumb({ items, inverse = false }: { items: BreadcrumbItem[]
                 href={item.href}
                 className={
                   inverse
-                    ? "text-navy-300 transition-colors hover:text-white"
-                    : "text-neutral-600 transition-colors hover:text-blue-600"
+                    ? "text-navy-200 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                    : "text-neutral-600 transition-colors hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                 }
               >
                 {item.label}
