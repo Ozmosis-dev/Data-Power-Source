@@ -319,21 +319,6 @@ export default function AboutPage() {
                   </p>
                 </div>
               </div>
-              <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                {["License and insurance details", "Manufacturer credentials"].map(
-                  (label) => (
-                    <div
-                      key={label}
-                      className="flex items-center justify-between border border-navy-700 px-4 py-3 text-small text-navy-200"
-                    >
-                      <span>{label}</span>
-                      <span className="font-mono text-[0.55rem] uppercase tracking-[0.1em] text-blue-300">
-                        Client confirmation
-                      </span>
-                    </div>
-                  ),
-                )}
-              </div>
             </div>
           </Reveal>
         </div>

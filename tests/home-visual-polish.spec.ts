@@ -75,29 +75,24 @@ test.describe("Home visual polish", () => {
     expect(size).toBeGreaterThanOrEqual(64);
   });
 
-  test("uses a faded owner-team image and approved-style grayscale organization marks", async ({
+  test("uses verified project organizations without representative team imagery", async ({
     page,
   }) => {
-    await expect(
-      page.getByRole("img", {
-        name: "Representative field-planning image for owner-led expertise.",
-      }),
-    ).toBeVisible();
+    await expect(page.locator('img[alt*="Representative" i]')).toHaveCount(0);
 
     const logos = page.getByTestId("organization-logo");
-    await expect(logos).toHaveCount(6);
-    for (let index = 0; index < 6; index += 1) {
+    await expect(logos).toHaveCount(5);
+    for (let index = 0; index < 5; index += 1) {
       expect(await logos.nth(index).evaluate((node) => getComputedStyle(node).filter)).toContain(
         "grayscale(1)",
       );
     }
   });
 
-  test("fills the testimonial card without presenting an unverified endorsement", async ({
+  test("omits the testimonial until an endorsement is approved", async ({
     page,
   }) => {
-    const card = page.getByTestId("social-proof-card");
-    await expect(card).toContainText("Verified client quote pending approval");
-    await expect(card).toContainText("Client name and facility pending approval");
+    await expect(page.getByTestId("social-proof-card")).toHaveCount(0);
+    await expect(page.getByText("Documented project organizations", { exact: true })).toBeVisible();
   });
 });

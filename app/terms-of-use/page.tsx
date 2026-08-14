@@ -5,24 +5,24 @@ import { Hero } from "@/components/hero";
 import { SectionBand } from "@/components/section-band";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy Review | Data Power Source",
-  description: "Privacy policy review page for the new Data Power Source website.",
-  alternates: { canonical: "/privacy" },
+  title: "Terms of Use Review | Data Power Source",
+  description: "Terms of use review page for the new Data Power Source website.",
+  alternates: { canonical: "/terms-of-use" },
   robots: { index: false, follow: true },
   openGraph: {
-    title: "Privacy Policy Review | Data Power Source",
-    description: "Privacy policy review page for the new Data Power Source website.",
-    url: "/privacy",
+    title: "Terms of Use Review | Data Power Source",
+    description: "Terms of use review page for the new Data Power Source website.",
+    url: "/terms-of-use",
   },
 };
 
-export default function PrivacyPage() {
+export default function TermsOfUsePage() {
   return (
     <main id="main-content">
       <Hero
-        overline="Privacy"
-        title="Privacy policy review"
-        lead="This non-indexed route preserves the website’s privacy-policy destination while the final policy is reviewed against the approved forms, analytics, hosting, and data-retention configuration."
+        overline="Terms"
+        title="Terms of use review"
+        lead="This non-indexed route preserves the established terms URL while the client and counsel complete the production website terms."
         compact
       />
       <SectionBand compact>
@@ -35,13 +35,13 @@ export default function PrivacyPage() {
               Client and counsel approval required before launch
             </h2>
             <p className="mt-4 leading-relaxed text-neutral-700">
-              No final legal language is being represented as approved. Before this page is added to
-              search results or public navigation, the policy must identify the information collected,
-              service providers involved, retention practices, user choices, effective date, and policy
-              owner for the production website.
+              No final terms are being represented as approved. Before this route is added to search
+              results or public navigation, the production terms must define permitted website use,
+              intellectual-property treatment, warranty and liability language, governing terms,
+              effective date, and the responsible review owner.
             </p>
             <p className="mt-5 leading-relaxed text-neutral-700">
-              For current privacy questions, please{" "}
+              For questions about using this website, please{" "}
               <Link className="font-semibold text-blue-700 underline" href="/contact">
                 contact Data Power Source
               </Link>{" "}

@@ -1,8 +1,9 @@
+import { siteFacts } from "@/content/site";
+
 export type FaqItem = {
   question: string;
   answer: string;
   links?: { label: string; href: string }[];
-  pending?: string;
 };
 
 export type FaqGroup = {
@@ -167,9 +168,7 @@ export const faqGroups: FaqGroup[] = [
     items: [
       {
         question: "Are you a commercial electrical contractor serving Covington and Metro Atlanta?",
-        answer:
-          "We're based in Covington, Georgia and serve the Greater Metro Atlanta area. We've also completed projects across the Southeast, including North Carolina and Alabama.",
-        pending: "Broader marketed service radius — pending client confirmation",
+        answer: `${siteFacts.serviceArea} ${siteFacts.projectFootprint}`,
       },
       {
         question: "What industries do you work in?",
@@ -179,7 +178,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         question: "Do you offer emergency service?",
-        answer: "Yes — 24/7 emergency service with a 2-hour response across Metro Atlanta.",
+        answer: `Yes — ${siteFacts.emergencyResponse}.`,
       },
     ],
   },

@@ -97,11 +97,6 @@ export function FaqAccordion({ groups }: { groups: FaqGroup[] }) {
                           )}
                         </div>
                       ) : null}
-                      {item.pending ? (
-                        <p className="mt-5 inline-flex border border-dashed border-neutral-300 bg-neutral-50 px-3 py-2 font-mono text-small font-medium text-neutral-600">
-                          {item.pending}
-                        </p>
-                      ) : null}
                     </AccordionContent>
                   </AccordionItem>
                 ))}

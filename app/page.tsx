@@ -72,12 +72,6 @@ const organizations = [
     width: 1280,
     height: 356,
   },
-  {
-    name: "City of Atlanta",
-    src: "/brand/clients/city-of-atlanta.png",
-    width: 250,
-    height: 255,
-  },
 ] as const;
 
 export default function HomePage() {
@@ -127,11 +121,11 @@ export default function HomePage() {
               >
                 <Image
                   data-testid="company-leadership-image"
-                  src="/images/generated/dps-leadership-team.webp"
-                  alt="Representative leadership team at a commercial electrical facility."
+                  src="/images/about/robert-kent-enhanced.png"
+                  alt="Portrait of Data Power Source founder Robert L. Kent."
                   fill
                   sizes="(min-width: 1024px) 42vw, 100vw"
-                  className="object-cover object-[62%_center]"
+                  className="object-cover object-top"
                 />
               </div>
               <aside
@@ -282,14 +276,6 @@ export default function HomePage() {
           <div className="mt-12 grid gap-5 lg:grid-cols-12">
             <Reveal className="lg:col-span-6 lg:row-span-2">
               <article className="relative flex h-full min-h-[430px] flex-col overflow-hidden rounded-xl border border-navy-600 bg-navy-800 p-7 text-white md:p-9">
-                <Image
-                  src="/images/generated/owner-led-team-placeholder.webp"
-                  alt="Representative field-planning image for owner-led expertise."
-                  fill
-                  sizes="(max-width: 1023px) 100vw, 50vw"
-                  className="object-cover object-center opacity-45 saturate-[0.58]"
-                />
-                <div aria-hidden="true" className="absolute inset-0 bg-navy-800/70" />
                 <div aria-hidden="true" className="technical-grid-subtle absolute inset-0 opacity-30" />
                 <div className="relative z-[1] flex items-center justify-between">
                   <SealCheck aria-hidden="true" className="size-7 text-blue-200" />
@@ -328,15 +314,14 @@ export default function HomePage() {
       <SectionBand theme="soft">
         <div className="mx-auto max-w-container px-5 sm:px-6">
           <SectionHeader
-            overline="Social proof"
-            title="Trusted by facilities across Georgia and the Southeast."
+            overline="Documented project organizations"
+            title="Work completed for recognized organizations."
           />
-          <div className="mt-12 grid gap-5 lg:grid-cols-12">
-            <div className="grid gap-px overflow-hidden rounded-xl border border-neutral-200 bg-neutral-200 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
+          <div className="mt-12">
+            <div className="grid gap-px overflow-hidden rounded-xl border border-neutral-200 bg-neutral-200 sm:grid-cols-2 lg:grid-cols-5">
               {organizations.map((organization) => (
                 <div
                   key={organization.name}
-                  data-status="pending-client-approval"
                   className="grid min-h-32 place-items-center bg-white p-6"
                 >
                   <Image
@@ -350,21 +335,6 @@ export default function HomePage() {
                   />
                 </div>
               ))}
-            </div>
-            <div
-              data-testid="social-proof-card"
-              className="flex min-h-[300px] flex-col justify-between rounded-xl border border-navy-700 bg-navy-800 p-7 text-white lg:col-span-4"
-            >
-              <span className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-blue-100">
-                Testimonial
-              </span>
-              <blockquote className="font-display text-h3 font-semibold leading-snug text-white">
-                “Verified client quote pending approval. This space is reserved for feedback on
-                planning, workmanship, and keeping the facility online.”
-              </blockquote>
-              <p className="text-small text-blue-50/75">
-                Client name and facility pending approval
-              </p>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { expect, test } from "playwright/test";
 
-test("places the generated field imagery across the Home story", async ({ page }) => {
+test("uses documented project and founder imagery across the Home story", async ({ page }) => {
   await page.goto("/");
 
   for (const alt of [
@@ -8,14 +8,14 @@ test("places the generated field imagery across the Home story", async ({ page }
     "New 5,000A switchboard installed at Georgia Tech's Holland Heating and Cooling Plant.",
     "Standby generator inside the new US Army Combat Readiness Center equipment courtyard.",
     "New data center cabinets and critical power equipment at Clayton County Public Schools.",
-    "Representative leadership team at a commercial electrical facility.",
-    "Representative field-planning image for owner-led expertise.",
+    "Portrait of Data Power Source founder Robert L. Kent.",
   ]) {
     await expect(page.getByRole("img", { name: alt })).toBeVisible();
   }
 
-  await expect(page.locator('img[src*="generated"]')).toHaveCount(3);
+  await expect(page.locator('img[src*="generated"]')).toHaveCount(1);
   await expect(page.locator('img[src*="projects"]')).toHaveCount(3);
+  await expect(page.locator('img[alt*="Representative" i]')).toHaveCount(0);
 });
 
 test("uses the dedicated field-planning image as the FAQ hero background", async ({ page }) => {

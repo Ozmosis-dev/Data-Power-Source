@@ -83,7 +83,7 @@ test.describe("Home company preview pass", () => {
     }
   });
 
-  test("uses leadership photography with a compact overlapping IEC credential", async ({
+  test("uses verified founder photography with a compact overlapping IEC credential", async ({
     page,
   }) => {
     await page.setViewportSize({ width: 1440, height: 1000 });
@@ -95,11 +95,11 @@ test.describe("Home company preview pass", () => {
 
     await expect(leadershipImage).toHaveAttribute(
       "src",
-      /dps-leadership-team\.webp/,
+      /robert-kent-enhanced\.png/,
     );
     await expect(leadershipImage).toHaveAttribute(
       "alt",
-      "Representative leadership team at a commercial electrical facility.",
+      "Portrait of Data Power Source founder Robert L. Kent.",
     );
     await expect(credential).toHaveCSS("position", "absolute");
     await expect(
@@ -146,7 +146,7 @@ test.describe("Home company preview pass", () => {
       page.getByTestId("company-preview").getByTestId("company-leadership-image"),
     ).toHaveAttribute(
       "src",
-      /dps-leadership-team\.webp/,
+      /robert-kent-enhanced\.png/,
     );
     await expect(
       page.getByTestId("company-preview").getByRole("link", { name: "Learn more about us" }),

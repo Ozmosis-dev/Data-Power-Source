@@ -1,4 +1,4 @@
-import { ArrowUpRight, Clock, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRight, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -71,7 +71,7 @@ export function SiteFooter() {
               Company
             </p>
             <ul className="mt-6 space-y-3">
-              {[...site.nav, { label: "Privacy", href: "/privacy" }].map((item) => (
+              {site.nav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -114,10 +114,6 @@ export function SiteFooter() {
             <a href={site.faxHref} className="mt-3 block text-small text-navy-200 hover:text-white">
               Fax {site.faxDisplay}
             </a>
-            <div className="mt-4 flex items-start gap-2 text-small text-navy-300">
-              <Clock aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
-              <span>Business hours pending client confirmation</span>
-            </div>
             <Button asChild variant="dark" className="mt-6 w-full">
               <QuoteTrigger>
                 Request a quote <ArrowUpRight aria-hidden="true" className="size-4" />
@@ -151,11 +147,8 @@ export function SiteFooter() {
         <div className="mx-auto flex max-w-container flex-col gap-4 px-5 py-6 text-small text-navy-400 sm:px-6 md:flex-row md:items-center md:justify-between">
           <p>© 2026 Data Power Source. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <span className="border border-dashed border-navy-600 px-2 py-1">
-              License numbers pending
-            </span>
-            <Link href="/privacy" className="hover:text-white">
-              Privacy Policy
+            <Link href="/site-map" className="hover:text-white">
+              Site Map
             </Link>
           </div>
         </div>

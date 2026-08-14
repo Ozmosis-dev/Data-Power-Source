@@ -16,13 +16,13 @@ test.describe("requested UI refinements", () => {
     }
   });
 
-  test("condenses the proof section and labels social proof clearly", async ({ page }) => {
+  test("condenses the proof section and labels documented organizations clearly", async ({ page }) => {
     await page.goto("/");
 
     await expect(page.getByText("Proof, not promises", { exact: true })).toBeVisible();
     await expect(page.getByTestId("proof-metrics")).toHaveCSS("border-radius", "0px");
-    await expect(page.getByText("Social proof", { exact: true })).toBeVisible();
-    await expect(page.getByText("Testimonial", { exact: true })).toBeVisible();
+    await expect(page.getByText("Documented project organizations", { exact: true })).toBeVisible();
+    await expect(page.getByText("Testimonial", { exact: true })).toHaveCount(0);
   });
 
   test("uses a matched CTA pair and a branded four-discipline strip", async ({ page }) => {
@@ -207,12 +207,9 @@ test.describe("requested UI refinements", () => {
     await expect(page.getByTestId("discipline-strip")).toHaveCSS("border-radius", "12px");
   });
 
-  test("uses the deep navy testimonial surface", async ({ page }) => {
+  test("does not render an unapproved testimonial surface", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.getByTestId("social-proof-card")).toHaveCSS(
-      "background-color",
-      "rgb(5, 33, 70)",
-    );
+    await expect(page.getByTestId("social-proof-card")).toHaveCount(0);
   });
 });

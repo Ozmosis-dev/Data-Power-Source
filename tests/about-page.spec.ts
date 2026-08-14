@@ -128,12 +128,13 @@ test.describe("About Data Power Source", () => {
 
     const qualification = page.getByTestId("about-qualification");
     await expect(qualification).toContainText(
-      "Additional license, insurance, and manufacturer credential details are pending client confirmation.",
+      "DPS is an Independent Electrical Contractors member serving Atlanta and Georgia.",
     );
+    await expect(qualification).not.toContainText("client confirmation");
     await expect(
       qualification.getByRole("heading", {
         level: 2,
-        name: "Recognized. Documented. Ready for review.",
+        name: "Recognized and documented.",
       }),
     ).toHaveCSS("color", "rgb(255, 255, 255)");
     await expect(qualification.getByTestId("qualification-check")).toHaveCSS(

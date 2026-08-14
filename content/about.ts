@@ -116,8 +116,7 @@ export const aboutProof = {
 
 export const aboutQualification = {
   overline: "Contractor qualification",
-  title: "Recognized. Documented. Ready for review.",
-  body:
-    "DPS is an Independent Electrical Contractors member serving Atlanta and Georgia. Additional license, insurance, and manufacturer credential details are pending client confirmation.",
+  title: "Recognized and documented.",
+  body: "DPS is an Independent Electrical Contractors member serving Atlanta and Georgia.",
   iecAlt: "Independent Electrical Contractors, Atlanta and Georgia.",
 } as const;

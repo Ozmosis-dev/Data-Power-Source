@@ -66,7 +66,7 @@ test.describe("home", () => {
       "Power delivered where downtime isn't an option.",
       "Built for facilities that have to stay on.",
       "Engineered, established, reliable.",
-      "Trusted by facilities across Georgia and the Southeast.",
+      "Work completed for recognized organizations.",
       "Power you can build on.",
     ]);
   });

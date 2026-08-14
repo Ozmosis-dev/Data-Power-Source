@@ -1,3 +1,10 @@
+export const siteFacts = {
+  serviceArea: "Based in Covington and serving the Greater Metro Atlanta area.",
+  projectFootprint:
+    "Documented project experience in Georgia, North Carolina, and Alabama.",
+  emergencyResponse: "24/7 emergency service with a 2-hour response across Metro Atlanta",
+} as const;
+
 export const site = {
   name: "Data Power Source",
   shortName: "DPS",
@@ -9,7 +16,7 @@ export const site = {
   faxHref: "tel:+17704989654",
   street: "11187 Bob Williams Parkway",
   cityStateZip: "Covington, GA 30014",
-  region: "Serving Metro Atlanta and Georgia.",
+  region: siteFacts.serviceArea,
   nav: [
     { label: "Industries", href: "/industries" },
     { label: "Projects", href: "/projects" },
@@ -70,6 +77,5 @@ export const site = {
       description: "Concept, engineering, drawings, installation, and commissioning under one roof.",
     },
   ],
-  proofLine:
-    "25 years in commercial & industrial electrical · Owner-led · NFPA 70E arc-flash trained · EMR .82–.86 (3-yr) · Drug- & alcohol-free workplace · 24/7 emergency, 2-hour response.",
+  proofLine: `25 years in commercial & industrial electrical · Owner-led · NFPA 70E arc-flash trained · EMR .82–.86 (3-yr) · Drug- & alcohol-free · ${siteFacts.emergencyResponse}.`,
 } as const;
