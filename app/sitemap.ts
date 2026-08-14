@@ -16,6 +16,7 @@ const routes = [
   "/projects",
   "/faq",
   "/contact",
+  "/site-map",
   "/privacy",
 ] as const;
 
