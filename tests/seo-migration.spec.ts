@@ -39,9 +39,11 @@ test.describe("legacy WordPress URL migration", () => {
         destination,
       );
 
-      const trailingSlash = await request.get(`${source}/`);
-      expect(trailingSlash.status()).toBe(200);
-      expect(new URL(trailingSlash.url()).pathname).toBe(destination);
+      const trailingSlash = await request.get(`${source}/`, { maxRedirects: 0 });
+      expect(trailingSlash.status()).toBe(308);
+      expect(
+        new URL(trailingSlash.headers().location, "https://datapowersource.com").pathname,
+      ).toBe(destination);
     });
   }
 
@@ -49,6 +51,12 @@ test.describe("legacy WordPress URL migration", () => {
     test(`${route} remains available`, async ({ request }) => {
       const response = await request.get(route);
       expect(response.status()).toBe(200);
+
+      const trailingSlash = await request.get(`${route}/`, { maxRedirects: 0 });
+      expect(trailingSlash.status()).toBe(308);
+      expect(
+        new URL(trailingSlash.headers().location, "https://datapowersource.com").pathname,
+      ).toBe(route);
     });
   }
 });
