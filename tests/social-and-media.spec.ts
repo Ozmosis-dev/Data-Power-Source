@@ -88,10 +88,10 @@ test("preserves the approved Robert L. Kent production asset and optimizes its d
   const hash = createHash("sha256").update(await readFile(portraitPath)).digest("hex");
   expect(hash).toBe("65c971f9a9a66cfa62cd5142ce5850a133a88ff5497eff75038b96970c9b0cf2");
 
-  await page.goto("/");
-  const portrait = page.getByTestId("company-leadership-image");
+  await page.goto("/about");
+  const portrait = page.getByTestId("founder-portrait").locator("img");
   await expect(portrait).toHaveAttribute("loading", "lazy");
-  await expect(portrait).toHaveAttribute("sizes", "(min-width: 1024px) 42vw, 100vw");
+  await expect(portrait).toHaveAttribute("sizes", "(min-width: 1024px) 40vw, 100vw");
   await expect(portrait).toHaveAttribute("src", /_next\/image/);
 });
 

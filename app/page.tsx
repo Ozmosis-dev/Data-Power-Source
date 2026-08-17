@@ -121,11 +121,11 @@ export default function HomePage() {
               >
                 <Image
                   data-testid="company-leadership-image"
-                  src="/images/about/robert-kent-enhanced.png"
-                  alt="Portrait of Data Power Source founder Robert L. Kent."
+                  src="/images/generated/faq-field-planning.webp"
+                  alt="Electrical professionals reviewing engineered drawings beside commercial switchgear."
                   fill
                   sizes="(min-width: 1024px) 42vw, 100vw"
-                  className="object-cover object-top"
+                  className="object-cover"
                 />
               </div>
               <aside
