@@ -152,12 +152,43 @@ export const homeIndustries = {
   overline: "Industries we serve",
   title: "Built for facilities that have to stay on.",
   items: [
-    "Data Centers",
-    "Healthcare & Assisted Living",
-    "Government & Military",
-    "Education",
-    "Broadcast & Telecom",
-    "Municipal & Utilities",
+    {
+      title: "Data Centers",
+      imageSrc: "/images/industries/data-centers-mission-critical.webp",
+      imageAlt: "Technician monitoring critical power equipment inside a data center.",
+      imagePosition: "center",
+    },
+    {
+      title: "Healthcare & Assisted Living",
+      imageSrc: "/images/industries/healthcare.webp",
+      imageAlt:
+        "Healthcare facility electrical infrastructure supporting continuous patient care.",
+      imagePosition: "center",
+    },
+    {
+      title: "Government & Military",
+      imageSrc: "/images/industries/military.webp",
+      imageAlt: "Military facility electrical systems built for reliable operations.",
+      imagePosition: "center",
+    },
+    {
+      title: "Education",
+      imageSrc: "/images/industries/education.webp",
+      imageAlt: "Campus electrical infrastructure serving an active education facility.",
+      imagePosition: "center",
+    },
+    {
+      title: "Broadcast & Telecom",
+      imageSrc: "/images/industries/broadcast-media.webp",
+      imageAlt: "Broadcast facility infrastructure supporting always-on communications.",
+      imagePosition: "center",
+    },
+    {
+      title: "Municipal & Utilities",
+      imageSrc: "/images/industries/government-municipal.webp",
+      imageAlt: "Municipal utility infrastructure serving essential public operations.",
+      imagePosition: "center",
+    },
   ],
 };
 

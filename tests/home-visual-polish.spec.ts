@@ -64,15 +64,61 @@ test.describe("Home visual polish", () => {
     expect(Math.abs(boxes[2]!.height - boxes[3]!.height)).toBeLessThanOrEqual(1);
   });
 
-  test("gives every industry an icon and a large quiet numeral", async ({ page }) => {
+  test("turns the industries into an asymmetric, image-led mosaic", async ({ page }) => {
     const industries = page.getByTestId("industry-card");
     await expect(industries).toHaveCount(6);
     await expect(page.getByTestId("industry-icon")).toHaveCount(6);
     await expect(page.getByTestId("industry-number")).toHaveCount(6);
 
+    const images = industries.locator("img");
+    await expect(images).toHaveCount(6);
+    for (const alt of [
+      "Technician monitoring critical power equipment inside a data center.",
+      "Healthcare facility electrical infrastructure supporting continuous patient care.",
+      "Military facility electrical systems built for reliable operations.",
+      "Campus electrical infrastructure serving an active education facility.",
+      "Broadcast facility infrastructure supporting always-on communications.",
+      "Municipal utility infrastructure serving essential public operations.",
+    ]) {
+      await expect(industries.getByRole("img", { name: alt })).toBeVisible();
+    }
+
     const numeral = page.getByTestId("industry-number").first();
     const size = Number.parseFloat(await numeral.evaluate((node) => getComputedStyle(node).fontSize));
     expect(size).toBeGreaterThanOrEqual(64);
+
+    const [firstBox, secondBox] = await Promise.all([
+      industries.nth(0).boundingBox(),
+      industries.nth(1).boundingBox(),
+    ]);
+    expect(firstBox).not.toBeNull();
+    expect(secondBox).not.toBeNull();
+    expect(firstBox!.width).toBeGreaterThan(secondBox!.width * 1.2);
+
+    const firstImage = images.first();
+    const restingTransform = await firstImage.evaluate((node) => getComputedStyle(node).transform);
+    await industries.first().hover();
+    await expect
+      .poll(() => firstImage.evaluate((node) => getComputedStyle(node).transform))
+      .not.toBe(restingTransform);
+    await expect(industries.first().getByText("Explore sector", { exact: true })).toBeVisible();
+  });
+
+  test("uses the approved founder portrait behind the owner-led expertise copy", async ({ page }) => {
+    const ownerCard = page.getByTestId("owner-led-card");
+
+    await expect(ownerCard.getByText("50+ years in the industry", { exact: true })).toBeVisible();
+    await expect(ownerCard.getByText("Why / 01", { exact: true })).toHaveCount(0);
+    await expect(
+      ownerCard.getByRole("img", {
+        name: "Founder and president Robert L. Kent.",
+      }),
+    ).toBeVisible();
+    await expect(ownerCard.getByTestId("owner-led-gradient")).toHaveCSS(
+      "background-image",
+      /linear-gradient/,
+    );
+    await expect(ownerCard.getByRole("heading", { name: "Owner-led expertise." })).toBeVisible();
   });
 
   test("uses verified project organizations without representative team imagery", async ({

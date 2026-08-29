@@ -255,6 +255,14 @@ test.describe("service detail pages", () => {
     await expect(capabilities).toHaveAttribute("data-presentation", "split");
     await expect(capabilities.getByRole("heading", { level: 4 })).toHaveCount(6);
     await expect(capabilities.locator("li")).toHaveCount(13);
+
+    const proof = page.getByTestId("service-proof");
+    await expect(proof.getByTestId("service-proof-image")).toBeVisible();
+    await expect(
+      proof.getByRole("img", {
+        name: "Modern commercial switchgear installation inside an industrial electrical room.",
+      }),
+    ).toBeVisible();
   });
 
   test("restores every design-build benefit from the approved client content", async ({ page }) => {

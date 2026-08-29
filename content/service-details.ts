@@ -90,6 +90,8 @@ export type ServiceDetail = {
     label: string;
     title: string;
     body: string;
+    imageSrc?: string;
+    imageAlt?: string;
     metrics?: { value: string; label: string }[];
     quote?: string;
   };
@@ -248,6 +250,9 @@ const electrical: ServiceDetail = {
     title: "From service entrance to final connection.",
     body:
       "Clean, code-compliant installation and close attention to detail help every system perform as designed today and for years to come.",
+    imageSrc: "/images/generated/project-switchboard-modernization.webp",
+    imageAlt:
+      "Modern commercial switchgear installation inside an industrial electrical room.",
   },
   related: {
     industries: ["Commercial facilities", "Industrial operations", "Fleet and workplace", "Multi-family and retail"],

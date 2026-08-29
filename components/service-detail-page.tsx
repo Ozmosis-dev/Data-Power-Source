@@ -519,13 +519,16 @@ function FocusSection({ service }: { service: ServiceDetail }) {
 }
 
 function ProofSection({ service }: { service: ServiceDetail }) {
+  const hasImage = Boolean(service.proof.imageSrc && service.proof.imageAlt);
+
   return (
     <section
       data-testid="service-proof"
-      className="bg-[var(--service-surface)] py-20 text-white md:py-24"
+      className="relative overflow-hidden bg-[var(--service-surface)] py-20 text-white md:py-24"
     >
-      <div className="mx-auto grid max-w-container gap-10 px-5 sm:px-6 lg:grid-cols-12 lg:items-end">
-        <Reveal className="lg:col-span-8">
+      <div aria-hidden="true" className="service-detail-grid absolute inset-0 opacity-45" />
+      <div className="relative mx-auto grid max-w-container gap-10 px-5 sm:px-6 lg:grid-cols-12 lg:items-stretch">
+        <Reveal className={hasImage ? "flex flex-col justify-center lg:col-span-7 lg:pr-8" : "lg:col-span-8"}>
           <p className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-white/70">
             {service.proof.label}
           </p>
@@ -541,6 +544,27 @@ function ProofSection({ service }: { service: ServiceDetail }) {
             </p>
           ) : null}
         </Reveal>
+        {hasImage ? (
+          <Reveal className="lg:col-span-5" delay={60}>
+            <figure
+              data-testid="service-proof-image"
+              className="relative min-h-[300px] overflow-hidden rounded-xl border border-white/20 bg-navy-950 shadow-[0_28px_65px_-34px_rgba(3,17,38,0.9)] lg:h-full lg:min-h-[340px]"
+            >
+              <Image
+                src={service.proof.imageSrc!}
+                alt={service.proof.imageAlt!}
+                fill
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                className="object-cover"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,17,38,0.3)_0%,rgba(3,17,38,0.02)_55%,rgba(3,17,38,0.12)_100%)]"
+              />
+              <div aria-hidden="true" className="absolute inset-0 ring-1 ring-inset ring-white/15" />
+            </figure>
+          </Reveal>
+        ) : null}
         {service.proof.metrics?.length ? (
           <Reveal className="grid gap-4 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1" delay={60}>
             {service.proof.metrics.map((metric) => (

@@ -40,6 +40,14 @@ import {
 export const metadata: Metadata = homeMeta;
 
 const industryIcons = [Database, Heartbeat, ShieldChevron, GraduationCap, Broadcast, Factory];
+const industryCardSpans = [
+  "lg:col-span-7",
+  "lg:col-span-5",
+  "lg:col-span-3",
+  "lg:col-span-3",
+  "lg:col-span-3",
+  "lg:col-span-3",
+];
 
 const organizations = [
   {
@@ -221,35 +229,60 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="mt-10 grid overflow-hidden rounded-xl border-l border-t border-neutral-200 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-12">
             {homeIndustries.items.map((industry, index) => {
               const Icon = industryIcons[index];
               return (
                 <Link
-                  key={industry}
+                  key={industry.title}
                   href="/industries"
                   data-testid="industry-card"
-                  className="group relative isolate flex min-h-44 flex-col justify-between overflow-hidden border-b border-r border-neutral-200 bg-white p-6 transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-brand-700 active:bg-brand-800 focus-visible:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-500"
+                  className={`group relative isolate flex min-h-[250px] flex-col justify-between overflow-hidden rounded-xl bg-navy-950 p-6 shadow-[0_20px_50px_-36px_rgba(5,33,70,0.85)] transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_28px_65px_-34px_rgba(5,33,70,0.92)] active:translate-y-0 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-3 motion-reduce:transform-none motion-reduce:transition-none sm:min-h-[280px] ${industryCardSpans[index] ?? "lg:col-span-4"}`}
                 >
+                  <Image
+                    src={industry.imageSrc}
+                    alt={industry.imageAlt}
+                    fill
+                    sizes={
+                      index === 0
+                        ? "(min-width: 1024px) 58vw, (min-width: 640px) 50vw, 100vw"
+                        : "(min-width: 1024px) 34vw, (min-width: 640px) 50vw, 100vw"
+                    }
+                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.07] group-focus-visible:scale-[1.07] motion-reduce:transform-none motion-reduce:transition-none"
+                    style={{ objectPosition: industry.imagePosition }}
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,17,38,0.22)_0%,rgba(3,17,38,0.44)_42%,rgba(3,17,38,0.94)_100%)] transition-colors duration-500 group-hover:bg-[linear-gradient(180deg,rgba(22,39,146,0.18)_0%,rgba(5,33,70,0.5)_45%,rgba(3,17,38,0.96)_100%)] group-focus-visible:bg-[linear-gradient(180deg,rgba(22,39,146,0.18)_0%,rgba(5,33,70,0.5)_45%,rgba(3,17,38,0.96)_100%)]"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/15 transition-colors duration-500 group-hover:ring-white/30 group-focus-visible:ring-white/30"
+                  />
                   <div className="relative z-[1] flex items-start justify-between gap-5">
                     <span
                       data-testid="industry-icon"
-                      className="grid size-12 place-items-center rounded-lg border border-neutral-200 bg-neutral-50 text-brand-700 transition-colors duration-300 group-hover:border-white/25 group-hover:bg-white/10 group-hover:text-white group-focus-visible:text-white"
+                      className="grid size-11 place-items-center rounded-lg border border-white/20 bg-navy-950/40 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-sm transition-[background-color,border-color,transform] duration-500 group-hover:scale-105 group-hover:border-white/35 group-hover:bg-brand-700/65 group-focus-visible:scale-105 group-focus-visible:border-white/35 group-focus-visible:bg-brand-700/65 motion-reduce:transform-none"
                     >
                       <Icon aria-hidden="true" size={24} weight="regular" />
                     </span>
-                    <ArrowUpRight
-                      aria-hidden="true"
-                      className="size-4 text-neutral-400 transition-[color,transform] duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white group-focus-visible:text-white motion-reduce:transform-none"
-                    />
+                    <span className="grid size-10 place-items-center rounded-full border border-white/25 bg-navy-950/30 text-white backdrop-blur-sm transition-[background-color,transform] duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:bg-white group-hover:text-navy-900 group-focus-visible:-translate-y-0.5 group-focus-visible:translate-x-0.5 group-focus-visible:bg-white group-focus-visible:text-navy-900 motion-reduce:transform-none">
+                      <ArrowUpRight aria-hidden="true" className="size-4" />
+                    </span>
                   </div>
-                  <span className="relative z-[1] mt-8 max-w-[13rem] font-display text-[1.14rem] font-semibold leading-snug text-navy-800 transition-colors group-hover:text-white group-focus-visible:text-white">
-                    {industry}
-                  </span>
+                  <div className="relative z-[1] mt-12 transition-transform duration-500 group-hover:-translate-y-1 group-focus-visible:-translate-y-1 motion-reduce:transform-none">
+                    <span className="block max-w-[15rem] font-display text-[1.45rem] font-semibold leading-[1.08] tracking-[-0.025em] text-white md:text-[1.65rem]">
+                      {industry.title}
+                    </span>
+                    <span className="mt-3 inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-blue-100 opacity-80 transition-[opacity,transform] duration-500 group-hover:translate-x-1 group-hover:opacity-100 group-focus-visible:translate-x-1 group-focus-visible:opacity-100 motion-reduce:transform-none">
+                      Explore sector
+                      <ArrowRight aria-hidden="true" className="size-3.5" />
+                    </span>
+                  </div>
                   <span
                     data-testid="industry-number"
                     aria-hidden="true"
-                    className="pointer-events-none absolute -bottom-7 right-4 font-display text-[5rem] font-bold leading-none tracking-[-0.07em] text-brand-700/[0.07] transition-colors duration-300 group-hover:text-white/[0.12] group-focus-visible:text-white/[0.12]"
+                    className="pointer-events-none absolute -bottom-6 right-4 z-[1] font-display text-[5rem] font-bold leading-none tracking-[-0.07em] text-white/[0.13] transition-[color,transform] duration-500 group-hover:-translate-y-1 group-hover:text-white/[0.2] group-focus-visible:-translate-y-1 group-focus-visible:text-white/[0.2] motion-reduce:transform-none"
                   >
                     0{index + 1}
                   </span>
@@ -275,12 +308,31 @@ export default function HomePage() {
           </div>
           <div className="mt-12 grid gap-5 lg:grid-cols-12">
             <Reveal className="lg:col-span-6 lg:row-span-2">
-              <article className="relative flex h-full min-h-[430px] flex-col overflow-hidden rounded-xl border border-navy-600 bg-navy-800 p-7 text-white md:p-9">
-                <div aria-hidden="true" className="technical-grid-subtle absolute inset-0 opacity-30" />
+              <article
+                data-testid="owner-led-card"
+                className="relative flex h-full min-h-[430px] flex-col overflow-hidden rounded-xl border border-navy-600 bg-navy-950 p-7 text-white shadow-[0_24px_60px_-42px_rgba(5,33,70,0.95)] md:p-9"
+              >
+                <Image
+                  src="/images/about/robert-kent-enhanced.png"
+                  alt="Founder and president Robert L. Kent."
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover object-[center_23%]"
+                />
+                <div
+                  data-testid="owner-led-gradient"
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-[linear-gradient(100deg,rgba(3,17,38,0.92)_0%,rgba(3,17,38,0.64)_38%,rgba(3,17,38,0.12)_72%,rgba(3,17,38,0.04)_100%)]"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,17,38,0.02)_18%,rgba(3,17,38,0.76)_100%)]"
+                />
+                <div aria-hidden="true" className="technical-grid-subtle absolute inset-0 opacity-20 mix-blend-soft-light" />
                 <div className="relative z-[1] flex items-center justify-between">
                   <SealCheck aria-hidden="true" className="size-7 text-blue-200" />
                   <span className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-blue-200">
-                    Why / 01
+                    50+ years in the industry
                   </span>
                 </div>
                 <h3 className="relative z-[1] mt-auto max-w-lg font-display text-[2rem] font-semibold tracking-[-0.02em] text-white">
