@@ -30,6 +30,61 @@ const retainedLegacyRoutes = [
   "/projects/georgia-state-university-classroom-south-phase-2-transformer",
 ] as const;
 
+test.describe("canonical URL normalization", () => {
+  test("redirects the www hostname to the HTTPS apex hostname with a 301", async ({
+    request,
+  }) => {
+    const response = await request.get("/about?source=www", {
+      headers: { host: "www.datapowersource.com" },
+      maxRedirects: 0,
+    });
+
+    expect(response.status()).toBe(301);
+    expect(response.headers().location).toBe(
+      "https://datapowersource.com/about?source=www",
+    );
+  });
+
+  test("redirects proxied HTTP requests to the HTTPS canonical URL with a 301", async ({
+    request,
+  }) => {
+    const response = await request.get("/projects?source=http", {
+      headers: {
+        host: "datapowersource.com",
+        "x-forwarded-proto": "http",
+      },
+      maxRedirects: 0,
+    });
+
+    expect(response.status()).toBe(301);
+    expect(response.headers().location).toBe(
+      "https://datapowersource.com/projects?source=http",
+    );
+  });
+
+  test("collapses HTTP plus www to the canonical URL in one 301", async ({ request }) => {
+    const response = await request.get("/contact?source=http-www", {
+      headers: {
+        host: "www.datapowersource.com",
+        "x-forwarded-proto": "http",
+      },
+      maxRedirects: 0,
+    });
+
+    expect(response.status()).toBe(301);
+    expect(response.headers().location).toBe(
+      "https://datapowersource.com/contact?source=http-www",
+    );
+  });
+
+  test("normalizes trailing slashes according to trailingSlash: false", async ({ request }) => {
+    const response = await request.get("/about/", { maxRedirects: 0 });
+
+    expect(response.status()).toBe(308);
+    expect(response.headers().location).toBe("/about");
+  });
+});
+
 test.describe("legacy WordPress URL migration", () => {
   for (const [source, destination] of permanentRedirects) {
     test(`${source} permanently redirects to ${destination}`, async ({ request }) => {
@@ -43,6 +98,17 @@ test.describe("legacy WordPress URL migration", () => {
       expect(trailingSlash.status()).toBe(308);
       expect(
         new URL(trailingSlash.headers().location, "https://datapowersource.com").pathname,
+      ).toBe(source);
+
+      const normalizedLegacyUrl = await request.get(trailingSlash.headers().location, {
+        maxRedirects: 0,
+      });
+      expect(normalizedLegacyUrl.status()).toBe(308);
+      expect(
+        new URL(
+          normalizedLegacyUrl.headers().location,
+          "https://datapowersource.com",
+        ).pathname,
       ).toBe(destination);
     });
   }

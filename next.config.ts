@@ -1,5 +1,23 @@
 import type { NextConfig } from "next";
 
+const CANONICAL_ORIGIN = "https://datapowersource.com";
+type Redirects = Awaited<ReturnType<NonNullable<NextConfig["redirects"]>>>;
+
+const canonicalRedirects: Redirects = [
+  {
+    source: "/:path*",
+    has: [{ type: "header", key: "x-forwarded-proto", value: "http" }],
+    destination: `${CANONICAL_ORIGIN}/:path*`,
+    statusCode: 301,
+  },
+  {
+    source: "/:path*",
+    has: [{ type: "host", value: "www.datapowersource.com" }],
+    destination: `${CANONICAL_ORIGIN}/:path*`,
+    statusCode: 301,
+  },
+];
+
 const legacyRedirects = [
   { source: "/about-us", destination: "/about", permanent: true },
   { source: "/about/contact-information", destination: "/contact", permanent: true },
@@ -36,17 +54,10 @@ const legacyRedirects = [
 
 const nextConfig: NextConfig = {
   trailingSlash: false,
-  skipTrailingSlashRedirect: true,
   turbopack: {
     root: process.cwd(),
   },
-  redirects: async () => [
-    ...legacyRedirects.flatMap((redirect) => [
-      redirect,
-      { ...redirect, source: `${redirect.source}/` },
-    ]),
-    { source: "/:path+/", destination: "/:path+", permanent: true },
-  ],
+  redirects: async () => [...canonicalRedirects, ...legacyRedirects],
 };
 
 export default nextConfig;
