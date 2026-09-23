@@ -28,6 +28,46 @@ test.describe("approved September 2026 content revisions", () => {
     await expect(main).not.toContainText("2-hour");
   });
 
+  test("keeps the blue service area secondary within the homepage title hierarchy", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/");
+
+    const title = page.getByRole("heading", {
+      level: 1,
+      name: "Commercial & Industrial Electrical Contractor Serving Metro Atlanta & the SE US",
+    });
+    const serviceAreaAccent = page.getByTestId("hero-title-accent");
+
+    const desktopTitleSize = await title.evaluate((element) =>
+      Number.parseFloat(getComputedStyle(element).fontSize),
+    );
+    const desktopAccentStyle = await serviceAreaAccent.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return {
+        display: style.display,
+        fontSize: Number.parseFloat(style.fontSize),
+      };
+    });
+
+    expect(desktopTitleSize).toBeLessThanOrEqual(60);
+    expect(desktopAccentStyle.fontSize / desktopTitleSize).toBeGreaterThanOrEqual(0.8);
+    expect(desktopAccentStyle.fontSize / desktopTitleSize).toBeLessThanOrEqual(0.84);
+    expect(desktopAccentStyle.display).toBe("block");
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    const mobileTitleSize = await title.evaluate((element) =>
+      Number.parseFloat(getComputedStyle(element).fontSize),
+    );
+    const mobileAccentSize = await serviceAreaAccent.evaluate((element) =>
+      Number.parseFloat(getComputedStyle(element).fontSize),
+    );
+
+    expect(mobileTitleSize).toBeLessThanOrEqual(36);
+    expect(mobileAccentSize).toBeLessThan(mobileTitleSize);
+  });
+
   test("updates the About founding year and response time", async ({ page }) => {
     await page.goto("/about");
 

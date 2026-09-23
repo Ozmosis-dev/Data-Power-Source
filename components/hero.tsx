@@ -103,16 +103,18 @@ export function Hero({
           <h1
             className={cn(
               "mt-7 max-w-5xl font-display font-bold tracking-[-0.04em] text-white",
-              compact
-                ? "text-h1 md:text-display lg:text-[4.75rem] lg:leading-[0.98]"
-                : "text-h1 md:text-display lg:text-[4.75rem] lg:leading-[0.98]",
+              hasTitleAccent
+                ? "text-[clamp(2.25rem,5.2vw,3.75rem)] leading-[1.04]"
+                : compact
+                  ? "text-h1 md:text-display lg:text-[4.75rem] lg:leading-[0.98]"
+                  : "text-h1 md:text-display lg:text-[4.75rem] lg:leading-[0.98]",
             )}
           >
             {titlePrefix}
             {hasTitleAccent ? (
               <span
                 data-testid="hero-title-accent"
-                className="pb-1 italic leading-[1.1] text-blue-200"
+                className="mt-2 block pb-1 text-[0.82em] font-semibold italic leading-[1.1] tracking-[-0.025em] text-blue-200 sm:mt-3"
               >
                 {titleAccent}
               </span>
