@@ -20,7 +20,7 @@ export function localBusinessSchema() {
         alternateName: site.shortName,
         description:
           "Metro Atlanta commercial and industrial electrical contractor specializing in full electrical builds, UPS, standby generators, connectivity, and design-build.",
-        foundingDate: "2001",
+        foundingDate: "1992",
         telephone: "+1-770-498-9622",
         faxNumber: "+1-770-498-9654",
         address: {

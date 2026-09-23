@@ -82,7 +82,7 @@ export function brandedSocialImage({
             paddingTop: "20px",
           }}
         >
-          <span>Metro Atlanta · Serving commercial and industrial facilities since 2001</span>
+          <span>Metro Atlanta &amp; the SE US · Serving commercial and industrial facilities since 1992</span>
           <span>(770) 498-9622</span>
         </div>
       </div>

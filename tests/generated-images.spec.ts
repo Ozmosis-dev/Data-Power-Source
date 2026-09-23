@@ -9,7 +9,7 @@ test("uses documented project and approved field imagery across the Home story",
     "DPS electricians inspecting commercial switchgear in an industrial plant room.",
     "New 5,000A switchboard installed at Georgia Tech's Holland Heating and Cooling Plant.",
     "Standby generator inside the new US Army Combat Readiness Center equipment courtyard.",
-    "New data center cabinets and critical power equipment at Clayton County Public Schools.",
+    "New data center cabinets and critical power equipment at a local school district data center.",
     "Electrical professionals reviewing engineered drawings beside commercial switchgear.",
   ]) {
     await expect(page.getByRole("img", { name: alt })).toBeVisible();

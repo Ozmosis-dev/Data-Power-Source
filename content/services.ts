@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 export const servicesMeta = pageMetadata({
   title: "Commercial Electrical Services in Metro Atlanta | Data Power Source",
   description:
-    "Commercial electrical services for Metro Atlanta facilities, including installations, UPS and generator backup, low-voltage cabling, and in-house design-build since 2001.",
+    "Commercial electrical services for Metro Atlanta facilities, including installations, UPS and generator backup, low-voltage cabling, and in-house design-build since 1992.",
   path: "/services",
 });
 
@@ -11,7 +11,7 @@ export const servicesHero = {
   overline: "Services",
   title: "Commercial Electrical Services for Business Continuity",
   lead:
-    "Since 2001, Data Power Source has helped Greater Metro Atlanta facilities design, install, and maintain the systems that support their operations, from a single branch circuit to a complete standby-and-UPS system protecting a critical facility.",
+    "Since 1992, Data Power Source has helped Greater Metro Atlanta facilities design, install, and maintain the systems that support their operations, from a single branch circuit to a complete standby-and-UPS system protecting a critical facility.",
 };
 
 export const servicesPillars = {
@@ -36,7 +36,7 @@ export const servicesPillars = {
       index: "02",
       title: "Mission Critical — UPS Backup & Generators",
       body:
-        "Standby generators, UPS systems, and combined backup power for facilities that can't go dark — installed and maintained by crews who work in critical environments every day.",
+        "Standby generators, UPS systems, and combined backup power for facilities that can't go dark — installed by crews who work in critical environments every day.",
       href: "/services/mission-critical-power",
       linkLabel: "Explore mission critical",
       discipline: "mission-critical" as const,
@@ -44,7 +44,7 @@ export const servicesPillars = {
       callouts: [
         "UPS backup systems",
         "Standby generator systems",
-        "Preventive maintenance",
+        "Critical power distribution",
       ],
     },
   ],
@@ -69,7 +69,7 @@ export const allServices = {
     {
       title: "Mission Critical — UPS Backup & Generators",
       description:
-        "Standby generator installation, UPS installation, combined systems, data-center electrical, cable sets, UPS battery replacement, cooling-unit installs, and preventive-maintenance agreements.",
+        "Standby generator installation, UPS installation, combined systems, data-center electrical, cable sets, UPS battery replacement, cooling-unit installs, and critical power distribution.",
       href: "/services/mission-critical-power",
       discipline: "mission-critical" as const,
       note: "Covers both UPS and standby generators.",
@@ -77,7 +77,7 @@ export const allServices = {
         "Standby generator installation",
         "UPS installation",
         "Data-center electrical",
-        "Batteries & preventive maintenance",
+        "Batteries & critical distribution",
       ],
     },
     {
@@ -132,7 +132,7 @@ export const process = {
     {
       title: "Maintain.",
       body:
-        "We keep it running with preventive-maintenance agreements for UPS, generators, and critical systems.",
+        "We identify electrical distribution hotspots with infrared thermography and can recommend trusted partners for UPS and generator service.",
     },
   ],
 };

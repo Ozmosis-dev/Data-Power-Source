@@ -23,12 +23,12 @@ test.describe("About Data Power Source", () => {
     await page.goto("/about");
 
     await expect(page).toHaveTitle(
-      "About Data Power Source | Electrical Contractor Since 2001",
+      "About Data Power Source | Electrical Contractor Since 1992",
     );
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: "Metro Atlanta Electrical Contractor Since 2001",
+        name: "Metro Atlanta Electrical Contractor Since 1992",
       }),
     ).toBeVisible();
     await expect(page.getByText("Coming in the next pass.", { exact: true })).toHaveCount(0);
@@ -121,7 +121,7 @@ test.describe("About Data Power Source", () => {
 
     const stats = page.getByTestId("about-stats");
     await stats.scrollIntoViewIfNeeded();
-    for (const proof of ["Since 2001", "50+ years", ".82-.86 EMR", "2-hour"]) {
+    for (const proof of ["Since 1992", "50+ years", ".82-.86 EMR", "4-hour"]) {
       await expect(stats.getByText(proof, { exact: true })).toBeVisible();
     }
     await expect(stats).toContainText("Emergency response across Metro Atlanta");

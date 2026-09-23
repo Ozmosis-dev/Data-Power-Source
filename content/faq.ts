@@ -54,12 +54,12 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "What generator sizes do you install?",
         answer:
-          "We've installed diesel and natural-gas standby units from 250kW to 500kW and up, with the transfer switches, service, and fuel systems to match. The right size comes from your facility's real demand, not a catalog default.",
+          "We've installed natural gas and diesel generators from 20kW all the way to 2.5MW.",
       },
       {
-        question: "Can you service a UPS or generator you didn't install?",
+        question: "Can you service UPS & Generator units?",
         answer:
-          "Yes. We offer preventive-maintenance agreements — battery testing, load checks, and routine service — for UPS and generators regardless of who installed them.",
+          "We do not perform preventive maintenance services on UPS or Generator units but have trusted partners that we routinely work with that we can recommend for service and repairs.",
       },
       {
         question: "What does an automatic transfer switch do in a standby generator system?",
@@ -69,7 +69,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "How often should commercial UPS batteries be inspected or tested?",
         answer:
-          "There is no single schedule for every UPS. Battery age, temperature, operating conditions, and the manufacturer's requirements all matter. Regular visual inspection, system monitoring, and battery testing are part of a sound preventive-maintenance plan. We can test the battery system, document its condition, and replace batteries when the results show it is time.",
+          "There is no single schedule for every UPS. Battery age, temperature, operating conditions, and the manufacturer's requirements all matter. Regular visual inspection, system monitoring, and battery testing are part of a sound preventive-maintenance plan. We can recommend trusted service and repair partners to inspect and test the system.",
       },
     ],
   },
@@ -94,9 +94,9 @@ export const faqGroups: FaqGroup[] = [
           'Yes. "No engineer-stamped drawings, no problem." We take a need from concept to engineered drawing to finished system in-house, without sending you to a separate engineering firm first.',
       },
       {
-        question: "Do you offer maintenance agreements?",
+        question: "Preventive Maintenance",
         answer:
-          "Yes — for UPS, generators, and general electrical systems. Planned maintenance keeps small issues from becoming outages.",
+          "We perform infrared thermography to determine potential hotspots in electrical distribution and identify problems you can't see by looking at the equipment. A hotspot on a thermal image is usually the earliest outward sign of a developing fault.",
       },
       {
         question:

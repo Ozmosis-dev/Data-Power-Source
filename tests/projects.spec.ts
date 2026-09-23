@@ -21,9 +21,9 @@ const projects = [
   },
   {
     slug: "pruitt-assisted-living-facility",
-    heading: "Pruitt Assisted Living Facility Standby Power",
+    heading: "Local Assisted Living Facility Standby Power",
     photos: 3,
-    facts: ["Pruitt Assisted Living", "Macon, GA", "4.4 months", "500kW", "2,000A"],
+    facts: ["Local Assisted Living Facility", "Macon, GA", "4.4 months", "500kW", "2,000A"],
   },
   {
     slug: "2010-earthlink-atlanta-network-service-addition",
@@ -33,9 +33,9 @@ const projects = [
   },
   {
     slug: "clayton-county-public-schools-data-center-modifications",
-    heading: "Clayton County Public Schools Data Center Modifications",
+    heading: "Local School District Data Center",
     photos: 4,
-    facts: ["Clayton County Public Schools", "Jonesboro, GA", "$1.1 million", "Approximately 6 months", "400kW"],
+    facts: ["Local School District", "Jonesboro, GA", "$1.1 million", "Approximately 6 months", "400kW"],
   },
   {
     slug: "chatham-county-data-center-electrical-mechanical-installation",

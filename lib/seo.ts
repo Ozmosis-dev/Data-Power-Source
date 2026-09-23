@@ -4,7 +4,7 @@ export const SITE_URL = "https://datapowersource.com";
 
 export const DEFAULT_SOCIAL_IMAGE = {
   url: "/opengraph-image",
-  alt: "Data Power Source — Metro Atlanta Commercial & Industrial Electrical Contractor",
+  alt: "Data Power Source — Metro Atlanta & the SE US Commercial & Industrial Electrical Contractor",
   width: 1200,
   height: 630,
   type: "image/png",
@@ -25,7 +25,7 @@ const FAMILY_SOCIAL_IMAGES = {
   },
   about: {
     url: "/about/opengraph-image",
-    alt: "About Data Power Source — serving Metro Atlanta since 2001",
+    alt: "About Data Power Source — serving Metro Atlanta since 1992",
   },
   contact: {
     url: "/contact/opengraph-image",

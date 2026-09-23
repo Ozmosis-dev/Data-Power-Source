@@ -41,7 +41,7 @@ export const contactCopy = {
     "Call to discuss the work directly, or send a project brief and our team will follow up.",
   emergencyTitle: "Need help now?",
   emergencyBody:
-    "DPS offers 24/7 emergency service with a 2-hour response across Metro Atlanta.",
+    "DPS offers 24/7 emergency service with a 4-hour response across Metro Atlanta & the SE US.",
   nextTitle: "What happens next.",
   nextSteps: [
     {

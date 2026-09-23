@@ -3,15 +3,15 @@ import { expect, test } from "playwright/test";
 const intentPages = [
   {
     path: "/",
-    title: "Commercial & Industrial Electrical Contractor in Metro Atlanta | Data Power Source",
-    heading: "Metro Atlanta Commercial & Industrial Electrical Contractor",
-    lead: /Since 2001.*commercial and industrial facilities.*Metro Atlanta/i,
+    title: "Commercial & Industrial Electrical Contractor in Metro Atlanta & the SE US | Data Power Source",
+    heading: "Commercial & Industrial Electrical Contractor Serving Metro Atlanta & the SE US",
+    lead: /Since 1992.*commercial and industrial facilities.*Metro Atlanta & the SE US/i,
   },
   {
     path: "/services",
     title: "Commercial Electrical Services in Metro Atlanta | Data Power Source",
     heading: "Commercial Electrical Services for Business Continuity",
-    lead: /Since 2001.*design, install, and maintain/i,
+    lead: /Since 1992.*design, install, and maintain/i,
   },
   {
     path: "/services/commercial-industrial-electrical",
@@ -51,8 +51,8 @@ const intentPages = [
   },
   {
     path: "/about",
-    title: "About Data Power Source | Electrical Contractor Since 2001",
-    heading: "Metro Atlanta Electrical Contractor Since 2001",
+    title: "About Data Power Source | Electrical Contractor Since 1992",
+    heading: "Metro Atlanta Electrical Contractor Since 1992",
     lead: /owner-led commercial and industrial electrical work/i,
   },
   {

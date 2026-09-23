@@ -26,7 +26,7 @@ export const safetyProgram = {
   practices: [
     {
       title: "Prepared before the work",
-      body: "Every new hire receives a program briefing, required PPE, and clear expectations before entering the job site.",
+      body: "New hires receive safety training and complete an OSHA 10 course prior to stepping onto the 1st project.",
       icon: "clipboard",
     },
     {
@@ -36,7 +36,7 @@ export const safetyProgram = {
     },
     {
       title: "Ready to respond",
-      body: "All employees complete an 8-hour First Aid and CPR training course so crews are prepared when seconds matter.",
+      body: "All Data Power Source employees maintain current First Aid and CPR certification, achieved through an 8-hour course and renewed every three years in line with the most current industry best practices.",
       icon: "first-aid",
     },
   ],

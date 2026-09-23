@@ -1,9 +1,9 @@
 export const siteFacts = {
-  foundedYear: 2001,
-  serviceArea: "Based in Covington and serving the Greater Metro Atlanta area.",
+  foundedYear: 1992,
+  serviceArea: "Based in Covington and serving Metro Atlanta & the SE US.",
   projectFootprint:
     "Documented project experience in Georgia, North Carolina, and Alabama.",
-  emergencyResponse: "24/7 emergency service with a 2-hour response across Metro Atlanta",
+  emergencyResponse: "24/7 emergency service with a 4-hour response across Metro Atlanta & the SE US",
 } as const;
 
 export const site = {
@@ -79,5 +79,5 @@ export const site = {
       description: "Concept, engineering, drawings, installation, and commissioning under one roof.",
     },
   ],
-  proofLine: `Serving commercial & industrial facilities since ${siteFacts.foundedYear} · Owner-led · NFPA 70E arc-flash trained · EMR .82–.86 (3-yr) · Drug- & alcohol-free · ${siteFacts.emergencyResponse}.`,
+  proofLine: `Serving Metro Atlanta & the SE US since ${siteFacts.foundedYear} · Owner-led · NFPA 70E arc-flash trained · EMR .82–.86 (3-yr) · Drug- & alcohol-free · 24/7 emergency · 4-hour response.`,
 } as const;

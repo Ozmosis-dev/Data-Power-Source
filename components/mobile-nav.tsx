@@ -121,7 +121,7 @@ export function MobileNav() {
             </div>
           </nav>
           <div className="border-t border-navy-700 pt-5">
-            <p className="text-small text-navy-300">24/7 emergency · 2-hour response</p>
+            <p className="text-small text-navy-300">24/7 emergency · 4-hour response</p>
             <Button asChild variant="dark" className="mt-4 w-full">
               <QuoteTrigger>Request a quote</QuoteTrigger>
             </Button>

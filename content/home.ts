@@ -1,24 +1,24 @@
 import { pageMetadata } from "@/lib/seo";
 
 export const homeMeta = pageMetadata({
-  title: "Commercial & Industrial Electrical Contractor in Metro Atlanta | Data Power Source",
+  title: "Commercial & Industrial Electrical Contractor in Metro Atlanta & the SE US | Data Power Source",
   description:
-    "Data Power Source has served Metro Atlanta commercial and industrial facilities since 2001 with electrical installation, UPS, standby generator, and low-voltage systems.",
+    "Data Power Source has served commercial and industrial facilities across Metro Atlanta & the SE US since 1992 with electrical installation, UPS, standby generator, and low-voltage systems.",
   path: "/",
 });
 
 export const homeHero = {
-  overline: "Metro Atlanta · Commercial & Industrial Electrical",
-  title: "Metro Atlanta Commercial & Industrial Electrical Contractor",
+  overline: "Metro Atlanta & the SE US · Commercial & Industrial Electrical",
+  title: "Commercial & Industrial Electrical Contractor Serving Metro Atlanta & the SE US",
   lead:
-    "Since 2001, Data Power Source has installed and maintained the electrical systems that keep commercial and industrial facilities running across Metro Atlanta. Power you can build on, installed right and kept running.",
+    "Since 1992, Data Power Source has installed and maintained the electrical systems that keep commercial and industrial facilities running across Metro Atlanta & the SE US. Power you can build on, installed right and kept running.",
   imageAlt: "DPS electricians inspecting commercial switchgear in an industrial plant room.",
   imageSrc: "/images/generated/home-hero-switchgear.webp",
   trust: [
-    "Serving Metro Atlanta since 2001",
+    "Serving Metro Atlanta & the SE US since 1992",
     "NFPA 70E arc-flash trained",
     "24/7 emergency",
-    "2-hour response",
+    "4-hour response",
   ],
 };
 
@@ -26,8 +26,8 @@ export const homeCompany = {
   overline: "About Data Power Source",
   title: "Local leadership. Technical depth. Built around your uptime.",
   body: [
-    "Data Power Source is an owner-led electrical contractor serving commercial and industrial facilities across Metro Atlanta.",
-    "Since 2001, our crews have combined design-build capability, disciplined field execution, and responsive service for facilities where downtime carries real cost.",
+    "Data Power Source is an owner-led electrical contractor serving commercial and industrial facilities across Metro Atlanta & the SE US.",
+    "Since 1992, our crews have combined design-build capability, disciplined field execution, and responsive service for facilities where downtime carries real cost.",
   ],
   credentialLabel: "Recognized contractor",
   credentialBody:
@@ -62,13 +62,13 @@ export const homeServices = {
     {
       title: "Mission Critical — UPS Backup & Generators",
       description:
-        "Standby generator and UPS installation, data center power, battery replacement, preventive maintenance agreements.",
+        "Standby generator and UPS installation, data center power, battery replacement, and critical distribution.",
       href: "/services/mission-critical-power",
       discipline: "mission-critical" as const,
       callouts: [
         "UPS & generator installation",
         "Data-center power",
-        "Batteries & preventive maintenance",
+        "Batteries & critical distribution",
         "Cooling & critical distribution",
       ],
     },
@@ -104,10 +104,10 @@ export const homeStats = {
   body:
     "We don't lead with slogans. We lead with proof — the years we've been doing this, the projects we've delivered, and a safety record we're glad to put in writing.",
   items: [
-    { value: "2001", suffix: "", label: "Serving Metro Atlanta's commercial & industrial market since" },
+    { value: "1992", suffix: "", label: "Serving the commercial & industrial market across Metro Atlanta & the SE US since" },
     { value: ".82–.86", suffix: " EMR", label: "A documented safety record, three years running" },
     { value: "50+", suffix: " years", label: "Hands-on expertise behind the company" },
-    { value: "2-hour", suffix: "", label: "Emergency response" },
+    { value: "4-hour", suffix: "", label: "Emergency response" },
   ],
 };
 
@@ -136,13 +136,13 @@ export const homeProjects = {
       href: "/projects/us-army-combat-readiness-center-data-center-generator-and-cooling",
     },
     {
-      title: "Clayton County Public Schools",
+      title: "Local School District Data Center",
       description:
         "Full data-center modernization — UPS, generator, cooling, and service — completed while the center stayed online.",
       tag: "Data Center",
       index: "03",
       imageSrc: "/images/projects/clayton-county-schools/03-data-center-cabinets.jpg",
-      imageAlt: "New data center cabinets and critical power equipment at Clayton County Public Schools.",
+      imageAlt: "New data center cabinets and critical power equipment at a local school district data center.",
       href: "/projects/clayton-county-public-schools-data-center-modifications",
     },
   ],
@@ -211,7 +211,7 @@ export const homeReasons = {
     },
     {
       title: "We work without disrupting yours.",
-      body: "Critical installations completed since 2001 while facilities stayed online.",
+      body: "Critical installations completed since 1992 while facilities stayed online.",
     },
   ],
 };

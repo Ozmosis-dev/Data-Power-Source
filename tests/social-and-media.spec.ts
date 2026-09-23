@@ -8,7 +8,7 @@ const familyImages = [
   {
     route: "/",
     imagePath: "/opengraph-image",
-    alt: "Data Power Source — Metro Atlanta Commercial & Industrial Electrical Contractor",
+    alt: "Data Power Source — Metro Atlanta & the SE US Commercial & Industrial Electrical Contractor",
   },
   {
     route: "/services",
@@ -28,7 +28,7 @@ const familyImages = [
   {
     route: "/about",
     imagePath: "/about/opengraph-image",
-    alt: "About Data Power Source — serving Metro Atlanta since 2001",
+    alt: "About Data Power Source — serving Metro Atlanta since 1992",
   },
   {
     route: "/contact",

@@ -76,9 +76,9 @@ export const projects = [
   },
   {
     slug: "clayton-county-public-schools-data-center-modifications",
-    title: "Clayton County Public Schools Data Center Modifications",
-    shortTitle: "Clayton County Schools Data Center",
-    client: "Clayton County Public Schools",
+    title: "Local School District Data Center",
+    shortTitle: "Local School District Data Center",
+    client: "Local School District",
     location: "Jonesboro, GA",
     market: "Education / Data Center",
     services: ["UPS", "Standby generation", "Cooling", "Electrical service"],
@@ -88,11 +88,11 @@ export const projects = [
     summary:
       "A full UPS, generator, cooling, and service modernization delivered while the district data center remained operational.",
     seoDescription:
-      "Explore Data Power Source's $1.1 million Clayton County Public Schools data center renovation, including UPS, generator, cooling, and electrical service upgrades.",
+      "Explore Data Power Source's $1.1 million local school district data center renovation, including UPS, generator, cooling, and electrical service upgrades.",
     challenge:
       "Renovate a live school-system data center from cabinets through standby power while preserving continuous operation.",
     overview: [
-      "Data Power Source completed a full renovation of the operational data center serving Clayton County Public Schools in Jonesboro, Georgia.",
+      "Data Power Source completed a full renovation of an operational data center serving a local school district in Jonesboro, Georgia.",
       "The project required coordinated temporary power, mechanical work, equipment replacement, and utility service work so the district's technology operations could stay online.",
     ],
     scope: [
@@ -106,9 +106,9 @@ export const projects = [
     outcome:
       "The approximately six-month modernization was completed without an unscheduled disruption to data center operations.",
     images: [
-      projectImage("clayton-county-schools", "03-data-center-cabinets.jpg", "New data center cabinets and critical power equipment at Clayton County Public Schools."),
-      projectImage("clayton-county-schools", "01-natural-gas-generator.jpg", "Natural-gas standby generator installed for the Clayton County schools data center."),
-      projectImage("clayton-county-schools", "02-crac-cooling-units.jpg", "Computer-room cooling units installed outside the Clayton County schools data center."),
+      projectImage("clayton-county-schools", "03-data-center-cabinets.jpg", "New data center cabinets and critical power equipment at a local school district data center."),
+      projectImage("clayton-county-schools", "01-natural-gas-generator.jpg", "Natural-gas standby generator installed for a local school district data center."),
+      projectImage("clayton-county-schools", "02-crac-cooling-units.jpg", "Computer-room cooling units installed outside a local school district data center."),
       projectImage("clayton-county-schools", "04-ups-system.jpg", "APC UPS and power distribution equipment inside the renovated data center."),
     ],
     sourceUrl:
@@ -271,9 +271,9 @@ export const projects = [
   },
   {
     slug: "pruitt-assisted-living-facility",
-    title: "Pruitt Assisted Living Facility Standby Power",
-    shortTitle: "Pruitt Assisted Living Standby Power",
-    client: "Pruitt Assisted Living",
+    title: "Local Assisted Living Facility Standby Power",
+    shortTitle: "Local Assisted Living Standby Power",
+    client: "Local Assisted Living Facility",
     location: "Macon, GA",
     market: "Healthcare / Assisted Living",
     services: ["Standby generation", "Automatic transfer", "Service consolidation", "Permitting"],
@@ -282,11 +282,11 @@ export const projects = [
     summary:
       "A 500kW generator and consolidated 2,000A service delivered around continuous patient-care operations.",
     seoDescription:
-      "See the Pruitt Assisted Living standby-power project in Macon, including a 500kW Caterpillar generator and 2,000A automatic transfer system.",
+      "See the local assisted living standby-power project in Macon, including a 500kW Caterpillar generator and 2,000A automatic transfer system.",
     challenge:
       "Consolidate multiple electrical services and add facility-scale standby power without compromising the continuous power required for patient care.",
     overview: [
-      "Data Power Source installed a 500kW Caterpillar diesel standby generator and a 2,000A ASCO automatic transfer switch at Pruitt Assisted Living in Macon, Georgia.",
+      "Data Power Source installed a 500kW Caterpillar diesel standby generator and a 2,000A ASCO automatic transfer switch at a local assisted living facility in Macon, Georgia.",
       "Several overhead electrical services were consolidated into one higher-capacity service feeding a new weather-rated main switchboard and automatic transfer system.",
     ],
     scope: [
@@ -299,7 +299,7 @@ export const projects = [
     outcome:
       "The 4.4-month project was closely coordinated around the facility's constant-power and patient-care requirements.",
     images: [
-      projectImage("pruitt-assisted-living", "01-standby-generator.jpg", "500kW Caterpillar standby generator installed at the Pruitt assisted living facility."),
+      projectImage("pruitt-assisted-living", "01-standby-generator.jpg", "500kW Caterpillar standby generator installed at a local assisted living facility."),
       projectImage("pruitt-assisted-living", "02-underground-duct-bank.jpg", "Underground duct bank construction for the assisted living standby-power system."),
       projectImage("pruitt-assisted-living", "03-service-switchgear.jpg", "New 2,000A service switchgear and automatic transfer equipment."),
     ],

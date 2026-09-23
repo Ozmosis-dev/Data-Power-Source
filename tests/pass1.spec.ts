@@ -56,12 +56,12 @@ test.describe("home", () => {
   test("uses canonical metadata and the full section order", async ({ page }) => {
     await page.goto("/");
     await expect(page).toHaveTitle(
-      "Commercial & Industrial Electrical Contractor in Metro Atlanta | Data Power Source",
+      "Commercial & Industrial Electrical Contractor in Metro Atlanta & the SE US | Data Power Source",
     );
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: "Metro Atlanta Commercial & Industrial Electrical Contractor",
+        name: "Commercial & Industrial Electrical Contractor Serving Metro Atlanta & the SE US",
       }),
     ).toBeVisible();
 
@@ -81,7 +81,7 @@ test.describe("home", () => {
   test("shows the four approved proof metrics", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("heading", { name: "A track record you can verify." }).scrollIntoViewIfNeeded();
-    for (const value of ["2001", ".82–.86", "50+", "2-hour"]) {
+    for (const value of ["1992", ".82–.86", "50+", "4-hour"]) {
       await expect(page.getByTestId("stat-value").filter({ hasText: value })).toBeVisible();
     }
   });

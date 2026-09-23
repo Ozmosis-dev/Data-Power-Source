@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Metro Atlanta commercial and industrial electrical contractor specializing in full electrical, UPS, standby generators, connectivity, and design-build.",
+    "Commercial and industrial electrical contractor serving Metro Atlanta & the SE US with full electrical, UPS, standby generators, connectivity, and design-build services.",
   openGraph: {
     siteName: "Data Power Source",
     type: "website",
