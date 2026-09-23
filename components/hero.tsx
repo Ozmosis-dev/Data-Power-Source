@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 type HeroProps = {
   overline: string;
   title: string;
+  titleAccent?: string;
   lead: string;
   imageAlt?: string;
   imageSrc?: string;
@@ -25,6 +26,7 @@ type HeroProps = {
 export function Hero({
   overline,
   title,
+  titleAccent,
   lead,
   imageAlt,
   imageSrc,
@@ -34,6 +36,11 @@ export function Hero({
   breadcrumbs,
 }: HeroProps) {
   const hasBackgroundImage = Boolean(imageAlt && imageSrc);
+  const titlePrefix =
+    titleAccent && title.endsWith(titleAccent)
+      ? title.slice(0, -titleAccent.length)
+      : title;
+  const hasTitleAccent = titlePrefix !== title;
 
   return (
     <section
@@ -101,7 +108,15 @@ export function Hero({
                 : "text-h1 md:text-display lg:text-[4.75rem] lg:leading-[0.98]",
             )}
           >
-            {title}
+            {titlePrefix}
+            {hasTitleAccent ? (
+              <span
+                data-testid="hero-title-accent"
+                className="pb-1 italic leading-[1.1] text-blue-200"
+              >
+                {titleAccent}
+              </span>
+            ) : null}
           </h1>
           <p className="mt-7 max-w-[640px] border-l-2 border-blue-400 pl-5 text-lead leading-relaxed text-navy-100">
             {lead}

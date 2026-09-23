@@ -16,6 +16,11 @@ test.describe("approved September 2026 content revisions", () => {
       }),
     ).toBeVisible();
 
+    const serviceAreaAccent = page.getByTestId("hero-title-accent");
+    await expect(serviceAreaAccent).toHaveText("Serving Metro Atlanta & the SE US");
+    await expect(serviceAreaAccent).toHaveClass(/text-blue-200/);
+    await expect(serviceAreaAccent).toHaveClass(/italic/);
+
     const main = page.locator("main");
     await expect(main).toContainText("Since 1992");
     await expect(main).toContainText("4-hour");

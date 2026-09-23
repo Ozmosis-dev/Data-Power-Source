@@ -88,6 +88,7 @@ export default function HomePage() {
       <Hero
         overline={homeHero.overline}
         title={homeHero.title}
+        titleAccent="Serving Metro Atlanta & the SE US"
         lead={homeHero.lead}
         imageAlt={homeHero.imageAlt}
         imageSrc={homeHero.imageSrc}
